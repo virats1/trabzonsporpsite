@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabzonspor TV</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Oswald', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+
+
+        /* NAVBAR TASARIMI */
+        .navbar {
+            background: linear-gradient(90deg, #3d000c 0%, #4b0011 20%, #001a35 60%, #0b0b0b 100%);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 40px;
+        }
+
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            margin-left: 320px;
+            height: 100%;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            gap: 1px;
+        }
+
+        .nav-logo-link img {
+            height: 55px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            transform: scaleX(0.9);
+            transform-origin: left;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-left: 30px;
+            height: 100%;
+        }
+
+        .nav-links > li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links > li > a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            color: #d1d1d1;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links > li:hover > a { color: #ffffff; }
+
+        .nav-links > li:hover > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background-color: #f1ad1d;
+        }
+
+        /* TAM EKRAN MEGA MENÜ */
+        .dropdown-wrapper {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100vw;
+            background-color: #510011;
+            display: none;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            padding: 50px 0;
+            z-index: 999;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-links li:hover .dropdown-wrapper {
+            display: block;
+        }
+
+        .dropdown-content {
+            padding-left: 320px;
+            display: flex;
+            width: 100%;
+        }
+
+        .dropdown-content.vertical { flex-direction: column; }
+        .dropdown-content.horizontal { flex-direction: row; gap: 100px; flex-wrap: wrap; }
+
+        .dropdown-header-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            margin-left: -27px;
+            transition: all 0.3s ease;
+        }
+
+        .gold-line-header {
+            width: 7px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-content:hover .gold-line-header { background-color: #f1ad1d; }
+        .dropdown-content:hover .dropdown-header { color: #ffffff; }
+
+        .dropdown-list { list-style: none; position: relative; }
+        .dropdown-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-list li a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            color: #b5b5b5;
+            padding: 10px 25px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .dropdown-list li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 7px;
+            background-color: transparent;
+            transition: background-color 0.2s ease;
+            z-index: 2;
+        }
+
+        .dropdown-list li a:hover::before { background-color: #f1ad1d; }
+        .dropdown-list li a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.04);
+            padding-left: 32px;
+        }
+
+        /* SAĞ AKSİYON GRUBU */
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 15px;
+        }
+
+        .icon-circle {
+            background: rgba(255, 255, 255, 0.08);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .icon-circle svg {
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
+            transition: filter 0.3s ease;
+        }
+
+        .icon-circle:hover svg {
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+        }
+
+        .auth-box, .lang-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-box:hover, .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-box { padding: 0 15px; gap: 10px; }
+        .lang-btn { padding: 0 12px; gap: 8px; cursor: pointer; position: relative; }
+
+        .auth-png-icon { width: 27px; height: 27px; object-fit: contain; }
+        .auth-divider, .lang-divider {
+            width: 1px;
+            height: 16px;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .auth-label {
+            color: #fff;
+            font-family: 'Anton', sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-icon { width: 23px; height: 23px; opacity: 0.8; }
+        .lang-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 13px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .lang-arrow { font-size: 9px; color: #fff; opacity: 0.7; }
+        .toggle-btn { font-size: 20px; color: #fff; cursor: pointer; margin-left: 5px; display: flex; align-items: center; user-select: none; }
+
+        /* DİL MENÜSÜ */
+        .lang-menu {
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: #0b0b0b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            width: 110px;
+            display: none;
+            flex-direction: column;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .lang-menu.show { display: flex; }
+        .lang-option {
+            padding: 12px;
+            font-family: 'Anton', sans-serif;
+            font-size: 13px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lang-option:hover { background: rgba(255,255,255,0.1); color: #f1ad1d; }
+
+        /* İNCE PANEL STİLLERİ */
+        .thin-panel {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 0, 5, 0.98);
+            height: 0;
+            overflow: hidden;
+            z-index: 998;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            border-bottom: 0px solid #f1ad1d;
+        }
+
+        .thin-panel.active {
+            height: 100px;
+            border-bottom-width: 2px;
+        }
+
+        .panel-content {
+            padding-left: 320px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .quick-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .quick-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            border-color: #f1ad1d;
+        }
+
+        .quick-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .quick-icon svg { width: 100%; height: 100%; fill: #fff; }
+        .quick-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.2); }
+        .quick-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* ======= PAGE HERO / BREADCRUMB ======= */
+        .page-hero {
+            width: 100%;
+            background: linear-gradient(90deg, #1a1a2e 0%, #3d000c 100%);
+            padding: 59px 60px 59px 80px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            margin-top: 90px;
+        }
+        .page-hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 0;
+            margin-bottom: 8px;
+        }
+        .page-hero-breadcrumb li a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .page-hero-breadcrumb li a:hover { color: #f1ad1d; }
+        .page-hero-breadcrumb li.bc-current span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .bc-sep {
+            font-size: 19px;
+            color: rgba(255,255,255,0.25);
+            margin: 0 8px;
+            user-select: none;
+        }
+        .page-hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 59px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-top: 20px;
+        }
+
+        /* ======= MAIN CONTENT AREA ======= */
+        .ts-tv-page {
+            background: #fff;
+            min-height: 100vh;
+            padding: 0 0 60px;
+        }
+
+        /* ======= CATEGORY TABS ======= */
+        .category-tabs {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 60px;
+            background: #fff;
+            position: sticky;
+            top: 90px;
+            z-index: 100;
+        }
+        .cat-tab {
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            color: #555;
+            padding: 22px 98px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            text-transform: capitalize;
+            white-space: nowrap;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            letter-spacing: 0.3px;
+        }
+        .cat-tab:first-child { font-weight: 700; }
+        .cat-tab:hover { color: #111; }
+        .cat-tab.active {
+            color: #111;
+            font-weight: 700;
+            border-bottom: 3px solid #f1ad1d;
+        }
+
+        /* ======= PROMO BANNER ======= */
+        .promo-banner {
+            margin: 40px 60px 40px;
+            border-radius: 14px;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .promo-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+        .promo-banner-placeholder {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(110deg, #0b0b1a 0%, #1a003a 35%, #6b0020 70%, #8b0028 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ======= VIDEO GRID ======= */
+        .video-grid {
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        /* ======= VIDEO CARD ======= */
+        .video-card {
+            border-radius: 0;
+            overflow: hidden;
+            background: #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .video-card:hover { transform: translateY(-3px); }
+
+        .video-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Play button overlay */
+        .thumb-play-btn {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            border: 2px solid rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .video-card:hover .play-circle { background: rgba(255,255,255,0.3); }
+        .play-circle img { width: 22px; height: 22px; margin-left: 4px; }
+
+        /* Lock overlay for premium */
+        .thumb-lock-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.65);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+        .lock-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lock-circle img { width: 24px; height: 24px; }
+        .lock-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            padding: 0 16px;
+            font-weight: 400;
+        }
+        .satin-al-btn {
+            background: linear-gradient(180deg, #2185d0 0%, #1669a9 100%);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 9px 26px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+
+
+        /* Card info below thumb */
+        .video-info {
+            padding: 12px 4px 4px;
+        }
+        .video-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111;
+            line-height: 1.35;
+            margin-bottom: 7px;
+        }
+        .video-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .badge-ozel {
+            background: #f1ad1d;
+            color: #111;
+        }
+        .badge-futbol {
+            background: #e8f0fe;
+            color: #1a5fb4;
+        }
+        .badge-antrenman {
+            background: #e6f4ea;
+            color: #2e7d32;
+        }
+        .badge-canli {
+            background: #fce8e6;
+            color: #c62828;
+        }
+        .badge-basketbol {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .badge-akademi {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        /* MOBİL UI */
+        .mobile-navbar {
+            display: none;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                display: none !important;
+            }
+
+            .thin-panel {
+                display: none !important;
+            }
+
+            .mobile-navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                background: linear-gradient(90deg, #3d000c 0%, #4b0011 50%, #1a0008 100%);
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                z-index: 1000;
+                padding: 0 18px;
+            }
+
+            .mobile-hamburger {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                padding: 0;
+            }
+
+            .mobile-hamburger span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: #ffffff;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-hamburger.open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .mobile-hamburger.open span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            .mobile-hamburger.open span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .mobile-logo {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                color: white;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .mobile-logo img {
+                height: 42px;
+                width: auto;
+            }
+
+            .mobile-logo-text {
+                font-family: 'Anton', sans-serif;
+                font-size: 18px;
+                letter-spacing: -0.5px;
+                text-transform: uppercase;
+            }
+
+            .mobile-right-icons {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .mobile-icon-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.1);
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .mobile-icon-btn svg {
+                width: 20px;
+                height: 20px;
+                stroke: #fff;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .mobile-lang-wrap {
+                position: relative;
+            }
+
+            .mobile-lang-menu {
+                position: absolute;
+                top: 46px;
+                right: 0;
+                background: #0b0b0b;
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 10px;
+                width: 120px;
+                display: none;
+                flex-direction: column;
+                z-index: 3000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                overflow: hidden;
+            }
+
+            .mobile-lang-menu.show {
+                display: flex;
+            }
+
+            .mobile-lang-option {
+                padding: 14px 12px;
+                font-family: 'Anton', sans-serif;
+                font-size: 13px;
+                color: #fff;
+                text-align: center;
+                cursor: pointer;
+                letter-spacing: 1px;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .mobile-lang-option:not(:last-child) {
+                border-bottom: 1px solid rgba(255,255,255,0.07);
+            }
+
+            .mobile-lang-option:hover,
+            .mobile-lang-option.active-lang {
+                background: rgba(241,173,29,0.15);
+                color: #f1ad1d;
+            }
+
+            .mobile-profile-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #c8860a;
+                border: none;
+                cursor: pointer;
+            }
+
+            .mobile-profile-btn svg {
+                width: 22px;
+                height: 22px;
+                fill: #fff;
+            }
+
+            /* MOBİL OVERLAY MENÜ */
+            .mobile-menu-overlay {
+                display: block;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #1a0008;
+                z-index: 999;
+                overflow-y: auto;
+                transform: translateX(-100%);
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu-overlay.open {
+                transform: translateX(0);
+            }
+
+            .mobile-search-wrap {
+                padding: 20px 18px 16px;
+            }
+
+            .mobile-search-box {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: rgba(255,255,255,0.07);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 50px;
+                padding: 12px 20px;
+            }
+
+            .mobile-search-box svg {
+                width: 20px;
+                height: 20px;
+                stroke: rgba(255,255,255,0.5);
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                flex-shrink: 0;
+            }
+
+            .mobile-search-box input {
+                background: none;
+                border: none;
+                outline: none;
+                font-family: 'Oswald', sans-serif;
+                font-size: 15px;
+                color: rgba(255,255,255,0.6);
+                width: 100%;
+            }
+
+            .mobile-search-box input::placeholder {
+                color: rgba(255,255,255,0.4);
+            }
+
+            .mobile-quick-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 4px 18px 18px;
+            }
+
+            .mobile-quick-btn {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 12px;
+                padding: 14px 14px;
+                text-decoration: none;
+                transition: background 0.2s ease, border-color 0.2s ease;
+            }
+
+            .mobile-quick-btn:active {
+                background: rgba(241,173,29,0.15);
+                border-color: #f1ad1d;
+            }
+
+            .mobile-quick-btn-icon {
+                width: 22px;
+                height: 22px;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-quick-btn-icon svg {
+                width: 100%;
+                height: 100%;
+                fill: #fff;
+            }
+
+            .mobile-quick-divider {
+                width: 1px;
+                height: 16px;
+                background: rgba(255,255,255,0.15);
+                flex-shrink: 0;
+            }
+
+            .mobile-quick-btn-text {
+                font-family: 'Oswald', sans-serif;
+                font-size: 13px;
+                color: #fff;
+                font-weight: 500;
+                text-transform: uppercase;
+                line-height: 1.2;
+            }
+
+            .mobile-divider {
+                height: 1px;
+                background: rgba(255,255,255,0.08);
+                margin: 0 18px 8px;
+            }
+
+            .mobile-nav-list {
+                list-style: none;
+                padding: 8px 0 30px;
+            }
+
+            .mobile-nav-item {
+                border-left: 3px solid transparent;
+                transition: border-color 0.2s ease;
+            }
+
+            .mobile-nav-item > a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 22px;
+                font-family: 'Oswald', sans-serif;
+                font-size: 22px;
+                font-weight: 600;
+                color: #ffffff;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: color 0.2s ease;
+            }
+
+            .mobile-nav-item > a .mobile-arrow {
+                width: 20px;
+                height: 20px;
+                stroke: rgba(255,255,255,0.4);
+                fill: none;
+                stroke-width: 2.5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: transform 0.3s ease, stroke 0.2s ease;
+                flex-shrink: 0;
+            }
+
+            .mobile-nav-item.active {
+                border-left-color: #f1ad1d;
+            }
+
+            .mobile-nav-item.active > a {
+                color: #f1ad1d;
+            }
+
+            .mobile-nav-item.active > a .mobile-arrow {
+                transform: rotate(90deg);
+                stroke: #f1ad1d;
+            }
+
+            .mobile-sub-menu {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                background: rgba(0,0,0,0.3);
+            }
+
+            .mobile-nav-item.active .mobile-sub-menu {
+                max-height: 600px;
+            }
+
+            .mobile-sub-menu a {
+                display: block;
+                padding: 12px 22px 12px 32px;
+                font-family: 'Oswald', sans-serif;
+                font-size: 15px;
+                color: rgba(255,255,255,0.65);
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.04);
+                transition: color 0.2s ease, padding-left 0.2s ease;
+            }
+
+            .mobile-sub-menu a:active {
+                color: #f1ad1d;
+                padding-left: 38px;
+            }
+
+            .page-hero {
+                margin-top: 70px;
+                padding: 36px 20px;
+            }
+            .page-hero-title { font-size: 38px; }
+            .category-tabs {
+                top: 70px;
+                padding: 0 10px;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+            .category-tabs::-webkit-scrollbar { display: none; }
+            .cat-tab { padding: 18px 16px 16px; font-size: 14px; }
+            .promo-banner {
+                margin: 24px 16px;
+                padding: 24px 20px;
+                flex-wrap: wrap;
+            }
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 16px;
+                gap: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ======= NAVBAR ======= -->
+        <nav class="navbar">
+        <div class="navbar-container">
+            
+            <div class="nav-left-group">
+                <a href="../index.html" class="nav-logo-link">
+                    <img src="images/tslogosubeyaz.png" alt="Trabzonspor">
+                    <span class="brand-name">TRABZONSPOR</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="" class="ln" data-tr="KULÜP" data-en="CLUB">KULÜP</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="KULÜP" data-en="CLUB">KULÜP</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="tarihce.html" class="ln" data-tr="TARİHÇE" data-en="HISTORY">TARİHÇE</a></li>
+                                    <li><a href="tuzuk.html" class="ln" data-tr="KULÜP TÜZÜĞÜ" data-en="STATUTE">KULÜP TÜZÜĞÜ</a></li>
+                                    <li><a href="kurumsal-kimlik.html" class="ln" data-tr="KURUMSAL KİMLİK" data-en="CORPORATE IDENTITY">KURUMSAL KİMLİK</a></li>
+                                    <li><a href="kulup-uyeligi.html" class="ln" data-tr="KULÜP ÜYELİĞİ" data-en="MEMBERSHIP">KULÜP ÜYELİĞİ</a></li>
+                                    <li><a href="tesislerimiz.html" class="ln" data-tr="TESİSLERİMİZ" data-en="FACILITIES">TESİSLERİMİZ</a></li>
+                                    <li><a href="stadyum.html" class="ln" data-tr="PAPARA PARK" data-en="PAPARA PARK">PAPARA PARK</a></li>
+                                    <li><a href="localarımız.html" class="ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</a></li>
+                                    <li><a href="mustafa-samil-ekinci-muzesi.html" class="ln" data-tr="MUSTAFA ŞAMİL EKİNCİ MÜZESİ" data-en="MUSTAFA ŞAMİL EKİNCİ MUSEUM">MUSTAFA ŞAMİL EKİNCİ MÜZESİ</a></li>
+                                    <li><a href="formalarımız.html" class="ln" data-tr="FORMALARIMIZ" data-en="OUR KITS">FORMALARIMIZ</a></li>
+                                    <li><a href="resimler.html" class="ln" data-tr="DUVAR KAĞITLARI" data-en="WALLPAPERS">DUVAR KAĞITLARI</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="YÖNETİM" data-en="MANAGEMENT">YÖNETİM</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../yonetim/yonetim-kurulu.html" class="ln" data-tr="YÖNETİM KURULU" data-en="BOARD OF DIRECTORS">YÖNETİM KURULU</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/kurullar.html" class="ln" data-tr="KURULLAR" data-en="BOARDS">KURULLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/organlar.html" class="ln" data-tr="ORGANLAR" data-en="ORGANS">ORGANLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/yatirimci-iliskileri.html" class="ln" data-tr="YATIRIMCI İLİŞKİLERİ" data-en="INVESTOR RELATIONS">YATIRIMCI İLİŞKİLERİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="BRANŞLAR" data-en="BRANCHES">BRANŞLAR</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="FUTBOL" data-en="FOOTBALL">FUTBOL</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="../branslar/futbol/a-takimi.html" class="ln" data-tr="OYUNCU KADROSU" data-en="SQUAD">OYUNCU KADROSU</a></li>
+                                    <li><a href="../branslar/futbol/a-takimi-teknik.html" class="ln" data-tr="TEKNİK KADRO" data-en="TECHNICAL STAFF">TEKNİK KADRO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="../mac-merkezi.html" class="ln" data-tr="MAÇ MERKEZİ" data-en="MATCH CENTER">MAÇ MERKEZİ</a></li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="HABERLER" data-en="NEWS">HABERLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=all" class="ln" data-tr="TÜM HABERLER" data-en="ALL NEWS">TÜM HABERLER</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=futbol-a-takim" class="ln" data-tr="FUTBOL A TAKIM" data-en="FIRST TEAM">FUTBOL A TAKIM</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=kadin-futbol" class="ln" data-tr="KADIN FUTBOL" data-en="WOMEN'S FOOTBALL">KADIN FUTBOL</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=akademi" class="ln" data-tr="AKADEMİ" data-en="ACADEMY">AKADEMİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="ONLİNE İŞLEMLER" data-en="ONLINE SERVICES">ONLİNE İŞLEMLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="https://trabzonspor.com.tr/?srsltid=AfmBOopWP-A5rEkBb31etkg8dzwGgSmtI5Lyga5W7qcU2Ovq8toWJ4xC" class="ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/giris-yap.html" class="ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/gk-sorgulama.html" class="ln" data-tr="GENEL KURUL KATILIM SORGULAMA" data-en="ASSEMBLY INQUIRY">GENEL KURUL KATILIM SORGULAMA</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/trabzonspor-tv.html" class="ln" data-tr="TRABZONSPOR TV" data-en="TRABZONSPOR TV">TRABZONSPOR TV</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/trabzonspor-dergisi.html" class="ln" data-tr="TRABZONSPOR DERGİSİ" data-en="MAGAZINE">TRABZONSPOR DERGİSİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../iletisim.html" class="ln" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a></li>
+                </ul>
+
+                <div class="nav-right-group">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                            <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+                        </svg>
+                    </div>
+                    
+                    <a href="../online-islemler/giris-yap.html" class="auth-box">
+                        <img src="../assets/img/girisyaplogo.png" alt="Giriş" class="auth-png-icon">
+                        <div class="auth-divider"></div>
+                        <span class="auth-label ln" data-tr="Giriş Yap" data-en="Login">Giriş Yap</span>
+                    </a>
+                    
+                    <div class="lang-btn" id="langBtn">
+                        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <div class="lang-divider"></div>
+                        <span class="lang-text" id="activeLang">TR</span>
+                        <span class="lang-arrow">▼</span>
+                        <div class="lang-menu" id="langMenu">
+                            <div class="lang-option" onclick="setLang('tr')">TÜRKÇE</div>
+                            <div class="lang-option" onclick="setLang('en')">ENGLISH</div>
+                        </div>
+                    </div>
+
+                    <div class="toggle-btn" id="menuTrigger">☰</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  <div class="thin-panel" id="sidePanel">
+        <div class="panel-content">
+            <a href="https://trabzonspor.com.tr/?srsltid=AfmBOoqRxib4O-UoXlzSCon41Ppy6BhHWGG9CNU4xbo3ZjHNLvjRBKUz" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</span>
+            </a>
+            <a href="../online-islemler/mustafa-samil-ekinci-muzesi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ŞAMİL EKİNCİ MÜZESİ" data-en="SAMIL EKINCI MUSEUM">ŞAMİL EKİNCİ MÜZESİ</span>
+            </a>
+            <a href="../online-islemler/giris-yap.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</span>
+            </a>
+            <a href="../online-islemler/localarımız.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="white">
+    <path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</span>
+            </a>
+            <a href="../online-islemler/trabzonspor-dergisi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="DERGİ" data-en="MAGAZINE">DERGİ</span>
+            </a>
+        </div>
+    </div>
+
+<!-- MOBİL NAVBAR -->
+<nav class="mobile-navbar">
+    <button class="mobile-hamburger" id="mobileHamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="#" class="mobile-logo">
+        <img src="https://i.imgur.com/zJDF5Sp.png" alt="Trabzonspor">
+        <span class="mobile-logo-text">TRABZONSPOR</span>
+    </a>
+
+    <div class="mobile-right-icons">
+        <div class="mobile-lang-wrap" id="mobileLangWrap">
+            <div class="mobile-icon-btn" id="mobileLangBtn">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+            </div>
+            <div class="mobile-lang-menu" id="mobileLangMenu">
+                <div class="mobile-lang-option" data-lang="tr">TÜRKÇE</div>
+                <div class="mobile-lang-option" data-lang="en">ENGLISH</div>
+            </div>
+        </div>
+        <a href="#" class="mobile-profile-btn">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+        </a>
+    </div>
+</nav>
+
+<!-- MOBİL OVERLAY MENÜ -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+
+    <div class="mobile-search-wrap">
+        <div class="mobile-search-box">
+            <svg viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+            </svg>
+            <input type="text" placeholder="Web Sitesinde ara..." class="mob-ln" data-tr="Web Sitesinde ara..." data-en="Search the website...">
+        </div>
+    </div>
+
+    <div class="mobile-quick-grid">
+        <a href="#" class="mobile-quick-btn">
+            <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+            <div class="mobile-quick-divider"></div>
+            <span class="mobile-quick-btn-text mob-ln" data-tr="Ts Club" data-en="Ts Club">Ts Club</span>
+        </a>
+        <a href="#" class="mobile-quick-btn">
+            <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+            <div class="mobile-quick-divider"></div>
+            <span class="mobile-quick-btn-text mob-ln" data-tr="Şamil Ekinci Müzesi" data-en="Şamil Ekinci Museum">Şamil Ekinci Müzesi</span>
+        </a>
+        <a href="#" class="mobile-quick-btn">
+            <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+            <div class="mobile-quick-divider"></div>
+            <span class="mobile-quick-btn-text mob-ln" data-tr="Üyelik İşlemleri" data-en="Membership">Üyelik İşlemleri</span>
+        </a>
+        <a href="#" class="mobile-quick-btn">
+            <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24" fill="white"><path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+            <div class="mobile-quick-divider"></div>
+            <span class="mobile-quick-btn-text mob-ln" data-tr="Localarımız" data-en="Lodges">Localarımız</span>
+        </a>
+        <a href="#" class="mobile-quick-btn">
+            <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+            <div class="mobile-quick-divider"></div>
+            <span class="mobile-quick-btn-text mob-ln" data-tr="Trabzonspor Dergisi" data-en="Magazine">Trabzonspor Dergisi</span>
+        </a>
+    </div>
+
+    <div class="mobile-divider"></div>
+
+    <ul class="mobile-nav-list">
+        <li class="mobile-nav-item" data-menu="kulup">
+            <a href="#">
+                <span class="mob-ln" data-tr="Kulüp" data-en="Club">Kulüp</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-sub-menu">
+                <a href="../kulup/tarihce.html" class="mob-ln" data-tr="Tarihçe" data-en="History">Tarihçe</a>
+                <a href="../kulup/tuzuk.html" class="mob-ln" data-tr="Kulüp Tüzüğü" data-en="Statute">Kulüp Tüzüğü</a>
+                <a href="../kulup/kurumsal-kimlik.html" class="mob-ln" data-tr="Kurumsal Kimlik" data-en="Corporate Identity">Kurumsal Kimlik</a>
+                <a href="../kulup/kulup-uyeligi.html" class="mob-ln" data-tr="Kulüp Üyeliği" data-en="Membership">Kulüp Üyeliği</a>
+                <a href="../kulup/tesislerimiz.html" class="mob-ln" data-tr="Tesislerimiz" data-en="Facilities">Tesislerimiz</a>
+                <a href="../kulup/stadyum.html" class="mob-ln" data-tr="Papara Park" data-en="Papara Park">Papara Park</a>
+                <a href="../kulup/localarımız.html" class="mob-ln" data-tr="Localarımız" data-en="Lodges">Localarımız</a>
+                <a href="../kulup/mustafa-samil-ekinci-muzesi.html" class="mob-ln" data-tr="Müzemiz" data-en="Museum">Müzemiz</a>
+                <a href="../kulup/formalarımız.html" class="mob-ln" data-tr="Formalarımız" data-en="Our Kits">Formalarımız</a>
+                <a href="../kulup/resimler.html" class="mob-ln" data-tr="Duvar Kağıtları" data-en="Wallpapers">Duvar Kağıtları</a>
+            </div>
+        </li>
+        <li class="mobile-nav-item" data-menu="yonetim">
+            <a href="#">
+                <span class="mob-ln" data-tr="Yönetim" data-en="Management">Yönetim</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-sub-menu">
+                <a href="#" class="mob-ln" data-tr="Yönetim Kurulu" data-en="Board of Directors">Yönetim Kurulu</a>
+                <a href="#" class="mob-ln" data-tr="Kurullar" data-en="Boards">Kurullar</a>
+                <a href="#" class="mob-ln" data-tr="Organlar" data-en="Organs">Organlar</a>
+                <a href="#" class="mob-ln" data-tr="Yatırımcı İlişkileri" data-en="Investor Relations">Yatırımcı İlişkileri</a>
+            </div>
+        </li>
+        <li class="mobile-nav-item" data-menu="branslar">
+            <a href="#">
+                <span class="mob-ln" data-tr="Branşlar" data-en="Branches">Branşlar</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-sub-menu">
+                <a href="#" class="mob-ln" data-tr="Oyuncu Kadrosu" data-en="Squad">Oyuncu Kadrosu</a>
+                <a href="#" class="mob-ln" data-tr="Teknik Kadro" data-en="Technical Staff">Teknik Kadro</a>
+            </div>
+        </li>
+        <li class="mobile-nav-item" data-menu="mac">
+            <a href="#">
+                <span class="mob-ln" data-tr="Maç Merkezi" data-en="Match Center">Maç Merkezi</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+        </li>
+        <li class="mobile-nav-item" data-menu="haberler">
+            <a href="#">
+                <span class="mob-ln" data-tr="Haberler" data-en="News">Haberler</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-sub-menu">
+                <a href="#" class="mob-ln" data-tr="Tüm Haberler" data-en="All News">Tüm Haberler</a>
+                <a href="#" class="mob-ln" data-tr="Futbol A Takım" data-en="First Team">Futbol A Takım</a>
+                <a href="#" class="mob-ln" data-tr="Kadın Futbol" data-en="Women's Football">Kadın Futbol</a>
+                <a href="#" class="mob-ln" data-tr="Akademi" data-en="Academy">Akademi</a>
+            </div>
+        </li>
+        <li class="mobile-nav-item" data-menu="online">
+            <a href="#">
+                <span class="mob-ln" data-tr="Online İşlemler" data-en="Online Services">Online İşlemler</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-sub-menu">
+                <a href="#" class="mob-ln" data-tr="TS Club" data-en="TS Club">TS Club</a>
+                <a href="#" class="mob-ln" data-tr="Üyelik İşlemleri" data-en="Membership">Üyelik İşlemleri</a>
+                <a href="#" class="mob-ln" data-tr="Genel Kurul Katılım Sorgulama" data-en="Assembly Inquiry">Genel Kurul Katılım Sorgulama</a>
+                <a href="#" class="mob-ln" data-tr="Trabzonspor TV" data-en="Trabzonspor TV">Trabzonspor TV</a>
+                <a href="#" class="mob-ln" data-tr="Trabzonspor Dergisi" data-en="Magazine">Trabzonspor Dergisi</a>
+            </div>
+        </li>
+        <li class="mobile-nav-item" data-menu="iletisim">
+            <a href="#">
+                <span class="mob-ln" data-tr="İletişim" data-en="Contact">İletişim</span>
+                <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<!-- ======= PAGE HERO ======= -->
+<div class="page-hero">
+    <ul class="page-hero-breadcrumb">
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><span class="bc-sep">/</span></li>
+        <li><a href="#">Online İşlemler</a></li>
+        <li><span class="bc-sep">/</span></li>
+        <li class="bc-current"><span>Trabzonspor TV</span></li>
+    </ul>
+    <h1 class="page-hero-title">Trabzonspor TV</h1>
+</div>
+
+<!-- ======= TS TV MAIN CONTENT ======= -->
+<div class="ts-tv-page">
+
+    <!-- Kategori Sekmeleri -->
+    <div class="category-tabs" id="categoryTabs">
+        <!-- JS ile render edilecek -->
+    </div>
+
+    <!-- Promo Banner — buraya kendi fotoğrafını ekle: src="resim.jpg" -->
+    <div class="promo-banner">
+        <!-- Fotoğraf eklemek için: <img src="resim-url.jpg" alt="Kampanya"> -->
+        <a href="https://www.youtube.com/trabzonspor/join">
+        <img src="../assets/img/trabzonspor_1711f892558d4172b5e55277054c930f_upscayl_2x_digital-art-4x.png">
+    </a>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="video-grid" id="videoGrid">
+        <!-- JS ile render edilecek -->
+    </div>
+
+</div>
+
+<script>
+/* --- PC PANEL KONTROLLERİ --- */
+const menuTrigger = document.getElementById('menuTrigger');
+const sidePanel = document.getElementById('sidePanel');
+
+menuTrigger.addEventListener('click', function() {
+    sidePanel.classList.toggle('active');
+    this.innerText = sidePanel.classList.contains('active') ? '✕' : '☰';
+});
+
+document.addEventListener('click', function(event) {
+    if (!sidePanel.contains(event.target) && !menuTrigger.contains(event.target)) {
+        sidePanel.classList.remove('active');
+        menuTrigger.innerText = '☰';
+    }
+});
+
+/* --- DİL SİSTEMİ --- */
+const langBtn = document.getElementById('langBtn');
+const langMenu = document.getElementById('langMenu');
+
+langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langMenu.classList.toggle('show');
+});
+
+function setLang(lang) {
+    localStorage.setItem('siteLang', lang);
+    updatePage(lang);
+    langMenu.classList.remove('show');
+}
+
+function updatePage(lang) {
+    document.querySelectorAll('.ln').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerText = text;
+    });
+    document.getElementById('activeLang').innerText = lang.toUpperCase();
+
+    document.querySelectorAll('.mob-ln').forEach(function(el) {
+        const text = el.getAttribute('data-' + lang);
+        if (text) {
+            if (el.tagName === 'INPUT') {
+                el.placeholder = text;
+            } else {
+                el.innerText = text;
+            }
+        }
+    });
+
+    document.querySelectorAll('.mobile-lang-option').forEach(function(opt) {
+        opt.classList.toggle('active-lang', opt.getAttribute('data-lang') === lang);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('siteLang') || 'tr';
+    updatePage(saved);
+});
+
+document.addEventListener('click', () => {
+    langMenu.classList.remove('show');
+});
+
+/* --- MOBİL JS --- */
+const mobileHamburger = document.getElementById('mobileHamburger');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+mobileHamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = mobileMenuOverlay.classList.toggle('open');
+    mobileHamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+document.addEventListener('click', function(e) {
+    if (
+        mobileMenuOverlay.classList.contains('open') &&
+        !mobileMenuOverlay.contains(e.target) &&
+        !mobileHamburger.contains(e.target)
+    ) {
+        mobileMenuOverlay.classList.remove('open');
+        mobileHamburger.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+});
+
+document.querySelectorAll('.mobile-nav-item > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        const item = this.parentElement;
+        const subMenu = item.querySelector('.mobile-sub-menu');
+        if (!subMenu) return;
+
+        e.preventDefault();
+        const isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.mobile-nav-item.active').forEach(function(el) {
+            el.classList.remove('active');
+        });
+
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+const mobileLangBtn = document.getElementById('mobileLangBtn');
+const mobileLangMenu = document.getElementById('mobileLangMenu');
+
+mobileLangBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    mobileLangMenu.classList.toggle('show');
+});
+
+document.querySelectorAll('.mobile-lang-option').forEach(function(opt) {
+    opt.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const lang = this.getAttribute('data-lang');
+        setLang(lang);
+        mobileLangMenu.classList.remove('show');
+    });
+});
+
+document.addEventListener('click', function() {
+    mobileLangMenu.classList.remove('show');
+});
+</script>
+
+<script>
+// ================================================================
+// VİDEO VERİSİ — yeni video eklemek için aşağıdaki bloğu kopyala,
+// virgülle ayır ve listeye ekle:
+//
+// {
+//     title: "Video Başlığı",
+//     category: "futbol",           // tumu, futbol, antrenman, canli, basketbol, akademi
+//     thumb: "https://...",         // Küçük resim URL (boş bırakırsan renk gösterir)
+//     premium: false,               // true ise kilitli "Satın Al" gösterir
+//     badge: "Futbol"               // Kart altındaki etiket metni
+// },
+// ================================================================
+const videos = [
+    {
+        title: 'Eski Futbolcumuz Jaja Coelho: "Kariyerimde bir şeyi...',
+        category: "futbol",
+        thumb: "",
+        premium: false,
+        badge: "Futbol"
+    },
+    {
+        title: "#InsideStory | Corendon Alanyaspor maçı hikayesi",
+        category: "futbol",
+        thumb: "",
+        premium: true,
+        badge: "Özel İçerik"
+    },
+    {
+        title: "Koreografi Story | Trabzonspor Taraftar Koreografisi",
+        category: "futbol",
+        thumb: "",
+        premium: false,
+        badge: "Futbol"
+    },
+    {
+        title: "#InsideStory | Fenerbahçe maçı hikayesi",
+        category: "futbol",
+        thumb: "",
+        premium: true,
+        badge: "Özel İçerik"
+    },
+    {
+        title: "Antrenman Günlüğü | Hafta Sonu Çalışması",
+        category: "antrenman",
+        thumb: "",
+        premium: false,
+        badge: "Antrenman"
+    },
+    {
+        title: "Canlı Yayın | Basın Toplantısı",
+        category: "canli",
+        thumb: "",
+        premium: false,
+        badge: "Canlı Yayın"
+    },
+    {
+        title: "Basketbol | Trabzonspor BSK Maç Özeti",
+        category: "basketbol",
+        thumb: "",
+        premium: false,
+        badge: "Basketbol"
+    },
+    {
+        title: "Akademi | U19 Takımı Çalışması",
+        category: "akademi",
+        thumb: "",
+        premium: true,
+        badge: "Akademi"
+    },
+    {
+        title: "Katıl | YouTube Üyelik Avantajları",
+        category: "katil",
+        thumb: "",
+        premium: false,
+        badge: "Özel İçerik"
+    },
+    {
+        title: "Antrenman Günlüğü | Deplasman Hazırlığı",
+        category: "antrenman",
+        thumb: "",
+        premium: true,
+        badge: "Özel İçerik"
+    },
+    {
+        title: "Yönetim Kurulu Açıklamaları | Genel Kurul Sonrası",
+        category: "futbol",
+        thumb: "",
+        premium: false,
+        badge: "Futbol"
+    },
+    {
+        title: "Basketbol | Avrupa Kupası Hazırlık Kampı",
+        category: "basketbol",
+        thumb: "",
+        premium: false,
+        badge: "Basketbol"
+    },
+];
+
+// ================================================================
+// KATEGORİ TANIMLAMALARI
+// ================================================================
+const categories = [
+    { id: "tumu",      label: "Tümü" },
+    { id: "futbol",    label: "Futbol" },
+    { id: "antrenman", label: "Antrenman Günlüğü" },
+    { id: "canli",     label: "Canlı Yayınlar" },
+    { id: "katil",     label: "Katıl" },
+    { id: "basketbol", label: "Basketbol" },
+    { id: "akademi",   label: "Akademi" },
+];
+
+// Aktif kategori
+let activeCategory = "tumu";
+
+// Badge renk sınıfı
+function getBadgeClass(badge) {
+    const b = badge.toLowerCase();
+    if (b.includes("özel")) return "badge-ozel";
+    if (b.includes("futbol")) return "badge-futbol";
+    if (b.includes("antrenman")) return "badge-antrenman";
+    if (b.includes("canlı")) return "badge-canli";
+    if (b.includes("basketbol")) return "badge-basketbol";
+    if (b.includes("akademi")) return "badge-akademi";
+    return "badge-ozel";
+}
+
+// Thumb arka plan rengi (resim yüklenemezse)
+const thumbColors = [
+    "#1a1a2e","#2c003e","#003d1a","#1a0008",
+    "#003366","#1a1a00","#00271a","#1a0d00"
+];
+
+function renderTabs() {
+    const tabsEl = document.getElementById("categoryTabs");
+    tabsEl.innerHTML = categories.map(cat => `
+        <button class="cat-tab ${cat.id === activeCategory ? 'active' : ''}"
+                onclick="filterCategory('${cat.id}')">
+            ${cat.label}
+        </button>
+    `).join('');
+}
+
+function filterCategory(catId) {
+    activeCategory = catId;
+    renderTabs();
+    renderVideos();
+}
+
+function renderVideos() {
+    const grid = document.getElementById("videoGrid");
+    const filtered = activeCategory === "tumu"
+        ? videos
+        : videos.filter(v => v.category === activeCategory);
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 0;font-family:'Oswald',sans-serif;font-size:20px;color:#888;">Bu kategoride henüz içerik yok.</div>`;
+        return;
+    }
+
+    grid.innerHTML = filtered.map((v, i) => {
+        const bgColor = thumbColors[i % thumbColors.length];
+        const thumbHtml = v.thumb
+            ? `<img src="${v.thumb}" alt="${v.title}" onerror="this.style.display='none'">`
+            : '';
+
+        const overlayHtml = v.premium
+            ? `<div class="thumb-lock-overlay">
+                    <img src="https://www.trabzonspor.org.tr/ts-tv/lock.png" alt="lock" style="width:60px;height:60px;">
+                    <div class="lock-label">Özel İçeriklerimizi izleyebilmek için satın alın.</div>
+                    <button class="satin-al-btn">Satın Al</button>
+               </div>`
+            : `<div class="thumb-play-btn">
+                    <img src="https://www.trabzonspor.org.tr/_next/static/media/pal.dc29b9c7.svg" alt="play" style="width:60px;height:60px;">
+               </div>`;
+
+        return `
+        <div class="video-card">
+            <div class="video-thumb" style="background:${bgColor}">
+                ${thumbHtml}
+                ${overlayHtml}
+            </div>
+            <div class="video-info">
+                <div class="video-title">${v.title}</div>
+                ${v.premium ? `<span class="video-badge ${getBadgeClass(v.badge)}">${v.badge}</span>` : ''}
+            </div>
+        </div>
+        `;
+    }).join('');
+}
+
+/* ── ALERT — metni buradan değiştir ── */
+window.addEventListener('load', function() {
+    alert("Bu sitedeki kilitli videolar temsilidir. Herhangi bir gerçek ücret talep edilmemektedir. Verilen link, Trabzonspor'un resmi YouTube kanalıdır.");
+});
+
+// İlk render
+renderTabs();
+renderVideos();
+</script>
+
+</body>
+</html>

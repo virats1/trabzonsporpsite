@@ -1,0 +1,268 @@
+        <nav class="navbar">
+        <div class="navbar-container">
+            
+            <div class="nav-left-group">
+                <a href="../index.html" class="nav-logo-link">
+                    <img src="images/tslogosubeyaz.png" alt="Trabzonspor">
+                    <span class="brand-name">TRABZONSPOR</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="" class="ln" data-tr="KULÜP" data-en="CLUB">KULÜP</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="KULÜP" data-en="CLUB">KULÜP</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="tarihce.html" class="ln" data-tr="TARİHÇE" data-en="HISTORY">TARİHÇE</a></li>
+                                    <li><a href="tuzuk.html" class="ln" data-tr="KULÜP TÜZÜĞÜ" data-en="STATUTE">KULÜP TÜZÜĞÜ</a></li>
+                                    <li><a href="kurumsal-kimlik.html" class="ln" data-tr="KURUMSAL KİMLİK" data-en="CORPORATE IDENTITY">KURUMSAL KİMLİK</a></li>
+                                    <li><a href="kulup-uyeligi.html" class="ln" data-tr="KULÜP ÜYELİĞİ" data-en="MEMBERSHIP">KULÜP ÜYELİĞİ</a></li>
+                                    <li><a href="tesislerimiz.html" class="ln" data-tr="TESİSLERİMİZ" data-en="FACILITIES">TESİSLERİMİZ</a></li>
+                                    <li><a href="stadyum.html" class="ln" data-tr="PAPARA PARK" data-en="PAPARA PARK">PAPARA PARK</a></li>
+                                    <li><a href="localarımız.html" class="ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</a></li>
+                                    <li><a href="mustafa-samil-ekinci-muzesi.html" class="ln" data-tr="MUSTAFA ŞAMİL EKİNCİ MÜZESİ" data-en="MUSTAFA ŞAMİL EKİNCİ MUSEUM">MUSTAFA ŞAMİL EKİNCİ MÜZESİ</a></li>
+                                    <li><a href="formalarımız.html" class="ln" data-tr="FORMALARIMIZ" data-en="OUR KITS">FORMALARIMIZ</a></li>
+                                    <li><a href="resimler.html" class="ln" data-tr="DUVAR KAĞITLARI" data-en="WALLPAPERS">DUVAR KAĞITLARI</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="YÖNETİM" data-en="MANAGEMENT">YÖNETİM</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../yonetim/yonetim-kurulu.html" class="ln" data-tr="YÖNETİM KURULU" data-en="BOARD OF DIRECTORS">YÖNETİM KURULU</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/kurullar.html" class="ln" data-tr="KURULLAR" data-en="BOARDS">KURULLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/organlar.html" class="ln" data-tr="ORGANLAR" data-en="ORGANS">ORGANLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../yonetim/yatirimci-iliskileri.html" class="ln" data-tr="YATIRIMCI İLİŞKİLERİ" data-en="INVESTOR RELATIONS">YATIRIMCI İLİŞKİLERİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="BRANŞLAR" data-en="BRANCHES">BRANŞLAR</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="FUTBOL" data-en="FOOTBALL">FUTBOL</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="../branslar/futbol/a-takimi.html" class="ln" data-tr="OYUNCU KADROSU" data-en="SQUAD">OYUNCU KADROSU</a></li>
+                                    <li><a href="../branslar/futbol/a-takimi-teknik.html" class="ln" data-tr="TEKNİK KADRO" data-en="TECHNICAL STAFF">TEKNİK KADRO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="../mac-merkezi.html" class="ln" data-tr="MAÇ MERKEZİ" data-en="MATCH CENTER">MAÇ MERKEZİ</a></li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="HABERLER" data-en="NEWS">HABERLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=all" class="ln" data-tr="TÜM HABERLER" data-en="ALL NEWS">TÜM HABERLER</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=futbol-a-takim" class="ln" data-tr="FUTBOL A TAKIM" data-en="FIRST TEAM">FUTBOL A TAKIM</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=kadin-futbol" class="ln" data-tr="KADIN FUTBOL" data-en="WOMEN'S FOOTBALL">KADIN FUTBOL</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../haberler.html?cat=akademi" class="ln" data-tr="AKADEMİ" data-en="ACADEMY">AKADEMİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="ONLİNE İŞLEMLER" data-en="ONLINE SERVICES">ONLİNE İŞLEMLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="https://trabzonspor.com.tr/?srsltid=AfmBOopWP-A5rEkBb31etkg8dzwGgSmtI5Lyga5W7qcU2Ovq8toWJ4xC" class="ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/giris-yap.html" class="ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/gk-sorgulama.html" class="ln" data-tr="GENEL KURUL KATILIM SORGULAMA" data-en="ASSEMBLY INQUIRY">GENEL KURUL KATILIM SORGULAMA</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/trabzonspor-tv.html" class="ln" data-tr="TRABZONSPOR TV" data-en="TRABZONSPOR TV">TRABZONSPOR TV</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../online-islemler/trabzonspor-dergisi.html" class="ln" data-tr="TRABZONSPOR DERGİSİ" data-en="MAGAZINE">TRABZONSPOR DERGİSİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../iletisim.html" class="ln" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a></li>
+                </ul>
+
+                <div class="nav-right-group">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                            <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+                        </svg>
+                    </div>
+                    
+                    <a href="../online-islemler/giris-yap.html" class="auth-box">
+                        <img src="../assets/img/girisyaplogo.png" alt="Giriş" class="auth-png-icon">
+                        <div class="auth-divider"></div>
+                        <span class="auth-label ln" data-tr="Giriş Yap" data-en="Login">Giriş Yap</span>
+                    </a>
+                    
+                    <div class="lang-btn" id="langBtn">
+                        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <div class="lang-divider"></div>
+                        <span class="lang-text" id="activeLang">TR</span>
+                        <span class="lang-arrow">▼</span>
+                        <div class="lang-menu" id="langMenu">
+                            <div class="lang-option" onclick="setLang('tr')">TÜRKÇE</div>
+                            <div class="lang-option" onclick="setLang('en')">ENGLISH</div>
+                        </div>
+                    </div>
+
+                    <div class="toggle-btn" id="menuTrigger">☰</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar">
+        <div class="navbar-container">
+            
+            <div class="nav-left-group">
+                <a href="index.html" class="nav-logo-link">
+                    <img src="images/tslogosubeyaz.png" alt="Trabzonspor">
+                    <span class="brand-name">TRABZONSPOR</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="" class="ln" data-tr="KULÜP" data-en="CLUB">KULÜP</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="KULÜP" data-en="CLUB">KULÜP</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="kulup/tarihce.html" class="ln" data-tr="TARİHÇE" data-en="HISTORY">TARİHÇE</a></li>
+                                    <li><a href="kulup/tuzuk.html" class="ln" data-tr="KULÜP TÜZÜĞÜ" data-en="STATUTE">KULÜP TÜZÜĞÜ</a></li>
+                                    <li><a href="kulup/kurumsal-kimlik.html" class="ln" data-tr="KURUMSAL KİMLİK" data-en="CORPORATE IDENTITY">KURUMSAL KİMLİK</a></li>
+                                    <li><a href="kulup/kulup-uyeligi.html" class="ln" data-tr="KULÜP ÜYELİĞİ" data-en="MEMBERSHIP">KULÜP ÜYELİĞİ</a></li>
+                                    <li><a href="kulup/tesislerimiz.html" class="ln" data-tr="TESİSLERİMİZ" data-en="FACILITIES">TESİSLERİMİZ</a></li>
+                                    <li><a href="kulup/stadyum.html" class="ln" data-tr="PAPARA PARK" data-en="PAPARA PARK">PAPARA PARK</a></li>
+                                    <li><a href="kulup/localarımız.html" class="ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</a></li>
+                                    <li><a href="kulup/mustafa-samil-ekinci-muzesi.html" class="ln" data-tr="MUSTAFA ŞAMİL EKİNCİ MÜZESİ" data-en="MUSTAFA ŞAMİL EKİNCİ MUSEUM">MUSTAFA ŞAMİL EKİNCİ MÜZESİ</a></li>
+                                    <li><a href="kulup/formalarımız.html" class="ln" data-tr="FORMALARIMIZ" data-en="OUR KITS">FORMALARIMIZ</a></li>
+                                    <li><a href="kulup/resimler.html" class="ln" data-tr="DUVAR KAĞITLARI" data-en="WALLPAPERS">DUVAR KAĞITLARI</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="YÖNETİM" data-en="MANAGEMENT">YÖNETİM</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="yonetim/yonetim-kurulu.html" class="ln" data-tr="YÖNETİM KURULU" data-en="BOARD OF DIRECTORS">YÖNETİM KURULU</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="yonetim/kurullar.html" class="ln" data-tr="KURULLAR" data-en="BOARDS">KURULLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="yonetim/organlar.html" class="ln" data-tr="ORGANLAR" data-en="ORGANS">ORGANLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="yonetim/yatirimci-iliskileri.html" class="ln" data-tr="YATIRIMCI İLİŞKİLERİ" data-en="INVESTOR RELATIONS">YATIRIMCI İLİŞKİLERİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="BRANŞLAR" data-en="BRANCHES">BRANŞLAR</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="FUTBOL" data-en="FOOTBALL">FUTBOL</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="branslar/futbol/a-takimi.html" class="ln" data-tr="OYUNCU KADROSU" data-en="SQUAD">OYUNCU KADROSU</a></li>
+                                    <li><a href="branslar/futbol/a-takimi-teknik.html" class="ln" data-tr="TEKNİK KADRO" data-en="TECHNICAL STAFF">TEKNİK KADRO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="mac-merkezi.html" class="ln" data-tr="MAÇ MERKEZİ" data-en="MATCH CENTER">MAÇ MERKEZİ</a></li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="HABERLER" data-en="NEWS">HABERLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="haberler.html?cat=all" class="ln" data-tr="TÜM HABERLER" data-en="ALL NEWS">TÜM HABERLER</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="haberler.html?cat=futbol-a-takim" class="ln" data-tr="FUTBOL A TAKIM" data-en="FIRST TEAM">FUTBOL A TAKIM</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="haberler.html?cat=kadin-futbol" class="ln" data-tr="KADIN FUTBOL" data-en="WOMEN'S FOOTBALL">KADIN FUTBOL</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="haberler.html?cat=akademi" class="ln" data-tr="AKADEMİ" data-en="ACADEMY">AKADEMİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="" class="ln" data-tr="ONLİNE İŞLEMLER" data-en="ONLINE SERVICES">ONLİNE İŞLEMLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="https://trabzonspor.com.tr/?srsltid=AfmBOopWP-A5rEkBb31etkg8dzwGgSmtI5Lyga5W7qcU2Ovq8toWJ4xC" class="ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="online-islemler/giris-yap.html" class="ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="online-islemler/gk-sorgulama.html" class="ln" data-tr="GENEL KURUL KATILIM SORGULAMA" data-en="ASSEMBLY INQUIRY">GENEL KURUL KATILIM SORGULAMA</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="online-islemler/trabzonspor-tv.html" class="ln" data-tr="TRABZONSPOR TV" data-en="TRABZONSPOR TV">TRABZONSPOR TV</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="online-islemler/trabzonspor-dergisi.html" class="ln" data-tr="TRABZONSPOR DERGİSİ" data-en="MAGAZINE">TRABZONSPOR DERGİSİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../iletisim.html" class="ln" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a></li>
+                </ul>
+
+                <div class="nav-right-group">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                            <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+                        </svg>
+                    </div>
+                    
+                    <a href="online-islemler/giris-yap.html" class="auth-box">
+                        <img src="assets/img/girisyaplogo.png" alt="Giriş" class="auth-png-icon">
+                        <div class="auth-divider"></div>
+                        <span class="auth-label ln" data-tr="Giriş Yap" data-en="Login">Giriş Yap</span>
+                    </a>
+                    
+                    <div class="lang-btn" id="langBtn">
+                        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <div class="lang-divider"></div>
+                        <span class="lang-text" id="activeLang">TR</span>
+                        <span class="lang-arrow">▼</span>
+                        <div class="lang-menu" id="langMenu">
+                            <div class="lang-option" onclick="setLang('tr')">TÜRKÇE</div>
+                            <div class="lang-option" onclick="setLang('en')">ENGLISH</div>
+                        </div>
+                    </div>
+
+                    <div class="toggle-btn" id="menuTrigger">☰</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+

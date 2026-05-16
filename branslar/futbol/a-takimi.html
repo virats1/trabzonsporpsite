@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabzonspor Roleplay Web Sitesi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        /* CSS RESET VE TEMEL YAPILANDIRMA (Orijinal Kod) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Oswald', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 48px;
+    }
+    .header-container {
+        padding: 0 20px;
+    }
+}
+
+        /* NAVBAR TASARIMI (Orijinal Kod) */
+        .navbar {
+            background: linear-gradient(90deg, #3d000c 0%, #4b0011 20%, #001a35 60%, #0b0b0b 100%);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 40px;
+        }
+
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            margin-left: 320px;
+            height: 100%;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            gap: 1px;
+        }
+
+        .nav-logo-link img {
+            height: 55px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            transform: scaleX(0.9);
+            transform-origin: left;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-left: 30px;
+            height: 100%;
+        }
+
+        .nav-links > li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links > li > a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            color: #d1d1d1;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links > li:hover > a { color: #ffffff; }
+
+        .nav-links > li:hover > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background-color: #f1ad1d;
+        }
+
+        /* TAM EKRAN MEGA MENÜ (Orijinal Kod) */
+        .dropdown-wrapper {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100vw;
+            background-color: #510011;
+            display: none;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            padding: 50px 0;
+            z-index: 999;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-links li:hover .dropdown-wrapper {
+            display: block;
+        }
+
+        .dropdown-content {
+            padding-left: 320px;
+            display: flex;
+            width: 100%;
+        }
+
+        .dropdown-content.vertical { flex-direction: column; }
+        .dropdown-content.horizontal { flex-direction: row; gap: 100px; flex-wrap: wrap; }
+
+        .dropdown-header-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            margin-left: -27px;
+            transition: all 0.3s ease;
+        }
+
+        .gold-line-header {
+            width: 7px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-header {
+            font-family: 'Anton', sans-serif;
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-content:hover .gold-line-header { background-color: #f1ad1d; }
+        .dropdown-content:hover .dropdown-header { color: #ffffff; }
+
+        .dropdown-list { list-style: none; position: relative; }
+        .dropdown-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-list li a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            color: #b5b5b5;
+            padding: 10px 25px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .dropdown-list li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 7px;
+            background-color: transparent;
+            transition: background-color 0.2s ease;
+            z-index: 2;
+        }
+
+        .dropdown-list li a:hover::before { background-color: #f1ad1d; }
+        .dropdown-list li a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.04);
+            padding-left: 32px;
+        }
+
+        /* SAĞ AKSİYON GRUBU (Orijinal Kod) */
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 10px; 
+            margin-left: 15px;
+        }
+
+        .icon-circle {
+            background: rgba(255, 255, 255, 0.08);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .icon-circle svg {
+            width: 20px; 
+            height: 20px;
+            color: #ffffff;
+            transition: filter 0.3s ease;
+        }
+
+        .icon-circle:hover svg {
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+        }
+
+        .auth-box, .lang-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-box:hover, .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-box { padding: 0 15px; gap: 10px; }
+        .lang-btn { padding: 0 12px; gap: 8px; cursor: pointer; position: relative; }
+
+        .auth-png-icon { width: 27px; height: 27px; object-fit: contain; }
+        .auth-divider, .lang-divider {
+            width: 1px;
+            height: 16px;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .auth-label { 
+            color: #fff; 
+            font-family: 'Anton', sans-serif; 
+            font-size: 14px; 
+            letter-spacing: 0.5px;
+        }
+        
+        .lang-icon { width: 23px; height: 23px; opacity: 0.8; }
+        .lang-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 13px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .lang-arrow { font-size: 9px; color: #fff; opacity: 0.7; }
+        .toggle-btn { font-size: 20px; color: #fff; cursor: pointer; margin-left: 5px; display: flex; align-items: center; user-select: none; }
+
+        /* --- DİL MENÜSÜ --- */
+        .lang-menu {
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: #0b0b0b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            width: 110px;
+            display: none; 
+            flex-direction: column;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .lang-menu.show { display: flex; }
+        .lang-option { 
+            padding: 12px; 
+            font-family: 'Anton', sans-serif; 
+            font-size: 13px; 
+            color: #fff; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .lang-option:hover { background: rgba(255,255,255,0.1); color: #f1ad1d; }
+
+        /* --- İNCE PANEL STİLLERİ --- */
+        .thin-panel {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 0, 5, 0.98);
+            height: 0;
+            overflow: hidden;
+            z-index: 998;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            border-bottom: 0px solid #f1ad1d;
+        }
+
+        .thin-panel.active {
+            height: 100px;
+            border-bottom-width: 2px;
+        }
+
+        .panel-content {
+            padding-left: 320px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .quick-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .quick-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            border-color: #f1ad1d;
+        }
+
+        .quick-icon { 
+            width: 24px;
+            height: 24px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .quick-icon svg { width: 100%; height: 100%; fill: #fff; }
+        .quick-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.2); }
+        .quick-text { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 15px;
+            color: #fff;
+            text-transform: uppercase; 
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           MOBİL UI - SADECE BURASI YENİ EKLEME (Orijinal koda dokunulmadı)
+           ============================================================ */
+
+        /* Mobil navbar — varsayılan olarak gizli */
+        .mobile-navbar {
+            display: none;
+        }
+
+        /* Mobil overlay menü — varsayılan olarak gizli */
+        .mobile-menu-overlay {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+
+            /* PC navbar'ı tamamen gizle */
+            .navbar {
+                display: none !important;
+            }
+
+            /* thin-panel'i gizle */
+            .thin-panel {
+                display: none !important;
+            }
+
+            /* ---- MOBİL NAVBAR ---- */
+            .mobile-navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                background: linear-gradient(90deg, #3d000c 0%, #4b0011 50%, #1a0008 100%);
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                z-index: 1000;
+                padding: 0 18px;
+            }
+
+            .mobile-hamburger {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                padding: 0;
+            }
+
+            .mobile-hamburger span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: #ffffff;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-hamburger.open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .mobile-hamburger.open span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            .mobile-hamburger.open span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .mobile-logo {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                color: white;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .mobile-logo img {
+                height: 42px;
+                width: auto;
+            }
+
+            .mobile-logo-text {
+                font-family: 'Anton', sans-serif;
+                font-size: 18px;
+                letter-spacing: -0.5px;
+                text-transform: uppercase;
+            }
+
+            .mobile-right-icons {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .mobile-icon-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.1);
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .mobile-icon-btn svg {
+                width: 20px;
+                height: 20px;
+                stroke: #fff;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            /* Mobil dil dropdown */
+            .mobile-lang-wrap {
+                position: relative;
+            }
+
+            .mobile-lang-menu {
+                position: absolute;
+                top: 46px;
+                right: 0;
+                background: #0b0b0b;
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 10px;
+                width: 120px;
+                display: none;
+                flex-direction: column;
+                z-index: 3000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                overflow: hidden;
+            }
+
+            .mobile-lang-menu.show {
+                display: flex;
+            }
+
+            .mobile-lang-option {
+                padding: 14px 12px;
+                font-family: 'Anton', sans-serif;
+                font-size: 13px;
+                color: #fff;
+                text-align: center;
+                cursor: pointer;
+                letter-spacing: 1px;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .mobile-lang-option:not(:last-child) {
+                border-bottom: 1px solid rgba(255,255,255,0.07);
+            }
+
+            .mobile-lang-option:hover,
+            .mobile-lang-option.active-lang {
+                background: rgba(241,173,29,0.15);
+                color: #f1ad1d;
+            }
+
+            .mobile-profile-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #c8860a;
+                border: none;
+                cursor: pointer;
+            }
+
+            .mobile-profile-btn svg {
+                width: 22px;
+                height: 22px;
+                fill: #fff;
+            }
+
+            /* ---- MOBİL OVERLAY MENÜ ---- */
+            .mobile-menu-overlay {
+                display: block;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #1a0008;
+                z-index: 999;
+                overflow-y: auto;
+                transform: translateX(-100%);
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu-overlay.open {
+                transform: translateX(0);
+            }
+
+            /* Arama kutusu */
+            .mobile-search-wrap {
+                padding: 20px 18px 16px;
+            }
+
+            .mobile-search-box {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: rgba(255,255,255,0.07);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 50px;
+                padding: 12px 20px;
+            }
+
+            .mobile-search-box svg {
+                width: 20px;
+                height: 20px;
+                stroke: rgba(255,255,255,0.5);
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                flex-shrink: 0;
+            }
+
+            .mobile-search-box input {
+                background: none;
+                border: none;
+                outline: none;
+                font-family: 'Oswald', sans-serif;
+                font-size: 15px;
+                color: rgba(255,255,255,0.6);
+                width: 100%;
+            }
+
+            .mobile-search-box input::placeholder {
+                color: rgba(255,255,255,0.4);
+            }
+
+            /* Hızlı erişim grid */
+            .mobile-quick-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 4px 18px 18px;
+            }
+
+            .mobile-quick-btn {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 12px;
+                padding: 14px 14px;
+                text-decoration: none;
+                transition: background 0.2s ease, border-color 0.2s ease;
+            }
+
+            .mobile-quick-btn:active {
+                background: rgba(241,173,29,0.15);
+                border-color: #f1ad1d;
+            }
+
+            .mobile-quick-btn-icon {
+                width: 22px;
+                height: 22px;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-quick-btn-icon svg {
+                width: 100%;
+                height: 100%;
+                fill: #fff;
+            }
+
+            .mobile-quick-divider {
+                width: 1px;
+                height: 16px;
+                background: rgba(255,255,255,0.15);
+                flex-shrink: 0;
+            }
+
+            .mobile-quick-btn-text {
+                font-family: 'Oswald', sans-serif;
+                font-size: 13px;
+                color: #fff;
+                font-weight: 500;
+                text-transform: uppercase;
+                line-height: 1.2;
+            }
+
+            /* Ayırıcı çizgi */
+            .mobile-divider {
+                height: 1px;
+                background: rgba(255,255,255,0.08);
+                margin: 0 18px 8px;
+            }
+
+            /* Ana menü listesi */
+            .mobile-nav-list {
+                list-style: none;
+                padding: 8px 0 30px;
+            }
+
+            .mobile-nav-item {
+                border-left: 3px solid transparent;
+                transition: border-color 0.2s ease;
+            }
+
+            .mobile-nav-item > a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 22px;
+                font-family: 'Oswald', sans-serif;
+                font-size: 22px;
+                font-weight: 600;
+                color: #ffffff;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: color 0.2s ease;
+            }
+
+            .mobile-nav-item > a .mobile-arrow {
+                width: 20px;
+                height: 20px;
+                stroke: rgba(255,255,255,0.4);
+                fill: none;
+                stroke-width: 2.5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: transform 0.3s ease, stroke 0.2s ease;
+                flex-shrink: 0;
+            }
+
+            .mobile-nav-item.active {
+                border-left-color: #f1ad1d;
+            }
+
+            .mobile-nav-item.active > a {
+                color: #f1ad1d;
+            }
+
+            .mobile-nav-item.active > a .mobile-arrow {
+                transform: rotate(90deg);
+                stroke: #f1ad1d;
+            }
+
+            /* Alt menü */
+            .mobile-sub-menu {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                background: rgba(0,0,0,0.3);
+            }
+
+            .mobile-nav-item.active .mobile-sub-menu {
+                max-height: 600px;
+            }
+
+            .mobile-sub-menu a {
+                display: block;
+                padding: 12px 22px 12px 32px;
+                font-family: 'Oswald', sans-serif;
+                font-size: 15px;
+                color: rgba(255,255,255,0.65);
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.04);
+                transition: color 0.2s ease, padding-left 0.2s ease;
+            }
+
+            .mobile-sub-menu a:active {
+                color: #f1ad1d;
+                padding-left: 38px;
+            }
+        }
+
+/* Ana Konteynır */
+.club-layout {
+    display: flex;
+    margin-top: 0; /* page-hero navbar boşluğunu karşılıyor */
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* --- SOL MENÜ ANA PANEL --- */
+.sidebar-nav {
+    width: 280px;
+    position: sticky;
+    top: 110px;
+    min-height: fit-content;
+    /* Arka planın (beyaz) sağ-sol-yukarı-aşağı boşluklu olması için */
+    padding: 20px; 
+    z-index: 10;
+}
+
+.menu-wrapper {
+    background: #ffffff; /* Saf beyaz arka plan */
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Hafif eklenti gölgesi */
+    overflow: auto;
+    border: 1px solid #f0f0f0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* En üstteki çizgi */
+    border-top: 1px solid #dcdcdc;
+}
+
+/* 2. Her Bir Menü Satırı (Gri Şeritli Yapı) */
+.sidebar-nav li {
+    border-bottom: 1px solid #dcdcdc; /* Elemanlar arası gri şerit/çizgi */
+}
+
+
+/* --- MENÜ ÖĞELERİ --- */
+.sidebar-nav li a {
+    display: block;
+    padding: 30px 25px;    /* Orta boy görünüm için dengeli boşluk */
+    font-size: 15px;       /* Orta boy yazı */
+    color: #4a4a4a;        /* Kurumsal gri yazı */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    
+    /* SOLDAKİ GRİ ÇİZGİ */
+    border-left: 9px solid #e8e8e8; 
+    transition: none;
+}
+
+/* 4. Üstüne Gelince (Hover) ve Aktif Durum */
+/* Bu kısım üstüne gelince tam istediğin 'header' görünümüne sokar */
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background: #e5e5e5;        /* Gri arka plan şeridi */
+    color: #000;                /* Yazı tam siyah */
+    font-weight: 700;           /* Yazı kalınlaşır */
+    border-left-color: #f1ad1d; /* Kalın sarı şerit belirir */
+}
+
+/* == BREADCRUMB HERO BAR — navbar altı tam genişlik == */
+        .page-hero {
+            width: 100%;
+            background: linear-gradient(90deg, #1a1a2e 0%, #3d000c 100%);
+            padding: 59px 60px 59px 250px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            margin-top: 90px; /* navbar yüksekliği */
+        }
+        .page-hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 0;
+            margin-bottom: 8px;
+        }
+        .page-hero-breadcrumb li a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .page-hero-breadcrumb li a:hover { color: #f1ad1d; }
+        .page-hero-breadcrumb li.bc-current span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .page-hero-breadcrumb .bc-sep {
+            font-size: 19px;
+            color: rgba(255,255,255,0.25);
+            margin: 0 8px;
+            user-select: none;
+        }
+        .page-hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 59px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+        /* == BREADCRUMB BİTİŞ == */
+
+
+
+
+    
+    .kurullar-konteynir {
+        max-width: 1000px;
+        margin: 50px 20px;
+        padding: 0 80px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Başlık ve Sarı Çizgi */
+    .kurul-baslik {
+        font-family: 'Oswald', sans-serif;
+        font-size: 34px;
+        text-transform: auto;
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 30px;
+        color: #000;
+        line-height: 1;
+    }
+
+    .kurul-baslik::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 100%;
+        background-color: #c19446; /* Kurumsal altın/sarı renk */
+    }
+
+    /* Liste Yapısı */
+    .kurul-liste {
+        list-style: none; /* Standart noktaları kaldırıyoruz */
+        padding: 0;
+        margin: 0;
+    }
+
+    .kurul-liste li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Özel Altın Noktalar (Bullet Points) */
+    .kurul-liste li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 10px;
+        height: 100%; /* Dikeyde ortalamak için */
+        background-image: radial-gradient(circle, #c19446 40%, transparent 50%);
+        background-size: 10px 10px;
+        background-repeat: no-repeat;
+        background-position: center left;
+    }
+
+    /* İsimlerin kalınlığı (Görseldeki gibi) */
+    .kurul-liste li strong {
+        font-weight: 700;
+        margin-right: 5px;
+    }
+
+
+
+    /*SPONSORLUK KISMI*/
+
+#sponsorsList {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Tüm satırları merkeze hizalar */
+    margin-left: 380px;
+    gap: 20px;
+}
+
+/* En üstteki 2 sponsorun alt alta durması için */
+.main-sponsors-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.main-sponsors-column .sponsor-item {
+    width: 250px; /* Üstteki 2 tane biraz daha büyük durabilir */
+    height: 110px;
+}
+
+/* Genel Satır Yapısı */
+.sponsor-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* 6'lı Satır Ayarı */
+.row-6 .sponsor-item {
+    width: 280px;
+    height: 110px;
+}
+
+/* 7'li Satır Ayarı (En Alt) */
+.row-7 .sponsor-item {
+    width: 280px; /* 7 tane sığması için küçüldü */
+    height: 110px;
+}
+
+.sponsors-section {
+    background-color: #ffffff; /* Koyu bordo arka plan */
+    padding: 100px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sponsors-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 64px;
+    color: #000000;
+    margin-top: -500px;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+/* Ana sponsorlar alanı */
+.main-sponsors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 0px;
+}
+
+/* Sponsor Kutuları (Butonlar) - Her Zaman Görünür */
+/* Kutu ve Logo Tasarımı */
+.sponsor-item {
+    background-color: #f2f2f2;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Vurgulu Logo (Kutuyu doldurur) */
+.sponsor-item.vurgulu-kutu {
+    padding: 4px !important;
+}
+
+.sponsor-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Resmin oranını bozmaz */
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+/* Vurgulu kutunun içindeki resmi daha da zorla */
+.sponsor-item.vurgulu-kutu img {
+    transform: scale(1.1); /* Resme ekstra %10 büyüme ekle */
+}
+
+/* Üstteki 2 Büyük Sponsor Kutusu */
+.main-sponsors .sponsor-item {
+    background-color: #f2f2f2; /* Aynı gri arka plan */
+    width: 220px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+/* Logolar (Kutuya Sığacak Şekilde) */
+.sponsor-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Logoyu bozmadan kutuya tam sığdırır */
+    filter: grayscale(100%); /* Başta renksiz (gri) */
+    opacity: 0.7; /* Biraz soluk */
+    transition: all 0.3s ease;
+}
+
+/* Orta Bölüm - 6'lı */
+.other-sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto 12px auto; /* Alttaki gridle arasını açar */
+}
+
+/* En Alt Bölüm - 7'li */
+.bottom-sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* BURASI 7'Lİ */
+    gap: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Diğer sponsor butonu için sabit boyut */
+.other-sponsors-grid .sponsor-item {
+    width: 100%; /* Grid hücresine sığdır */
+    height: 110px; /* Diğer sponsor kutusu yüksekliği */
+    padding: 15px; /* Kutunun iç boşluğu */
+}
+
+/* HOVER DURUMU (Üstüne Gelince) */
+.sponsor-item:hover {
+    background-color: #ebebeb; /* Çok hafif koyulaşan gri */
+    border-color: #000000; /* İSTEDİĞİN SİYAH KONTUR */
+    transform: translateY(-3px); /* Hafif yukarı kalkma efekti */
+}
+
+.sponsor-item:hover img {
+    filter: grayscale(0%); /* LOGO RENKLENİR */
+    opacity: 1; /* Tam görünür olur */
+}
+
+/* Sadece resmi büyütmek için özel sınıf */
+.sponsor-item.large-img img {
+    width: 110% !important; /* Kutunun sınırlarını zorlayacak kadar büyük */
+    height: 110% !important;
+    max-width: none !important; /* Varsayılan sınırlamaları kaldır */
+    max-height: none !important;
+    transform: scale(1.1); /* Hafif dışa taşma hissi verir */
+}
+
+/* Hover durumunda bu büyük logoların çok fazla büyümesini engellemek için */
+.sponsor-item.large-img:hover img {
+    transform: scale(1.15); 
+}
+
+
+/*SOSYAL MEDYA*/
+
+/* BAŞLIK: Kesin Siyah ve Anton */
+.social-header-wrapper {
+    width: 100%;
+    text-align: center;
+    margin: 60px 0 40px 0;
+}
+
+.social-main-title {
+    font-family: 'Anton', sans-serif !important;
+    font-size: 72px !important; /* Sponsor başlığı büyüklüğünde */
+    color: #000000 !important; /* Kesin Siyah */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* BUTONLARIN DİZİLİMİ */
+.social-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 30px'den düştü */
+}
+
+/* GÖRSELDEKİ TUŞ TASARIMI */
+.social-big-card {
+    /* Tuşun Genel Boyutu - %20-30 oranında küçültüldü */
+    width: 280px;  /* 350px'den düştü */
+    height: 130px; /* 180px'den düştü */
+    border-radius: 20px; /* Kenarlar daha uyumlu */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+/* Renkler (Instagram Gradyan & X Siyah) */
+.social-big-card.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-big-card.x-twitter {
+    background-color: #000000;
+}
+
+/* İkon ve Metin Stilleri */
+.card-icon-svg svg {
+    width: 38px;  /* 50px'den düştü */
+    height: 38px;
+    margin-bottom: 10px; /* Yazıyla mesafe daraldı */
+    fill: white;
+}
+
+.card-user-handle {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px; /* 22px'den düştü */
+    color: white;
+    letter-spacing: 1px;
+}
+
+/* Hover Efekti */
+.social-big-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/*#BİRİSYANDIRTRABZONSPOR#*/
+
+/* Montserrat Fontunu İçe Aktar (Eğer yüklü değilse) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
+
+.ts-brand-divider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* HASHTAG: Montserrat Bold Ayarı */
+.ts-hashtag-montserrat {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important; /* Ekstra Kalın */
+    font-size: 25px !important;  /* Görkemli büyüklük */
+    color: #000000 !important;
+    letter-spacing: -1px; /* Montserrat'ta harfler arası biraz daraltılınca daha şık durur */
+    margin-bottom: 40px;
+    display: block;
+}
+
+/* ÇİZGİ VE LOGO ALANI */
+.ts-visual-container {
+    position: relative;
+    width: 100%; /* Çizgi tüm ekranı kaplasın istiyorsan %100 bırak */
+    max-width: 1800px;
+    height: 150px; /* Logonun büyümesi için alan açtık */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* KESİNTİSİZ TEK PARÇA ÇİZGİ */
+.ts-svg-line {
+    position: absolute;
+    width: 90%; /* Çizginin genişliğini buradan ayarla */
+    height: 8px;
+    z-index: 1; /* Altta kalır */
+}
+
+.ts-inner-line {
+    stroke: #E2B13C; /* Sarı Çizgi */
+    stroke-width: 3px; /* Çizgi kalınlığı */
+    stroke-linecap: butt; /* Çizgi uçlarını küt yapar, birleşimi netleştirir */
+}
+
+/* BÜYÜK LOGO TASARIMI */
+.ts-mega-logo {
+    width: 100px; /* LOGOYU BÜYÜTTÜK */
+    height: auto;
+    z-index: 2; /* Çizginin üstünde ama kesinti yapmadan durur */
+    pointer-events: none;
+    /* Eğer logo çizginin üstünde çok karışık durursa 
+       aşağıdaki kodu aktif ederek hafif bir beyazlık verebilirsin: */
+    /* filter: drop-shadow(0 0 8px rgba(255,255,255,0.9)); */
+}
+
+/*EN AŞAĞIDAKİ GRADYAN GEÇİŞ FİNAL*/
+
+.ts-footer-bottom {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Fotoğrafın görüneceği alanın yüksekliği */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Yazıyı en alta yaslar */
+    padding-bottom: 30px; /* Yazının en dipte yapışmaması için boşluk */
+    overflow: hidden;
+    
+    /* ARKA PLAN FOTOĞRAFI */
+    background-image: url('https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1970000/trabzonspor-aa-1971947.jpg'); /* Buraya fotoğraf yolunu ekle */
+    filter: grayscale(100);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+
+    /* YUKARI ÇIKTIKÇA SOLUKLAŞTIRMA (MASKELME) */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* ALT ORTADAKİ YAZI STİLİ */
+.footer-copyright {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8); /* Yazı da hafif soluk (beyazın şeffaf hali) */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 10;
+    /* Yazının altındaki resim çok karışıksa okunması için hafif gölge: */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*ALTTAKİ LİNK KUTULARI*/
+
+/* Linklerin olduğu genel alan */
+/* Linklerin olduğu ana alan */
+.ts-footer-white-box {
+    width: 90%; 
+    max-width: 1300px;
+    background-color: #fcfcfc; 
+    
+    /* AŞAĞI KAYDIRMA: -100px olan değeri -50px yaptık. 
+       Bu sayı küçüldükçe (veya pozitif oldukça) kutu daha aşağı iner. */
+    margin: -50px auto 0 auto; 
+    
+    padding: 60px 0;
+    display: flex;
+    justify-content: flex-start; /* İçeriği en soldan başlatır */
+    position: relative;
+    z-index: 30;
+}
+
+.links-grid {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    
+    /* YAZILARI SOLA ÇEKME: 450px olan boşluğu azalttık. 
+       Daha da sola gitmesini istersen bu sayıyı 100px'e kadar düşürebilirsin. */
+    padding-left: 350px; 
+    
+    gap: 100px; /* Sütunlar arası boşluk aynı kalsın */
+}
+
+/* BAŞLIKLAR VE LİNKLER (EFEKTSİZ) */
+.column-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 20px !important;
+    color: #000000 !important;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.column-list a {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: #333333 !important;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: none !important; /* Efekt yok */
+}
+
+.column-list a:hover {
+    color: #333333 !important;
+    cursor: pointer;
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<head>
+
+
+<!-- == BREADCRUMB HERO BAR — ekleme, orijinal koda dokunulmadı == -->
+    <div class="page-hero">
+        <ul class="page-hero-breadcrumb">
+            <li><a href="../index.html">Anasayfa</a></li>
+            <li><span class="bc-sep">/</span></li>
+            <li><a href="../index.html">Branşlar</a></li>
+            <li><span class="bc-sep">/</span></li>
+            <li class="bc-current"><span>A Takım</span></li>
+        </ul>
+        <h1 class="page-hero-title">A Takım</h1>
+    </div>
+    <!-- == BREADCRUMB BİTİŞ == -->
+
+
+        <nav class="navbar">
+        <div class="navbar-container">
+            
+            <div class="nav-left-group">
+                <a href="../index.html" class="nav-logo-link">
+                    <img src="images/tslogosubeyaz.png" alt="Trabzonspor">
+                    <span class="brand-name">TRABZONSPOR</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="" class="ln" data-tr="KULÜP" data-en="CLUB">KULÜP</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="KULÜP" data-en="CLUB">KULÜP</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="../../kulup/tarihce.html" class="ln" data-tr="TARİHÇE" data-en="HISTORY">TARİHÇE</a></li>
+                                    <li><a href="../../kulup/tuzuk.html" class="ln" data-tr="KULÜP TÜZÜĞÜ" data-en="STATUTE">KULÜP TÜZÜĞÜ</a></li>
+                                    <li><a href="../../kulup/kurumsal-kimlik.html" class="ln" data-tr="KURUMSAL KİMLİK" data-en="CORPORATE IDENTITY">KURUMSAL KİMLİK</a></li>
+                                    <li><a href="../../kulup/kulup-uyeligi.html" class="ln" data-tr="KULÜP ÜYELİĞİ" data-en="MEMBERSHIP">KULÜP ÜYELİĞİ</a></li>
+                                    <li><a href="../../kulup/tesislerimiz.html" class="ln" data-tr="TESİSLERİMİZ" data-en="FACILITIES">TESİSLERİMİZ</a></li>
+                                    <li><a href="../../kulup/stadyum.html" class="ln" data-tr="PAPARA PARK" data-en="PAPARA PARK">PAPARA PARK</a></li>
+                                    <li><a href="../../kulup/localarımız.html" class="ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</a></li>
+                                    <li><a href="../../kulup/mustafa-samil-ekinci-muzesi.html" class="ln" data-tr="MUSTAFA ŞAMİL EKİNCİ MÜZESİ" data-en="MUSTAFA ŞAMİL EKİNCİ MUSEUM">MUSTAFA ŞAMİL EKİNCİ MÜZESİ</a></li>
+                                    <li><a href="../../kulup/formalarımız.html" class="ln" data-tr="FORMALARIMIZ" data-en="OUR KITS">FORMALARIMIZ</a></li>
+                                    <li><a href="../../kulup/resimler.html"s="ln" data-tr="DUVAR KAĞITLARI" data-en="WALLPAPERS">DUVAR KAĞITLARI</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" class="ln" data-tr="YÖNETİM" data-en="MANAGEMENT">YÖNETİM</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../../yonetim/yonetim-kurulu.html" class="ln" data-tr="YÖNETİM KURULU" data-en="BOARD OF DIRECTORS">YÖNETİM KURULU</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../yonetim/kurullar.html" class="ln" data-tr="KURULLAR" data-en="BOARDS">KURULLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../yonetim/organlar.html" class="ln" data-tr="ORGANLAR" data-en="ORGANS">ORGANLAR</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../yonetim/yatirimci-iliskileri.html" class="ln" data-tr="YATIRIMCI İLİŞKİLERİ" data-en="INVESTOR RELATIONS">YATIRIMCI İLİŞKİLERİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" class="ln" data-tr="BRANŞLAR" data-en="BRANCHES">BRANŞLAR</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content vertical">
+                                <div class="dropdown-header-container">
+                                    <div class="gold-line-header"></div>
+                                    <h1 class="dropdown-header ln" data-tr="FUTBOL" data-en="FOOTBALL">FUTBOL</h1>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li><a href="a-takimi.html" class="ln" data-tr="OYUNCU KADROSU" data-en="SQUAD">OYUNCU KADROSU</a></li>
+                                    <li><a href="a-takimi-teknik.html" class="ln" data-tr="TEKNİK KADRO" data-en="TECHNICAL STAFF">TEKNİK KADRO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="../../mac-merkezi.html" class="ln" data-tr="MAÇ MERKEZİ" data-en="MATCH CENTER">MAÇ MERKEZİ</a></li>
+
+                    <li>
+                        <a href="#" class="ln" data-tr="HABERLER" data-en="NEWS">HABERLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="../../haberler.html?cat=all" class="ln" data-tr="TÜM HABERLER" data-en="ALL NEWS">TÜM HABERLER</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../haberler.html?cat=futbol-a-takim" class="ln" data-tr="FUTBOL A TAKIM" data-en="FIRST TEAM">FUTBOL A TAKIM</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../haberler.html?cat=kadin-futbol" class="ln" data-tr="KADIN FUTBOL" data-en="WOMEN'S FOOTBALL">KADIN FUTBOL</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../haberler.html?cat=akademi" class="ln" data-tr="AKADEMİ" data-en="ACADEMY">AKADEMİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" class="ln" data-tr="ONLİNE İŞLEMLER" data-en="ONLINE SERVICES">ONLİNE İŞLEMLER</a>
+                        <div class="dropdown-wrapper">
+                            <div class="dropdown-content horizontal">
+                                <ul class="dropdown-list"><li><a href="https://trabzonspor.com.tr/?srsltid=AfmBOooOl1iXEkdeLaVWHwoUdDrbi-dVIEqzSP-g_JxHtQdQ4fhADiwO" class="ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../online-islemler/giris-yap.html" class="ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../online-islemler/gk-sorgulama.html" class="ln" data-tr="GENEL KURUL KATILIM SORGULAMA" data-en="ASSEMBLY INQUIRY">GENEL KURUL KATILIM SORGULAMA</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../online-islemler/trabzonspor-tv.html" class="ln" data-tr="TRABZONSPOR TV" data-en="TRABZONSPOR TV">TRABZONSPOR TV</a></li></ul>
+                                <ul class="dropdown-list"><li><a href="../../online-islemler/trabzonspor-dergisi.html" class="ln" data-tr="TRABZONSPOR DERGİSİ" data-en="MAGAZINE">TRABZONSPOR DERGİSİ</a></li></ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../../iletisim.html" class="ln" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a></li>
+                </ul>
+
+                <div class="nav-right-group">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                            <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+                        </svg>
+                    </div>
+                    
+                    <a href="../../online-islemler/giris-yap.html" class="auth-box">
+                        <img src="../../assets/img/girisyaplogo.png" alt="Giriş" class="auth-png-icon">
+                        <div class="auth-divider"></div>
+                        <span class="auth-label ln" data-tr="Giriş Yap" data-en="Login">Giriş Yap</span>
+                    </a>
+                    
+                    <div class="lang-btn" id="langBtn">
+                        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <div class="lang-divider"></div>
+                        <span class="lang-text" id="activeLang">TR</span>
+                        <span class="lang-arrow">▼</span>
+                        <div class="lang-menu" id="langMenu">
+                            <div class="lang-option" onclick="setLang('tr')">TÜRKÇE</div>
+                            <div class="lang-option" onclick="setLang('en')">ENGLISH</div>
+                        </div>
+                    </div>
+
+                    <div class="toggle-btn" id="menuTrigger">☰</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ANA SAYFA İÇERİĞİ BURAYA GELECEK -->
+
+
+
+
+
+
+
+
+
+
+
+<section class="club-layout">
+    <aside class="sidebar-nav">
+        <div class="menu-wrapper">
+            <ul id="sideMenuList">
+                <li><a href="a-takimi.html" class="active">Futbol A Takımı</a></li>
+                <li><a href="#">Trabzonspor U-19</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="squad-main-area">
+
+        <!-- SAYFA NAVİGASYONU -->
+        <div class="squad-page-nav">
+            <a href="a-takimi.html" class="squad-page-btn active">Oyuncu Kadrosu</a>
+            <a href="a-takimi-teknik.html" class="squad-page-btn">Teknik Kadro</a>
+        </div>
+
+        <!-- OYUNCU KADROSU -->
+        <div id="squad-list"></div>
+
+    </div>
+</section>
+
+
+<style>
+/* === KADRO ANA ALANI === */
+.squad-main-area {
+    flex: 1;
+    padding: 40px 40px 60px 40px;
+    min-width: 0;
+}
+
+/* === SAYFA NAVİGASYONU === */
+.squad-page-nav {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 40px;
+    gap: 0;
+    width: 100%;
+}
+
+.squad-page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    padding: 18px 0;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: #888;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.squad-page-btn.active {
+    color: #000000;
+    border-bottom-color: #f1ad1d;
+}
+
+.squad-page-btn:hover:not(.active) {
+    color: #333;
+}
+
+/* === KATEGORİ BAŞLIĞI === */
+.category-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #000000;
+    text-transform: auto;
+    margin: 50px 0 22px 0;
+    padding: 10px 0 10px 16px;
+    border-left: 6px solid #c19446;
+    background: #ffffff;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.category-title:first-child { margin-top: 0; }
+
+/* === OYUNCU GRID === */
+.squad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 10px;
+}
+
+/* === OYUNCU KARTI === */
+.player-card {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    border-radius: 20px;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.player-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+}
+
+.player-pos {
+    position: absolute; top: 16px; left: 18px;
+    font-size: 0.99rem; font-style: normal; font-weight: 700;
+    color: rgba(0, 0, 0, 0.5); z-index: 5;
+}
+
+.player-num {
+    position: absolute; top: 28px; left: 14px;
+    font-size: 9.5rem; font-weight: 900;
+    opacity: 0.85; line-height: 1; z-index: 5; color: #000;
+}
+
+.player-img {
+    position: absolute; bottom: 0; right: -0px;
+    height: 82%; z-index: 4; pointer-events: none;
+    filter: drop-shadow(8px 5px 14px rgba(0,0,0,0.28));
+    object-fit: contain;
+}
+
+.player-info {
+    position: absolute; bottom: 22px; left: 18px;
+    z-index: 5; max-width: 62%;
+}
+.p-firstname { font-size: 0.9rem; display: block; font-weight: 600; color: #000; }
+.p-lastname { font-size: 1.5rem; font-weight: 900; display: block; margin-top: -2px; line-height: 1; color: #000; }
+.p-birth { font-size: 0.95rem; margin-top: 6px; display: block; font-weight: 400; opacity: 1.6; color: #000; }
+.p-flag {
+    width: 40px; height: 40px; margin-top: 9px;
+    border-radius: 50%; border: 2px solid white;
+    object-fit: cover; display: block;
+}
+
+
+
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script>
+
+
+
+
+
+
+const kadro = [
+    { id:"okay", ad:"Okay", soyad:"Yokuşlu", no:"5", pozisyon:"Orta Saha", dogum:"09.03.1994", boy:"191", kilo:"79", yas:"32", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_9c372da7e72149ba8fa2c3a4510e0ce1.png", biyografi:"Okay Yokuşlu, Türk millî futbolcudur. Kariyerine Altay altyapısında başlamış, ardından Kayserispor ve Trabzonspor formalarıyla yıldızlaşmıştır. İspanya ve İngiltere deneyimlerinin ardından yuvaya dönerek orta sahanın sigortası olmuştur." },
+    { id:"visca", ad:"Edin", soyad:"Vişça", no:"7", pozisyon:"Forvet", dogum:"17.02.1990", boy:"172", kilo:"63", yas:"36", bayrak:"https://flagcdn.com/w80/ba.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_881652505675471cace530d104660040.png", biyografi:"Edin Višca, 17 Şubat 1990'da Yugoslavya'nın Olovo şehrinde doğdu. Futbol kariyerine Buducnost Banovici'de başlayan Višca, profesyonel futbola 2009 yılında Zeljeznicar'a imza atarak geçmiştir. 2011-2012 sezonunda İstanbul BB’ye transfer oldu. İstanbul Başakşehir ile şampiyon olduktan 2 yıl sonra 2022 yılında Trabzonspor'umuza transfer oldu. Trabzonspor'umuzda ilk yılında şampiyonluk yaşayan Vişca kariyerine Trabzonspor'umuzda devam etmektedir." },
+    { id:"benjamin", ad:"Benjamin", soyad:"Bouchouari", no:"8", pozisyon:"Orta Saha", dogum:"13.11.2001", boy:"165", kilo:"61", yas:"24", bayrak:"https://flagcdn.com/w80/ma.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_6c2c123e463b48e080b29d89e3fd4177.png", biyografi:"13 Kasım 2001’de Belçika’nın Borgerhout kentinde doğdu. Futbola genç yaşta başladı. Kariyerinde Roda JC ve Saint-Étienne formaları giydi. 4 Eylül 2025 tarihi itibarıyla Trabzonspor’umuzda forma giymeye başlamıştır." },
+    { id:"anthony", ad:"Anthony", soyad:"Nwakaeme", no:"9", pozisyon:"Forvet", dogum:"21.03.1989", boy:"185", kilo:"80", yas:"37", bayrak:"https://flagcdn.com/w80/ng.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_6e45a5e0b30f4ac0900cbfc9bffa049c.png", biyografi:"21 Mart 1989’da Nijerya’nın Lagos kentinde dünyaya gelmiştir. Tam adı Anthony Nnaduzor Nwakaeme’dir. Anthony Nwakaeme 2006 yılında ailesi ile birlikte Danimarka’ya göç etti. Danimarka’da Velje Kolding kulübü ile birlikte futbol hayatına başladı. Anthony Nwakaeme bu kulüpte 2010 yılına kadar forma giydikten sonra Romanya kulübü olan U Cluj kulübüne transfer olmuştur. 2018 yılında Trabzonspor'umuza transfer olmuştur. Trabzonspor forması ile ilk kupasını 2019-2020 sezonu Türkiye kupası ile kaldırmıştır. Daha sonra 2021-2022 sezonunda Trabzonspor'umuz ile Süper lig şampiyonluğu yaşamıştır. Şampiyon olduktan sonra Al Fayha takımına transfer olan Nwakaeme 2 sene orada top oynadıktan sonra 1 Temmuz 2024 yılında tekrar Trabzonspor'umuza transfer olmuştur." },
+    { id:"Ernest", ad:"Ernest", soyad:"Muçi", no:"10", pozisyon:"Orta Saha", dogum:"19.03.2001", boy:"180", kilo:"78", yas:"25", bayrak:"https://flagcdn.com/w80/al.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_f46838f686cc42eea519199d188c1860.png", biyografi:"19 Mart 2001’de Arnavutluk’un Tiran kentinde doğdu. Futbola Dinamo Tiran altyapısında başladı, ardından KF Tirana’da profesyonel oldu. 2021 yılında Legia Varşova’ya transfer olarak kariyerini Polonya’da sürdürdü. 9 Şubat 2024’te Beşiktaş’a imza atan Muçi, 6 Eylül 2025 tarihinde kulübümüze 1 yıllığına kiralanmıştır." },
+    { id:"Anderson", ad:"Anderson", soyad:"Talisca", no:"11", pozisyon:"Orta Saha", dogum:"01.02.1994", boy:"190", kilo:"72", yas:"32", bayrak:"https://flagcdn.com/w80/br.png", foto:"https://i.imgur.com/lurIyxk.png", biyografi:"1 Şubat 1994'te Brezilya'nın Feira de Santana bölgesinde doğdu. Futbola EC Bahia altyapısında başladı, ardından EC Bahia'nın as kadrosuna çıkmıştır. Benfica'ya kendini gösteren oyuncu, 2016'da Benfica'ya transfer oldu. 23 Ağustos 2016'da Beşiktaş'a kiralık olarak transfer olmuş, sonrasında bonservisi alınmıştır. Kariyerinin devamı Asya Kıtasında ve Suudi Arabistan'da olmuştur. 27 Ocak 2025 tarihinde Fenerbahçe SK'ya imza atan Talisca, 18 Ekim 2025 tarihinde kulübümüze 1 yıllığına kiralanmıştır." },
+    { id:"Mathias", ad:"Mathias", soyad:"Løvik", no:"14", pozisyon:"Defans", dogum:"06.12.2003", boy:"183", kilo:"78", yas:"22", bayrak:"https://flagcdn.com/w80/no.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_cf6f28bc0c6247c6846545eaf226a38c.png", biyografi:"Futbola Molde FK altyapısında başlayan Mathias Lovik, genç yaşta A takıma yükselerek Norveç Ligi’nde önemli deneyimler kazandı. 2025 yılında İtalya’nın Parma takımına transfer olarak Avrupa kariyerine devam etti. 19 Ocak 2026 tarihinde Trabzonspor’umuza transfer olan genç futbolcu, sol bek mevkisinde görev yapmaktadır." },
+    { id:"Stefan", ad:"Stefan", soyad:"Savić", no:"15", pozisyon:"Defans", dogum:"08.01.1991", boy:"181", kilo:"81", yas:"35", bayrak:"https://flagcdn.com/w80/me.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_d310f155ed7a44f18b358234704e9c52.png", biyografi:"8 Ocak 1991 tarihinde Karadağ’ın Majokvac bölgesinde doğmuştur. Karadağ uyrukludur. Futbol hayatına FK Brskovo altyapısında başlayan Savic, sonrasında BSK Borca altyapısına transfer olmuştur. 26 Temmuz 2024 yılında Atletico Madrid’den Trabzonspor’umuza transfer olmuştur." },
+    { id:"Umut", ad:"Umut", soyad:"Nayir", no:"18", pozisyon:"Forvet", dogum:"28.06.1993", boy:"191", kilo:"75", yas:"32", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_2d4eedd38fc34ecfab8ec470c6217333.png", biyografi:"28 Haziran 1993 tarihinde Kayseri’de doğdu. 2011 senesinde Ankaragücü altyapısında futbola başladı. İlk profesyonel sözleşmesini de 2012 senesinde yine Ankaragücü ile imzaladı. 29 Ocak 2026 yılında Trabzonspor'umuza transfer oldu." },
+    { id:"Mustafa", ad:"Mustafa", soyad:"Eskihellaç", no:"19", pozisyon:"Defans", dogum:"05.05.1997", boy:"175", kilo:"72", yas:"28", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_4e92a4ae908743e2b763a8b27cf003c8.png", biyografi:"1997 yılında Trabzon'da dünyaya geldi. Altyapı kariyerine Çağlayanspor'da başladı. Düzyurtspor'un altyapsına geçen Mustafa Eskihellaç, 2015 yılında Düzyurtspor ile profesyonel sözleşme imzaladı. Düzyurtspor'da gösterdiği başarılı performansın ardından Süper Lig ekibi olan Yeni Malatyaspor'a imza attı. Kariyerinde Elazığspor, Boluspor, Yeni Malatyaspor, Kasımpaşa ve Gaziantep FK gibi takımların formalarını giydi. 8 Şubat 2025 tarihinden itibaren Trabzonspor’umuzda forma giymeye başlamıştır." },
+    { id:"Wagner", ad:"Wagner", soyad:"Pina", no:"20", pozisyon:"Defans", dogum:"03.11.2002", boy:"180", kilo:"73", yas:"23", bayrak:"https://flagcdn.com/w80/cv.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_7944f7145cdc40e4b503122e75b71c39.png", biyografi:"Wagner Pina, 3 Kasım 2002 tarihinde Portekiz’in Lizbon kentinde doğmuştur. Futbol kariyerine CD Gouveia’da başlayan Pina, ardından Belenenses ve Estoril formaları giymiş, burada sağ bek pozisyonunda dikkat çeken bir performans sergilemiştir. 21 Haziran 2025 tarihinde, Trabzonspor’umuz ile 4 yıllık sözleşmeye imza atmıştır." },
+    { id:"Arda", ad:"Arda", soyad:"Öztürk", no:"21", pozisyon:"Defans", dogum:"10.03.2007", boy:"194", kilo:"80", yas:"19", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_5ed97088b1974ef5bca2c6c4a26afc43.png", biyografi:"10 Mart 2007 tarihinde Diyarbakır’da dünyaya gelen Arda Öztürk, futbola memleketi Diyarbakır’da başlamıştır. 2022 yılında Diyarbakır DSİ Spor'dan Trabzonspor Futbol Akademimize transfer olan Arda, gelişim sürecinde U16, U17 ve U19 takımlarımızda forma giymiştir." },
+    { id:"Oleksandr", ad:"Oleksandr", soyad:"Zubkov", no:"22", pozisyon:"Orta Saha", dogum:"03.08.1996", boy:"182", kilo:"78", yas:"29", bayrak:"https://flagcdn.com/w80/ua.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_efd7b5e726a644ab866705fe4cebceda.png", biyografi:"Oleksandr Zubkov, 3 Ağustos 1996 tarihinde Ukrayna’nın Makiivka şehrinde doğmuştur. Futbol hayatına Shakhtar Donetsk altyapısında başlayan Zubkov, profesyonel kariyerine de bu kulüpte adım atmıştır. Shakhtar Donetsk’ten ayrıldıktan sonra Ferencváros forması giyen oyuncumuz, burada gösterdiği başarılı performansla dikkat çekmiştir. 2022 yılında yeniden Shakhtar Donetsk’e dönen Zubkov, 3 Şubat 2025 yılında Trabzonspor’umuza transfer olarak bordo mavili formayı giymeye başlamıştır." },
+    { id:"Andre", ad:"Andre", soyad:"Onana", no:"24", pozisyon:"Kaleci", dogum:"02.04.1996", boy:"190", kilo:"93", yas:"30", bayrak:"https://flagcdn.com/w80/cm.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_6776a1a648ac4b3283f56543116c6726.png", biyografi:"2 Nisan 1996’da Kamerun’un Nkol Ngok kentinde doğdu. Futbola Samuel Eto’o Akademisi’nde başladı, ardından Barcelona altyapısında yetişti. 2015 yılında Ajax’a transfer olarak burada büyük başarılar elde etti ve Avrupa’nın en dikkat çeken kalecilerinden biri haline geldi. 2022’de Inter forması giydi, 2023 yılında ise Manchester United’a transfer oldu. 11 Eylül 2025 tarihinde Trabzonsporumuza katıldı." },
+    { id:"Onuralp", ad:"Onuralp", soyad:"Çevikkan", no:"25", pozisyon:"Kaleci", dogum:"02.01.2006", boy:"192", kilo:"78", yas:"20", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_ae2e88805ffe4b068641ea6645a1c06e.png", biyografi:"2 Ocak 2006'da İzmir'in Konak ilçesinde dünyaya gelmiştir. Futbol yaşantısına 2016 yılında Altınordu'da başlamıştır. 1 Temmuz 2023 tarihinde Altınordu'dan Trabzonspor'umuza transfer olmuştur." },
+    { id:"Tim", ad:"Tim", soyad:"Jabol Folcarelli", no:"26", pozisyon:"Orta Saha", dogum:"06.12.1999", boy:"187", kilo:"78", yas:"26", bayrak:"https://flagcdn.com/w80/fr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_de027ad9d6ed47639ee45838a028e408.png", biyografi:"6 Aralık 1999’da Fransa’nın Vitry-sur-Seine kentinde doğdu. Kariyerine yerel futbol kulüplerinde oynayarak başladı. Kariyerinde Saint-Louis Neuweg, Rennes B, Le Puy ve Ajaccio gibi takımların formalarını giydi. 11 Şubat 2025 tarihinden itibaren Trabzonspor’umuzda forma giymeye başlamıştır." },
+    { id:"Chibuike", ad:"Chibuike", soyad:"Nwaiwu", no:"27", pozisyon:"Defans", dogum:"23.07.2003", boy:"193", kilo:"83", yas:"22", bayrak:"https://flagcdn.com/w80/ng.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_e39b736db70547d7b2a1c4edf74885eb.png", biyografi:"Chibuike Godfrey Nwaiwu, 23 Temmuz 2003 Nijerya doğumludur. Futbola ülkesinin FC Heartland ile başlayan futbolcumuz Avrupa’da Avusturya ekiplerinden Wolfsberger AC’de forma giymiştir. Avusturya ekibinde toplamda 16 maçta forma giyen Nwaiwu 7 Ocak 2026 tarihinde kulübümüze transfer olmuştur." },
+    { id:"Serdar", ad:"Serdar", soyad:"Saatçı", no:"29", pozisyon:"Defans", dogum:"14.02.2003", boy:"190", kilo:"90", yas:"23", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_836502b09a8f4a3e8a347ee97ebdb42b.png", biyografi:"8 Ocak 2003 tarihinde İstanbul’da dünyaya geldi. Kariyerine Bayrampaşa’da başladı ve 2014’te Beşiktaş altyapısına katıldı. 2022’de Braga’ya transfer oldu. Portekiz’de geçirdiği 2 sezonun ardından 5 Eylül 2024’te Trabzonspor’umuza transfer oldu." },
+    { id:"Paul", ad:"Ebere Paul", soyad:"Onuachu", no:"30", pozisyon:"Forvet", dogum:"28.05.1994", boy:"201", kilo:"84", yas:"31", bayrak:"https://flagcdn.com/w80/ng.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_d6ff4e94c0bd4c8f858f9aacc45052ec.png", biyografi:"Paul Onuachu, 28 Mayıs 1994 tarihinde Nijerya’da doğmuştur. Futbol hayatına Ebedei altyapısında başlayan Onuachu, profesyonel kariyerine Midtjylland’da adım atmış; burada golcülüğüyle ön plana çıkmıştır. Ardından Genk formasıyla da dikkat çeken oyuncumuz, 2023-2024 sezonunda Southampton’dan kiralık olarak Trabzonspor’a gelmiş ve sergilediği başarılı performans sonucunda 2025 yılında Trabzonspor’umuza kalıcı olarak transfer olmuştur." },
+    { id:"Christ", ad:"Christ Inao", soyad:"Oulaï", no:"42", pozisyon:"Orta Saha", dogum:"06.04.2006", boy:"173", kilo:"69", yas:"19", bayrak:"https://flagcdn.com/w80/ci.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_14c2e0a85d6347299262c5796ddfda69.png", biyografi:"6 Nisan 2006 tarihinde Fildişi Sahili’nin Yopougon bölgesinde doğan Christ Inao Oulai, futbola ülkesinin takımlarından JMG Academy Abidjan’da başlamış, ardından SC Bastia’ya transfer olmuştur. 20 Ağustos 2025 tarihinde ise kendisini bordo-mavi renklere bağlayan 5 yıllık sözleşmeye imza atmıştır." },
+    { id:"Arseniy", ad:"Arseniy", soyad:"Batagov", no:"44", pozisyon:"Defans", dogum:"05.03.2002", boy:"185", kilo:"75", yas:"24", bayrak:"https://flagcdn.com/w80/ua.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_d9c6bb85e33f4c778c0677181a7014b5.png", biyografi:"Arseniy Batagov, 5 Mart 2002 tarihinde Ukrayna’da doğmuştur. Futbol kariyerine Dnipro altyapısında başlayan futbolcumuz Arseniy Batagov, Trabzonspor’umuza 6 Ağustos 2024 tarihinde, Zorya Luhansk’tan 4 yıllık sözleşme kapsamında transfer edilmiş ve bordo-mavili formayı giymeye başlamıştır." },
+    { id:"Kazeem", ad:"Kazeem", soyad:"Olaigbe", no:"70", pozisyon:"Forvet", dogum:"02.01.2003", boy:"178", kilo:"71", yas:"23", bayrak:"https://flagcdn.com/w80/be.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_26d04bbbedfc4b58b9082184a8398037.png", biyografi:"2 Ocak 2003 tarihinde Belçika’nın Brüksel şehrinde doğan Kazeem Olaigbe, futbol eğitimine Anderlecht altyapısında başlamış, ardından 2019 yılında Southampton’a transfer olmuştur. Kariyerinde Ross County ve Harrogate Town’da kiralık olarak forma giyen Olaigbe, 2023 yılında Cercle Brugge’e geçiş yapmıştır. 3 Şubat 2025’te Rennes’e transfer olarak Ligue 1’e adım atan Kazeem Olaigbe, gösterdiği performansla Trabzonspor’un dikkatini çekmiş ve 7 Ağustos 2025 tarihinde Trabzonspor ile 5 yıllık sözleşme imzalamıştır." },
+    { id:"Salih", ad:"Salih", soyad:"Malkoçoğlu", no:"74", pozisyon:"Defans", dogum:"23.02.2005", boy:"190", kilo:"82", yas:"21", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_75c338aff26f42758c66939b752bf540.png", biyografi:"23 Şubat 2005’te Trabzon’da doğdu. Futbol kariyerine Trabzonspor Akademisi’nde başladı. Alt yaş gruplarında geçirdiği 3 sezonun ardından 1 Temmuz 2024’te profesyonel sözleşme imzalayarak A Takımımızın bir parçası oldu." },
+    { id:"Boran", ad:"Boran", soyad:"Başkan", no:"80", pozisyon:"Orta Saha", dogum:"29.03.2006", boy:"180", kilo:"70", yas:"19", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_0b5be0e75fd5468cbc9f4f7dbcca2b1e.png", biyografi:"Boran Başkan, 29 Mart 2006 tarihinde Trabzon’da dünyaya gelmiştir. Akademimizden yetişen genç futbolcu 29 Mart 2025 tarihinde Göztepe ile oynadığımız Trendyol Süper 29. hafta mücadelesinde ilk kez A Takım kadrosuna alınmıştır. Boran, A Takım forması ile ilk kez sahaya ligin son haftasında oynanan Antalyaspor karşılaşmasında çıkmıştır." },
+    { id:"Ahmet", ad:"Ahmet Doğan", soyad:"Yıldırım", no:"88", pozisyon:"Kaleci", dogum:"01.11.2006", boy:"194", kilo:"81", yas:"19", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_ec7a3a81d81f4372a0914db5ea5a044a.png", biyografi:"Ahmet Doğan Yıldırım, 1 Kasım 2006 tarihinde dünyaya geldi. Futbola Sakaryaspor altyapısında başlayan Yıldırım, yetenekleriyle kısa sürede dikkat çekti. 24 Eylül 2021 tarihinde Trabzonspor U16 takımımıza katılarak gelişimini Trabzonspor altyapısında sürdürmeye başladı. Trabzonspor altyapısındaki başarılı performansıyla dikkat çeken genç futbolcumuz, şu an A Takımımızla antrenmanlara çıkmaktadır." },
+    { id:"Ivan", ad:"Ivan", soyad:"Lima", no:"90", pozisyon:"Forvet", dogum:"13.01.2005", boy:"174", kilo:"70", yas:"21", bayrak:"https://flagcdn.com/w80/pt.png", foto:"https://i.imgur.com/IH8zKY2.png", biyografi:"13 Ocak 2006 tarihinde Portekiz'in başkenti Lizbon'da doğan Ivan Lima, futbola ülkesinin takımlarından Benfica'nın altyapısında başlamış, Ardından performansı ile dikkat çekerek Benfica B takımına transfer olmuştur. 7 Şubat 2026 tarihinde ise kendisini Trabzonspor'umuza göstermiş, bordo mavili formaya 4 senelik imza atmıştır." },
+    { id:"Taha", ad:"Taha Emre", soyad:"İnce", no:"92", pozisyon:"Defans", dogum:"26.07.2007", boy:"186", kilo:"76", yas:"18", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_597a63e9df0c43bfa591594642d2938c.png", biyografi:"Taha Emre İnce, 26 Temmuz 2007 tarihinde Trabzon’da dünyaya gelmiştir. 2020 yılında 1461 Trabzon FK’dan akademimize transfer edilen genç futbolcu, 30 Mayıs 2025 tarihinde deplasmanda Antalyaspor ile oynadığımız Trendyol Süper Lig’in 38. hafta maçında ilk kez A Takım formamızla sahaya çıkmıştır." },
+    { id:"Erol", ad:"Erol Can", soyad:"Çolak", no:"96", pozisyon:"Kaleci", dogum:"02.01.2006", boy:"190", kilo:"80", yas:"20", bayrak:"https://flagcdn.com/w80/tr.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_0df24db03b5248e9a46e137045969bd5.png", biyografi:"2 Ocak 2006’da Ordu’da doğan Erol Can Çolak, futbola Ordu Gücü FK altyapısında başladı. Daha sonra 1461 Trabzon altyapısı ve Trabzonspor altyapısında forma giydi. 1 Temmuz 2025 tarihinde Trabzonspor A Takımı’na yükseldi." },
+    { id:"Felipe", ad:"Felipe", soyad:"Augusto", no:"99", pozisyon:"Forvet", dogum:"18.02.2004", boy:"187", kilo:"78", yas:"22", bayrak:"https://flagcdn.com/w80/br.png", foto:"https://cdn.trabzonspor.org.tr/trabzonspor_fa1063ccbdb145f98b32b4dcf6b9310c.png", biyografi:"Felipe Augusto, 18 Şubat 2004 tarihinde Brezilya’nın São Paulo kentinde doğmuştur. Futbola Corinthians altyapısında başlayan oyuncumuz, profesyonel kariyerine de Corinthians’ta adım atmıştır. 2024 yılında Belçika ekibi Cercle Brugge’e transfer olan Felipe, 12 Temmuz 2025 tarihinde Trabzonspor’umuza katılarak bordo‑mavili formayı giymeye başlamıştır." }
+];
+
+function renderSquad() {
+    const list = document.getElementById('squad-list');
+    const mevkiler = ["Kaleci","Defans","Orta Saha","Forvet"];
+    let html = '';
+    mevkiler.forEach(m => {
+        const filtered = kadro.filter(p => p.pozisyon === m);
+        if(filtered.length > 0) {
+            html += `<div class="category-title">${m}</div><div class="squad-grid">`;
+            filtered.forEach(p => {
+                html += `
+                <div class="player-card" onclick="openBio('${p.id}')">
+                    <div class="player-pos">${p.pozisyon}</div>
+                    <div class="player-num">${p.no}</div>
+                    <img src="${p.foto}" class="player-img" loading="lazy">
+                    <div class="player-info">
+                        <span class="p-firstname">${p.ad}</span>
+                        <span class="p-lastname">${p.soyad}</span>
+                        <span class="p-birth">${p.dogum}</span>
+                        <img src="${p.bayrak}" class="p-flag">
+                    </div>
+                </div>`;
+            });
+            html += `</div>`;
+        }
+    });
+    list.innerHTML = html;
+}
+
+function openBio(id) {
+    const p = kadro.find(item => item.id === id);
+    const container = document.getElementById('bio-container');
+    container.innerHTML = `
+        <div class="bio-header">
+            <div class="bio-num-bg">#${p.no}</div>
+            <img src="${p.foto}" class="bio-player-img">
+            <div class="bio-main-info">
+                <span class="bio-firstname">${p.ad}</span>
+                <div class="bio-name">${p.soyad}</div>
+                <div class="bio-stats">
+                    <div class="stat-item"><span class="stat-label">Pozisyon</span><span class="stat-value">${p.pozisyon}</span></div>
+                    <div class="stat-item"><span class="stat-label">Boy</span><span class="stat-value">${p.boy} cm</span></div>
+                    <div class="stat-item"><span class="stat-label">Kilo</span><span class="stat-value">${p.kilo} kg</span></div>
+                    <div class="stat-item"><span class="stat-label">Yaş</span><span class="stat-value">${p.yas}</span></div>
+                    <div class="stat-item"><span class="stat-label">Uyruk</span><img src="${p.bayrak}" style="width:22px;border-radius:3px;display:block;margin:5px auto 0;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-content">
+            <div class="bio-title">Biyografi</div>
+            <div class="bio-text-wrapper">
+                <i class="fa-solid fa-quote-left quote-icon quote-left"></i>
+                <div class="bio-text">${p.biyografi}</div>
+                <i class="fa-solid fa-quote-right quote-icon quote-right"></i>
+            </div>
+        </div>`;
+    document.getElementById('bio-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBioModal(e) {
+    if(e.target === document.getElementById('bio-modal-overlay')) {
+        closeBioModalBtn();
+    }
+}
+
+function closeBioModalBtn() {
+    document.getElementById('bio-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+renderSquad();
+</script>
+
+
+
+
+<!-- Biyografi Modal Overlay -->
+<div id="bio-modal-overlay" onclick="closeBioModal(event)">
+    <div id="bio-modal">
+        <button class="bio-close-btn" onclick="closeBioModalBtn()">&times;</button>
+        <div id="bio-container">
+            <!-- JavaScript burayı dolduracak -->
+        </div>
+    </div>
+</div>
+
+
+<style>
+#player-profile-page {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; 
+    height: 100vh;
+    background: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+    display: none; /* Animasyon yerine direkt gizle/göster */
+}
+
+/* Sayfa Görünürlük Durumu */
+.profile-page-visible { display: block !important; }
+
+.profile-close {
+    position: absolute;
+    top: 30px; right: 40px;
+    font-size: 35px; color: #fff;
+    cursor: pointer; z-index: 1001;
+    opacity: 0.6; transition: 0.2s;
+}
+.profile-close:hover { opacity: 1; }
+
+/* Üst Bölüm (Banner) */
+.profile-header {
+    background: linear-gradient(to right, #0a0a0a 0%, #3e0a16 100%);
+    width: 100%;
+    min-height: 550px; /* Görseldeki genişlik oranı */
+    display: flex;
+    align-items: flex-end;
+    padding: 0 10%;
+    position: relative;
+    color: #fff;
+}
+
+.p-header-container {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.p-left-zone { display: flex; align-items: flex-end; gap: 40px; }
+
+.p-main-img {
+    height: 400px; /* Görseldeki devasa boyut */
+    object-fit: contain;
+    margin-bottom: -50px; /* Sahaya taşma etkisi */
+}
+
+.p-name-zone { margin-bottom: 50px; }
+.p-name-zone h2 { font-size: 1.8rem; font-weight: 300; margin: 0; line-height: 1; }
+.p-name-zone h1 { 
+    font-size: 4.5rem; font-family: 'Oswald', sans-serif; 
+    margin: 0; line-height: 0.85; text-transform: auto; 
+}
+
+.p-right-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.p-big-number {
+    font-size: 10rem; font-family: 'Anton', sans-serif;
+    line-height: 1; margin-bottom: 20px;
+}
+
+/* İstatistik Satırı */
+.p-stats-row {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.p-stat-box { text-align: center; }
+.p-stat-box span { display: block; font-size: 0.85rem; opacity: 0.6; text-transform: auto; margin-bottom: 8px; }
+.p-stat-box b { font-size: 1.15rem; font-family: 'Montressat', sans-serif; letter-spacing: 0px; }
+.p-flag { width: 45px; border-radius: 4px; display: block; margin: 5px auto 0; }
+
+/* Alt Bölüm (Biyografi) */
+.profile-body {
+    padding: 100px 10%;
+    background: #fff;
+}
+
+.bio-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.bio-bar { width: 8px; height: 35px; background: #b6800d; }
+.bio-title-wrapper h3 { font-size: 2rem; font-family: 'Oswald', sans-serif; color: #000000; margin-left: 0px !important; }
+
+.bio-card {
+    background: #fff;
+    border: 1px solid #d1cfcf;
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+}
+
+/* Görseldeki büyük tırnak ikonu */
+.bio-card::before {
+    content: "\f10d"; /* FontAwesome tırnak */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -35px; left: 30px;
+    font-size: 80px; color: #eeecec;
+}
+
+.bio-text {
+    font-size: 1.0rem; line-height: 1.9; color: #000000; margin-top: 15px; position: relative; z-index: 1;
+}
+</style>
+
+<script>function openBio(id) {
+    const p = kadro.find(item => item.id === id);
+    const content = document.getElementById('profile-dynamic-content');
+    
+    content.innerHTML = `
+        <div class="profile-header">
+            <div class="p-header-container">
+                <div class="p-left-zone">
+                    <img src="${p.foto}" class="p-main-img">
+                    <div class="p-name-zone">
+                        <h2>${p.ad}</h2>
+                        <h1>${p.soyad}</h1>
+                    </div>
+                </div>
+
+                <div class="p-right-zone">
+                    <div class="p-big-number">#${p.no}</div>
+                    <div class="p-stats-row">
+                        <div class="p-stat-box">
+                            <span>Pozisyon</span>
+                            <b>${p.pozisyon}</b>
+                        </div>
+                        <div class="p-stat-box">
+                            <span>Boy / Kilo</span>
+                            <b>${p.boy} / ${p.kilo}</b>
+                        </div>
+                        <div class="p-stat-box">
+                            <span>Yaş</span>
+                            <b>${p.yas}</b>
+                        </div>
+                        <div class="p-stat-box">
+                            <span>Uyruk</span>
+                            <img src="${p.bayrak}" class="p-flag">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <div class="bio-title-wrapper">
+                <div class="bio-bar"></div>
+                <h3>Biyografi</h3>
+            </div>
+            <div class="bio-card">
+                <div class="bio-text">${p.biyografi}</div>
+            </div>
+        </div>
+    `;
+
+    const page = document.getElementById('player-profile-page');
+    page.classList.add('profile-page-visible'); // CSS'teki display:block'u açar
+    document.body.style.overflow = 'hidden'; // Arka planı kilitle
+}
+
+function closeProfile() {
+    const page = document.getElementById('player-profile-page');
+    page.classList.remove('profile-page-visible'); // Direkt gizler
+    document.body.style.overflow = ''; 
+}
+</script>
+
+
+<div id="player-profile-page" class="profile-page-hidden">
+    <!-- Kapatma Butonu -->
+    <div class="profile-close" onclick="closeProfile()">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    
+    <div id="profile-dynamic-content">
+        <!-- JS burayı dolduracak -->
+    </div>
+</div>
+
+
+
+
+
+<section class="sponsors-section">
+    <h2 class="sponsors-title">SPONSORLARIMIZ</h2>
+    <div class="sponsors-container" id="sponsorsList"></div>
+</section>
+<div class="social-header-wrapper">
+    <h2 class="social-main-title">SOSYAL MEDYA HESAPLARIMIZ</h2>
+</div>
+
+<section class="social-links-section">
+    <div id="socialListDisplay" class="social-button-container">
+        </div>
+</section>
+
+<section class="ts-brand-divider">
+    <div class="ts-hashtag-wrap">
+        <span class="ts-hashtag-montserrat">#BİRİSYANDIRTRABZONSPOR</span>
+    </div>
+
+    <div class="ts-visual-container">
+        <svg class="ts-svg-line" preserveAspectRatio="none" viewBox="0 0 100 10">
+            <line x1="0" y1="5" x2="100" y2="5" class="ts-inner-line" />
+        </svg>
+        <img src="images/tslogosu.png" alt="TS Logo" class="ts-mega-logo">
+    </div>
+</section>
+
+<section class="ts-footer-white-box">
+    <div class="links-grid">
+        
+        <div class="link-column">
+            <h3 class="column-title">KULÜP</h3>
+            <ul class="column-list">
+                <li><a href="tarihce.html">Tarihçe</a></li>
+                <li><a href="kulup-uyeligi.html">Kulüp Üyeliği</a></li>
+                <li><a href="tuzuk.html">Kulüp Tüzüğü</a></li>
+                <li><a href="kurumsal-kimlik.html">Kurumsal Kimlik</a></li>
+                <li><a href="tesislerimiz.html">Tesislerimiz</a></li>
+                <li><a href="formalarımız.html">Formalarımız</a></li>
+            </ul>
+        </div>
+
+        <div class="link-column">
+            <h3 class="column-title">YÖNETİM</h3>
+            <ul class="column-list">
+                <li><a href="../yonetim/yonetim-kurulu.html">Yönetim Kurulu</a></li>
+                <li><a href="#">Kurullar</a></li>
+                <li><a href="#">Organlar</a></li>
+                <li><a href="#">Yatırımcı İlişkileri</a></li>
+            </ul>
+        </div>
+
+        <div class="link-column">
+            <h3 class="column-title">ONLİNE İŞLEMLER</h3>
+            <ul class="column-list">
+                <li><a href="#">TS Club</a></li>
+                <li><a href="#">Üyelik İşlemleri</a></li>
+                <li><a href="#">Trabzonspor TV</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="ts-footer-bottom">
+    <div class="footer-overlay-content">
+        <p class="footer-copyright">© 2016-2026 Trabzonspor Kulübü Resmi Roleplay Web Sitesi</p>
+    </div>
+</section>    
+
+
+
+
+    <div class="thin-panel" id="sidePanel">
+        <div class="panel-content">
+            <a href="#" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</span>
+            </a>
+            <a href="#" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ŞAMİL EKİNCİ MÜZESİ" data-en="SAMIL EKINCI MUSEUM">ŞAMİL EKİNCİ MÜZESİ</span>
+            </a>
+            <a href="#" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</span>
+            </a>
+            <a href="#" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="white">
+    <path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</span>
+            </a>
+            <a href="#" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="DERGİ" data-en="MAGAZINE">DERGİ</span>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================
+         YENİ MOBİL NAVBAR (Sadece mobilde görünür)
+         ============================================================ -->
+    <nav class="mobile-navbar">
+        <!-- Sol: Hamburger -->
+        <button class="mobile-hamburger" id="mobileHamburger" aria-label="Menü">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Orta: Logo -->
+        <a href="#" class="mobile-logo">
+            <img src="https://i.imgur.com/zJDF5Sp.png" alt="Trabzonspor">
+            <span class="mobile-logo-text">TRABZONSPOR</span>
+        </a>
+
+        <!-- Sağ: Dil + Profil -->
+        <div class="mobile-right-icons">
+            <div class="mobile-lang-wrap" id="mobileLangWrap">
+                <div class="mobile-icon-btn" id="mobileLangBtn">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                </div>
+                <div class="mobile-lang-menu" id="mobileLangMenu">
+                    <div class="mobile-lang-option" data-lang="tr">TÜRKÇE</div>
+                    <div class="mobile-lang-option" data-lang="en">ENGLISH</div>
+                </div>
+            </div>
+            <a href="#" class="mobile-profile-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         YENİ MOBİL OVERLAY MENÜ
+         ============================================================ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+
+        <!-- Arama -->
+        <div class="mobile-search-wrap">
+            <div class="mobile-search-box">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                    <line x1="22" y1="22" x2="15.8" y2="15.8"></line>
+                </svg>
+                <input type="text" placeholder="Web Sitesinde ara..." class="mob-ln" data-tr="Web Sitesinde ara..." data-en="Search the website...">
+            </div>
+        </div>
+
+        <!-- Hızlı erişim butonları -->
+        <div class="mobile-quick-grid">
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Ts Club" data-en="Ts Club">Ts Club</span>
+            </a>
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Şamil Ekinci Müzesi" data-en="Şamil Ekinci Museum">Şamil Ekinci Müzesi</span>
+            </a>
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Üyelik İşlemleri" data-en="Membership">Üyelik İşlemleri</span>
+            </a>
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24" fill="white"><path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Halkla İlişkiler" data-en="Public Relations">Halkla İlişkiler</span>
+            </a>
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Localarımız" data-en="Lodges">Localarımız</span>
+            </a>
+            <a href="#" class="mobile-quick-btn">
+                <div class="mobile-quick-btn-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+                <div class="mobile-quick-divider"></div>
+                <span class="mobile-quick-btn-text mob-ln" data-tr="Trabzonspor Dergisi" data-en="Magazine">Trabzonspor Dergisi</span>
+            </a>
+        </div>
+
+        <div class="mobile-divider"></div>
+
+        <!-- Ana Navigasyon -->
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item" data-menu="kulup">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Kulüp" data-en="Club">Kulüp</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="mobile-sub-menu">
+                    <a href="../kulup/tarihce.html" class="mob-ln" data-tr="Tarihçe" data-en="History">Tarihçe</a>
+                    <a href="../kulup/tuzuk.html" class="mob-ln" data-tr="Kulüp Tüzüğü" data-en="Statute">Kulüp Tüzüğü</a>
+                    <a href="../kulup/kurumsal-kimlik.html" class="mob-ln" data-tr="Kurumsal Kimlik" data-en="Corporate Identity">Kurumsal Kimlik</a>
+                    <a href="../kulup/kulup-uyeligi.html" class="mob-ln" data-tr="Kulüp Üyeliği" data-en="Membership">Kulüp Üyeliği</a>
+                    <a href="../kulup/tesislerimiz.html" class="mob-ln" data-tr="Tesislerimiz" data-en="Facilities">Tesislerimiz</a>
+                    <a href="../kulup/stadyum.html" class="mob-ln" data-tr="Papara Park" data-en="Papara Park">Papara Park</a>
+                    <a href="../kulup/localarımız.html" class="mob-ln" data-tr="Localarımız" data-en="Lodges">Localarımız</a>
+                    <a href="../kulup/mustafa-samil-ekinci-muzesi.html" class="mob-ln" data-tr="Müzemiz" data-en="Museum">Müzemiz</a>
+                    <a href="../kulup/formalarımız.html" class="mob-ln" data-tr="Formalarımız" data-en="Our Kits">Formalarımız</a>
+                    <a href="../kulup/resimler.html" class="mob-ln" data-tr="Duvar Kağıtları" data-en="Wallpapers">Duvar Kağıtları</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item" data-menu="yonetim">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Yönetim" data-en="Management">Yönetim</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="mobile-sub-menu">
+                    <a href="#" class="mob-ln" data-tr="Yönetim Kurulu" data-en="Board of Directors">Yönetim Kurulu</a>
+                    <a href="#" class="mob-ln" data-tr="Kurullar" data-en="Boards">Kurullar</a>
+                    <a href="#" class="mob-ln" data-tr="Organlar" data-en="Organs">Organlar</a>
+                    <a href="#" class="mob-ln" data-tr="Yatırımcı İlişkileri" data-en="Investor Relations">Yatırımcı İlişkileri</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item" data-menu="branslar">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Branşlar" data-en="Branches">Branşlar</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="mobile-sub-menu">
+                    <a href="#" class="mob-ln" data-tr="Oyuncu Kadrosu" data-en="Squad">Oyuncu Kadrosu</a>
+                    <a href="teknik-kadro.html" class="mob-ln" data-tr="Teknik Kadro" data-en="Technical Staff">Teknik Kadro</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item" data-menu="mac">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Maç Merkezi" data-en="Match Center">Maç Merkezi</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </li>
+            <li class="mobile-nav-item" data-menu="haberler">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Haberler" data-en="News">Haberler</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="mobile-sub-menu">
+                    <a href="#" class="mob-ln" data-tr="Tüm Haberler" data-en="All News">Tüm Haberler</a>
+                    <a href="#" class="mob-ln" data-tr="Futbol A Takım" data-en="First Team">Futbol A Takım</a>
+                    <a href="#" class="mob-ln" data-tr="Kadın Futbol" data-en="Women's Football">Kadın Futbol</a>
+                    <a href="#" class="mob-ln" data-tr="Akademi" data-en="Academy">Akademi</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item" data-menu="online">
+                <a href="#">
+                    <span class="mob-ln" data-tr="Online İşlemler" data-en="Online Services">Online İşlemler</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="mobile-sub-menu">
+                    <a href="#" class="mob-ln" data-tr="TS Club" data-en="TS Club">TS Club</a>
+                    <a href="#" class="mob-ln" data-tr="Üyelik İşlemleri" data-en="Membership">Üyelik İşlemleri</a>
+                    <a href="#" class="mob-ln" data-tr="Genel Kurul Katılım Sorgulama" data-en="Assembly Inquiry">Genel Kurul Katılım Sorgulama</a>
+                    <a href="#" class="mob-ln" data-tr="Trabzonspor TV" data-en="Trabzonspor TV">Trabzonspor TV</a>
+                    <a href="#" class="mob-ln" data-tr="Trabzonspor Dergisi" data-en="Magazine">Trabzonspor Dergisi</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item" data-menu="iletisim">
+                <a href="#">
+                    <span class="mob-ln" data-tr="İletişim" data-en="Contact">İletişim</span>
+                    <svg class="mobile-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Bu fonksiyon sayfa açılır açılmaz sayacı başlatır
+function hideLoader() {
+    const loader = document.getElementById("loader-wrapper");
+    if (loader) {
+        // 700 milisaniye (0.7 saniye) sonra gizleme sınıfını ekle
+        setTimeout(() => {
+            loader.classList.add("loader-hidden");
+        }, 700);
+    }
+}
+
+// Hem sayfa yüklendiğinde hem de her ihtimale karşı hemen çalıştır
+window.addEventListener("load", hideLoader);
+
+// Eğer load olayı gecikirse diye maksimum 1 saniye sonra zorla kapat
+setTimeout(hideLoader, 1000);
+
+        /* --- ORIJINAL PC PANEL KONTROLLERİ (Değiştirilmedi) --- */
+        const menuTrigger = document.getElementById('menuTrigger');
+        const sidePanel = document.getElementById('sidePanel');
+
+        menuTrigger.addEventListener('click', function() {
+            sidePanel.classList.toggle('active');
+            this.innerText = sidePanel.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!sidePanel.contains(event.target) && !menuTrigger.contains(event.target)) {
+                sidePanel.classList.remove('active');
+                menuTrigger.innerText = '☰';
+            }
+        });
+
+        /* --- ORIJINAL DİL SİSTEMİ (Değiştirilmedi) --- */
+        const langBtn = document.getElementById('langBtn');
+        const langMenu = document.getElementById('langMenu');
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('show');
+        });
+
+        function setLang(lang) {
+            localStorage.setItem('siteLang', lang);
+            updatePage(lang);
+            langMenu.classList.remove('show');
+        }
+
+        function updatePage(lang) {
+            // PC metinleri
+            document.querySelectorAll('.ln').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
+            });
+            document.getElementById('activeLang').innerText = lang.toUpperCase();
+
+            // Mobil metinleri
+            document.querySelectorAll('.mob-ln').forEach(function(el) {
+                const text = el.getAttribute('data-' + lang);
+                if (text) {
+                    if (el.tagName === 'INPUT') {
+                        el.placeholder = text;
+                    } else {
+                        el.innerText = text;
+                    }
+                }
+            });
+
+            // Aktif dil seçeneğini vurgula
+            document.querySelectorAll('.mobile-lang-option').forEach(function(opt) {
+                opt.classList.toggle('active-lang', opt.getAttribute('data-lang') === lang);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('siteLang') || 'tr';
+            updatePage(saved);
+        });
+
+        document.addEventListener('click', () => {
+            langMenu.classList.remove('show');
+        });
+
+
+
+
+        /* ============================================================
+           YENİ MOBİL JS (Orijinal koda dokunulmadı, sadece ekleme)
+           ============================================================ */
+        const mobileHamburger = document.getElementById('mobileHamburger');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+        mobileHamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = mobileMenuOverlay.classList.toggle('open');
+            mobileHamburger.classList.toggle('open', isOpen);
+            // Menü açıkken body scroll'u kapat
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Overlay dışına tıklayınca kapat
+        document.addEventListener('click', function(e) {
+            if (
+                mobileMenuOverlay.classList.contains('open') &&
+                !mobileMenuOverlay.contains(e.target) &&
+                !mobileHamburger.contains(e.target)
+            ) {
+                mobileMenuOverlay.classList.remove('open');
+                mobileHamburger.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Alt menü accordion
+        document.querySelectorAll('.mobile-nav-item > a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const item = this.parentElement;
+                const subMenu = item.querySelector('.mobile-sub-menu');
+                if (!subMenu) return; // Alt menü yoksa normal link gibi davran
+
+                e.preventDefault();
+                const isActive = item.classList.contains('active');
+
+                // Diğerlerini kapat
+                document.querySelectorAll('.mobile-nav-item.active').forEach(function(el) {
+                    el.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Mobil dil butonu — dropdown aç/kapat
+        const mobileLangBtn = document.getElementById('mobileLangBtn');
+        const mobileLangMenu = document.getElementById('mobileLangMenu');
+
+        mobileLangBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileLangMenu.classList.toggle('show');
+        });
+
+        // Dil seçeneğine tıklayınca
+        document.querySelectorAll('.mobile-lang-option').forEach(function(opt) {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const lang = this.getAttribute('data-lang');
+                setLang(lang);
+                mobileLangMenu.classList.remove('show');
+            });
+        });
+
+        // Dışarı tıklayınca kapat
+        document.addEventListener('click', function() {
+            mobileLangMenu.classList.remove('show');
+        });
+
+        // Kulüp sayfası içeriği kulup/tarihce.html dosyasındadır
+
+// renderClubPage — sadece kulup/tarihce.html sayfasında çalışır
+    
+    const clubMenuItems = [
+    { id: 'a-takim',      text: 'Futbol A Takımı',                    link: 'a-takimi.html'  },
+    { id: 'u-19',        text: 'Trabzonspor U-19',               link: '#'             },
+];
+
+// ================================================================
+// TARİHÇE VERİSİ — yeni dönem eklemek için aşağıdaki bloğu
+// kopyala, virgülle ayır ve listeye ekle:
+//
+//  {
+//      year:  "YYYY",           // Sol kolonda görünen yıl
+//      title: "Dönem Adı",      // Yılın altındaki başlık
+//      image: "resim-url.jpg",  // Fotoğraf URL'si (boş: "" bırakılırsa fotoğraf çıkmaz)
+//      text:  `                 // Backtick içine HTML paragrafları yaz
+//          <p>Metin buraya...</p>
+//          <p>İkinci paragraf...</p>
+//      `
+//  },
+// ================================================================
+    
+    
+ const sponsors = [
+    { name: "Papara", logo: "images/PAPARA.png", vurgulu:false },
+    { name: "Onvo", logo: "images/onvo.png", vurgulu:false },
+    { name: "QNB", logo: "images/qnbfinansbank.png", vurgulu:false },
+    { name: "Asoy Group", logo: "images/asoygroup.png", vurgulu:true },
+    { name: "Ülker", logo: "images/ülker.png", vurgulu:false },
+    { name: "Rent Go", logo: "images/rentgo.png", vurgulu:true },
+    { name: "Reges Elektrik", logo: "images/regese.png", vurgulu:false },
+    { name: "Sarıyer Kola", logo: "images/sarıyer.png", vurgulu:true },
+    { name: "Sürat Kargo", logo: "images/sürat.png", vurgulu:false },
+    { name: "Joma", logo: "images/joma.png", vurgulu:true },
+    { name: "Acıbadem", logo: "images/acıbadem.jpg", vurgulu:false },
+    { name: "Damat Tween", logo: "images/damattween.png", vurgulu:false },
+    { name: "Doğuş Otomotiv", logo: "images/Dogus_Otomotiv.png", vurgulu:true },
+    { name: "Yeniköy Motors", logo: "images/yenikoy.png", vurgulu:false },
+    { name: "Park Dedeman", logo: "images/parkdedeman.png", vurgulu:true },
+    { name: "100 Anadolu Sigorta", logo: "images/100anadolu.png", vurgulu:true },
+    { name: "Turkish Airlines", logo: "images/turkisha.png", vurgulu:false },
+    { name: "Ali Osman Ulusoy", logo: "images/aliosmanulusoy.png", vurgulu:false },
+    { name: "Filli Boya", logo: "images/filliboya.png", vurgulu:false },
+    { name: "Ceysu", logo: "images/ceysu.png", vurgulu:true },
+    { name: "American Life", logo: "images/americanlife.png", vurgulu:true }
+];
+
+function renderSponsors() {
+    const container = document.getElementById('sponsorsList');
+    if (!container) return;
+
+    // 21 Sponsoru tam istediğin düzende parçalara ayırıyoruz
+    const rowMain = sponsors.slice(0, 2);   // En üstteki 2 (Alt alta duracaklar)
+    const row1 = sponsors.slice(2, 8);      // İlk 6'lı grup
+    const row2 = sponsors.slice(8, 14);     // İkinci 6'lı grup (Doğuş, Yeniköy vb. buraya kayar)
+    const row3 = sponsors.slice(14, 21);    // En alttaki 7'li grup
+
+    const createBox = (s) => {
+        // JS Hatasını önlemek için güvenli sınıf ataması
+        const vurguluClass = s.vurgulu ? 'vurgulu-kutu' : '';
+        return `<div class="sponsor-item ${vurguluClass}"><img src="${s.logo}" alt="${s.name}"></div>`;
+    };
+
+    container.innerHTML = `
+        <div class="main-sponsors-column">
+            ${rowMain.map(createBox).join('')}
+        </div>
+        
+        <div class="sponsor-row row-6">${row1.map(createBox).join('')}</div>
+        <div class="sponsor-row row-6">${row2.map(createBox).join('')}</div>
+        
+        <div class="sponsor-row row-7">${row3.map(createBox).join('')}</div>
+    `;
+}
+
+// Başlatmak için:
+renderSponsors();
+
+// Mevcut renderClubPage fonksiyonunun en sonuna şu satırı ekle:
+// renderSponsors(); 
+// Veya direkt en alta şu şekilde çağır:
+document.addEventListener('DOMContentLoaded', () => {
+    renderClubPage();
+    renderSponsors();
+});
+
+function renderClubPage() {
+    // Menüleri Bas
+    const menuEl = document.getElementById('sideMenuList');
+    menuEl.innerHTML = clubMenuItems.map(item => `
+        <li><a href="${item.link || '#'}" class="${item.id === 'a-takim' ? 'active' : ''}">${item.text}</a></li>
+    `).join('');
+
+    // Tarihçeyi Bas
+    const timelineEl = document.getElementById('timelineList');
+    timelineEl.innerHTML = historyData.map(data => `
+        <div class="timeline-item">
+            <div class="year-marker">
+                <h2>${data.year}</h2>
+                <p>${data.title}</p>
+                <svg class="dot-svg" width="16" height="16">
+                    <circle cx="8" cy="8" r="7" fill="#f1ad1d" />
+                    <circle cx="8" cy="8" r="3" fill="#0b0b0b" />
+                </svg>
+            </div>
+            <div class="event-card">
+                <img src="${data.image}">
+                <div class="event-info"><p>${data.text}</p></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Sosyal Medya Hesapları Listesi (Buraya ekleme yapabilirsin)
+const socialAccounts = [
+    {
+        handle: "@trabzonspor",
+        link: "https://instagram.com/trabzonspor",
+        platform: "instagram",
+        svg: '<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>'
+    },
+    {
+        handle: "@trabzonspor",
+        link: "https://x.com/trabzonspor",
+        platform: "x-twitter",
+        svg: '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>'
+    }
+];
+
+function renderSocialButtons() {
+    const list = document.getElementById('socialListDisplay');
+    if (!list) return;
+
+    list.innerHTML = socialAccounts.map(acc => `
+        <a href="${acc.link}" target="_blank" class="social-big-card ${acc.platform}">
+            <div class="card-icon-svg">${acc.svg}</div>
+            <span class="card-user-handle">${acc.handle}</span>
+        </a>
+    `).join('');
+}
+
+// Sayfa açıldığında butonları oluştur
+window.addEventListener('DOMContentLoaded', renderSocialButtons);
+
+// Sponsorlar yüklendiğinde sosyal medyayı da yükle
+renderSponsors();
+renderSocialAccounts();
+
+const footerData = [
+    {
+        title: "KULÜP",
+        links: [
+            { name: "Tarihçe", url: "#" },
+            { name: "Kulüp Üyeliği", url: "kulup-uyeligi.html" },
+            { name: "Kulüp Tüzüğü", url: "tuzuk.html" },
+            { name: "Kurumsal Kimlik", url: "kurumsal-kimlik.html" },
+            { name: "Tesislerimiz", url: "tesislerimiz.html" },
+            { name: "İnsan Kaynakları", url: "#" },
+            { name: "Bilgi Toplumu", url: "#" }
+        ]
+    },
+    {
+        title: "YÖNETİM",
+        links: [
+            { name: "Yönetim Kurulu", url: "yonetim-kurulu.html" },
+            { name: "Kurullar", url: "#" },
+            { name: "Organlar", url: "#" },
+            { name: "Yatırımcı İlişkileri", url: "#" }
+        ]
+    },
+    {
+        title: "ONLİNE İŞLEMLER",
+        links: [
+            { name: "TS Club", url: "#" },
+            { name: "Üyelik İşlemleri", url: "#" },
+            { name: "Trabzonspor TV", url: "#" }
+        ]
+    }
+];
+
+function renderFooterLinks() {
+    const container = document.getElementById('footerLinksContainer');
+    if (!container) return;
+
+    container.innerHTML = footerData.map(section => `
+        <div class="link-column">
+            <h3 class="column-title">${section.title}</h3>
+            <ul class="column-list">
+                ${section.links.map(link => `
+                    <li><a href="${link.url}">${link.name}</a></li>
+                `).join('')}
+            </ul>
+        </div>
+    `).join('');
+}
+
+// Sayfa yüklenince çalıştır
+window.addEventListener('load', renderFooterLinks);   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+
+</body>
+</html>

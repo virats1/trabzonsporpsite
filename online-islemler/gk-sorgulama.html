@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trabzonspor Kulübü – Genel Kurul Katılım Sorgulama</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ts-red:    #c0001e;
+    --ts-navy:   #232833;
+    --ts-sky:    #00aadd;
+    --ts-sky-d:  #0088bb;
+    --ts-light:  #f4f7fb;
+    --ts-border: #d8e2ef;
+    --ts-text:   #1e2d45;
+    --ts-muted:  #7a8fa8;
+    --step-done: #00aadd;
+    --step-wait: #c8d8e8;
+    --radius:    12px;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: #0b1422;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* blurred background image overlay */
+  .bg-overlay {
+    position: fixed; inset: 0;
+    background-color: #1a2a4a;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .bg-overlay::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: linear-gradient(135deg, rgba(11,20,34,.55) 0%, rgba(26,42,74,.45) 100%);
+    z-index: 1;
+  }
+  /* subtle noise grain */
+  .bg-overlay::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── CARD ── */
+  .card {
+    position: relative; z-index: 10;
+    background: #fff;
+    border-radius: 18px;
+    width: 100%; max-width: 1100px;
+    box-shadow: 0 32px 80px rgba(0,0,0,.45), 0 2px 0 rgba(255,255,255,.08);
+    overflow: hidden;
+    animation: fadeUp .5s cubic-bezier(.22,.68,0,1.2) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── HEADER ── */
+  .card-header {
+    background: #fff;
+    padding: 28px 36px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--ts-border);
+  }
+  .card-header-text {
+    text-align: center;
+  }
+  .card-header-text h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ts-muted);
+    letter-spacing: .01em;
+  }
+  .card-header-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ts-navy);
+    letter-spacing: .01em;
+    margin-top: 2px;
+  }
+
+  /* ── BODY ── */
+  .card-body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 340px;
+  }
+
+  /* ── STEPS SIDEBAR ── */
+  .steps {
+    background: var(--ts-light);
+    border-right: 1px solid var(--ts-border);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    position: relative;
+    padding-bottom: 32px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: 14px; top: 30px;
+    width: 2px; height: calc(100% - 8px);
+    background: var(--step-wait);
+    transition: background .4s;
+  }
+  .step:last-child::before { display: none; }
+
+  .step-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2.5px solid var(--step-wait);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all .3s;
+    position: relative; z-index: 1;
+  }
+  .step-dot svg { display: none; }
+  .step.active .step-dot {
+    border-color: var(--ts-sky);
+    background: var(--ts-sky);
+    box-shadow: 0 0 0 4px rgba(0,170,221,.18);
+  }
+  .step.active .step-dot svg { display: block; }
+  .step.done .step-dot {
+    border-color: var(--ts-sky);
+    background: var(--ts-sky);
+  }
+  .step.done .step-dot svg { display: block; }
+  .step.active::before,
+  .step.done::before { background: var(--ts-sky); }
+
+  .step-label {
+    padding-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--ts-muted);
+    transition: color .3s;
+  }
+  .step.active .step-label,
+  .step.done .step-label { color: var(--ts-navy); }
+
+  /* ── FORM AREA ── */
+  .form-area {
+    padding: 36px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .step-panel { display: none; flex-direction: column; gap: 18px; animation: panelIn .3s ease both; }
+  .step-panel.visible { display: flex; }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .panel-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ts-navy);
+    margin-bottom: 4px;
+  }
+  .panel-subtitle {
+    font-size: .83rem;
+    color: var(--ts-muted);
+    margin-top: -10px;
+  }
+
+  /* inputs */
+  .input-wrap { position: relative; }
+  .input-wrap input {
+    width: 100%;
+    height: 50px;
+    border: 1.5px solid var(--ts-border);
+    border-radius: 8px;
+    padding: 0 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: .92rem;
+    color: var(--ts-text);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    background: #fff;
+  }
+  .input-wrap input:focus {
+    border-color: var(--ts-sky);
+    box-shadow: 0 0 0 3px rgba(0,170,221,.12);
+  }
+  .input-wrap input::placeholder { color: #b0bfcf; }
+  .input-wrap input.error { border-color: var(--ts-red); }
+
+  .error-msg {
+    font-size: .78rem;
+    color: var(--ts-red);
+    margin-top: 4px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  /* member info box */
+  .info-box {
+    background: var(--ts-light);
+    border: 1.5px solid var(--ts-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info-box.show { display: flex; }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .85rem;
+  }
+  .info-row .label { color: var(--ts-muted); font-weight: 500; }
+  .info-row .val   { color: var(--ts-navy);  font-weight: 600; }
+  .info-row .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: .78rem; font-weight: 700;
+  }
+  .badge.green { background: #e6f9f0; color: #1a8f5a; }
+  .badge.red   { background: #fdeaea; color: var(--ts-red); }
+  .badge.orange{ background: #fff4e5; color: #c07000; }
+
+  .divider { height: 1px; background: var(--ts-border); }
+
+  /* buttons */
+  .btn-primary {
+    height: 50px;
+    background: linear-gradient(90deg, var(--ts-sky) 0%, var(--ts-sky-d) 100%);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .92rem;
+    letter-spacing: .04em;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: opacity .2s, transform .15s;
+    width: 100%;
+  }
+  .btn-primary:hover  { opacity: .92; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+  .btn-ghost {
+    height: 44px;
+    background: transparent;
+    border: 1.5px solid var(--ts-border);
+    border-radius: 8px;
+    color: var(--ts-muted);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+    width: 100%;
+  }
+  .btn-ghost:hover { border-color: var(--ts-sky); color: var(--ts-sky); }
+
+  /* spinner */
+  .spinner {
+    width: 20px; height: 20px;
+    border: 2.5px solid rgba(255,255,255,.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── FOOTER BANNER ── */
+  .card-footer {
+    background: linear-gradient(90deg, #f8fafd 0%, #eef3fa 100%);
+    border-top: 1px solid var(--ts-border);
+    padding: 16px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .footer-event {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .footer-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2.5px solid var(--ts-sky);
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .footer-event-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.40rem;
+    color: var(--ts-navy);
+    letter-spacing: .01em;
+  }
+  .footer-logo {
+    width: 200px;
+    object-fit: contain;
+    opacity: 1.9;
+  }
+
+  /* success state */
+  .success-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, #00c96a, #00aa55);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 8px;
+    box-shadow: 0 6px 20px rgba(0,170,85,.25);
+  }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    .card-body { grid-template-columns: 1fr; }
+    .steps { flex-direction: row; overflow-x: auto; padding: 16px 20px; border-right: none; border-bottom: 1px solid var(--ts-border); gap: 0; }
+    .step { flex-direction: column; align-items: center; padding-bottom: 0; padding-right: 24px; }
+    .step::before { top: 15px; left: calc(50% + 14px); width: calc(100% - 14px); height: 2px; }
+    .step-label { font-size: .7rem; text-align: center; margin-top: 4px; }
+    .form-area { padding: 24px 20px 20px; }
+    .card-header { padding: 20px; }
+    .card-footer { padding: 14px 20px; }
+    .footer-event-title { font-size: .88rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="card-header">
+    <div class="card-header-text">
+      <h1>Trabzonspor Kulübü</h1>
+      <h2>Genel Kurul Katılım Sorgulama</h2>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="card-body">
+
+    <!-- STEPS -->
+    <aside class="steps">
+      <div class="step active" id="step-1">
+        <div class="step-dot">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="step-label">Üyelik Sorgulama</span>
+      </div>
+
+      <div class="step" id="step-2">
+        <div class="step-dot">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="step-label">Doğrulama</span>
+      </div>
+
+      <div class="step" id="step-3">
+        <div class="step-dot">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="step-label">Üyelik Bilgileri Kontrolü</span>
+      </div>
+    </aside>
+
+    <!-- FORM PANELS -->
+    <div class="form-area">
+
+      <!-- PANEL 1: TC / Üye No -->
+      <div class="step-panel visible" id="panel-1">
+        <p class="panel-title">Üyelik Sorgulama</p>
+        <p class="panel-subtitle">TC Kimlik Numaranızı veya Üye Numaranızı giriniz.</p>
+
+        <div class="input-wrap">
+          <input type="text" id="inp-membership" placeholder="TC No ya da Üye No" maxlength="20" autocomplete="off">
+        </div>
+        <span class="error-msg" id="err-membership">Lütfen TC Kimlik No veya Üye No giriniz.</span>
+
+        <button class="btn-primary" id="btn-step1">
+          <span id="btn-step1-label">Devam Et</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="btn-step1-arrow">
+            <path d="M3 8H13M9 4L13 8L9 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- PANEL 2: Doğrulama -->
+      <div class="step-panel" id="panel-2">
+        <p class="panel-title">Kimlik Doğrulama</p>
+        <p class="panel-subtitle">Hesabınıza kayıtlı bilgilerle kimliğinizi doğrulayınız.</p>
+
+        <div class="input-wrap">
+          <input type="text" id="inp-name" placeholder="Ad Soyad" autocomplete="off">
+        </div>
+        <span class="error-msg" id="err-verify">Ad Soyad bilgisi sistemdeki kayıtla eşleşmiyor.</span>
+
+        <div class="input-wrap">
+          <input type="date" id="inp-dob" placeholder="Doğum Tarihi">
+        </div>
+
+        <button class="btn-primary" id="btn-step2">
+          <span id="btn-step2-label">Doğrula</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" id="btn-step2-arrow">
+            <path d="M3 8H13M9 4L13 8L9 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="btn-ghost" id="btn-back1">← Geri Dön</button>
+      </div>
+
+      <!-- PANEL 3: Sonuç -->
+      <div class="step-panel" id="panel-3">
+        <p class="panel-title">Üyelik Bilgileri</p>
+
+        <div class="info-box show" id="info-box">
+          <div class="info-row">
+            <span class="label">Ad Soyad</span>
+            <span class="val" id="res-name">—</span>
+          </div>
+          <div class="divider"></div>
+          <div class="info-row">
+            <span class="label">Üye No</span>
+            <span class="val" id="res-no">—</span>
+          </div>
+          <div class="divider"></div>
+          <div class="info-row">
+            <span class="label">TC Kimlik No</span>
+            <span class="val" id="res-tc">—</span>
+          </div>
+          <div class="divider"></div>
+          <div class="info-row">
+            <span class="label">Üyelik Durumu</span>
+            <span class="val" id="res-status">—</span>
+          </div>
+          <div class="divider"></div>
+          <div class="info-row">
+            <span class="label">Genel Kurul Katılım Hakkı</span>
+            <span class="val" id="res-gk">—</span>
+          </div>
+          <div class="divider"></div>
+          <div class="info-row">
+            <span class="label">Oy Bölgesi</span>
+            <span class="val" id="res-region">—</span>
+          </div>
+        </div>
+
+        <button class="btn-ghost" id="btn-back2" style="margin-top:4px">← Yeni Sorgulama</button>
+      </div>
+
+    </div><!-- /form-area -->
+  </div><!-- /card-body -->
+
+  <!-- FOOTER -->
+  <div class="card-footer">
+    <div class="footer-event">
+      <div class="footer-dot"></div>
+      <span class="footer-event-title">6 ARALIK – 13 ARALIK OLAĞAN GENEL KURUL</span>
+    </div>
+    <img class="footer-logo"
+         src="https://uyeislemleri.trabzonspor.org.tr/account_asset/img/art-logo.png"
+         alt="Trabzonspor">
+  </div>
+
+</div><!-- /card -->
+
+<script>
+/* ══════════════════════════════════════════════
+   ARKA PLAN RESMİ
+   Kendi resminizin URL'ini veya base64 verisini buraya yapıştırın.
+   URL örneği   : "https://example.com/tribune.jpg"
+   Base64 örneği: "data:image/jpeg;base64,/9j/4AAQ..."
+══════════════════════════════════════════════ */
+const BG_IMAGE_URL = "https://uyeislemleri.trabzonspor.org.tr/account_asset/img/login-bg.png"; // ← BURAYA YAPIŞTIRINIZ
+
+(function applyBg() {
+  const overlay = document.querySelector('.bg-overlay');
+  if (BG_IMAGE_URL) {
+    overlay.style.backgroundImage = "url('" + BG_IMAGE_URL + "')";
+  } else {
+    overlay.style.background = 'linear-gradient(135deg, #0b1422 0%, #1a2a4a 100%)';
+  }
+})();
+
+/* ─────────────────────────────────────────────
+   DEMO VERİ TABANI  –  buraya istediğin üyeleri ekle
+   Her kayıt:
+     tc      : TC Kimlik No (string)
+     uyeNo   : Üye No (string)
+     ad      : Ad Soyad (büyük-küçük harf duyarsız karşılaştırılır)
+     dob     : Doğum tarihi  "YYYY-MM-DD"
+     durum   : Üyelik durumu (badge rengi için "active" / "passive" / "pending")
+     durumLabel: Gösterilecek etiket
+     gkHak   : Katılım hakkı ("var" / "yok" / "beklemede")
+     bolge   : Oy bölgesi
+───────────────────────────────────────────── */
+const MEMBERS = [
+  {
+    tc: "12345678901",
+    uyeNo: "TS-0001",
+    ad: "AHMET YILMAZ",
+    dob: "1985-03-15",
+    durum: "active",
+    durumLabel: "Aktif Üye",
+    gkHak: "var",
+    bolge: "Trabzon Merkez"
+  },
+  {
+    tc: "98765432109",
+    uyeNo: "TS-0002",
+    ad: "MEHMET KAYA",
+    dob: "1990-07-22",
+    durum: "passive",
+    durumLabel: "Pasif Üye",
+    gkHak: "yok",
+    bolge: "—"
+  },
+  {
+    tc: "11223344556",
+    uyeNo: "TS-0003",
+    ad: "FATMA DEMİR",
+    dob: "1978-11-05",
+    durum: "active",
+    durumLabel: "Aktif Üye",
+    gkHak: "var",
+    bolge: "İstanbul"
+  },
+  {
+    tc: "55667788990",
+    uyeNo: "TS-0004",
+    ad: "ALİ ÇELIK",
+    dob: "2000-01-30",
+    durum: "pending",
+    durumLabel: "Onay Bekliyor",
+    gkHak: "beklemede",
+    bolge: "Ankara"
+  }
+];
+
+/* ── HELPERS ── */
+const $  = id => document.getElementById(id);
+const go = (panel, stepDone, stepActive) => {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('visible'));
+  $(panel).classList.add('visible');
+
+  document.querySelectorAll('.step').forEach(s => { s.classList.remove('active','done'); });
+  if(stepDone)   stepDone.forEach(s => $(s).classList.add('done'));
+  if(stepActive) $(stepActive).classList.add('active');
+};
+
+let foundMember = null;
+
+/* ── STEP 1 ── */
+$('btn-step1').addEventListener('click', () => {
+  const val = $('inp-membership').value.trim().toUpperCase();
+  $('inp-membership').classList.remove('error');
+  $('err-membership').classList.remove('show');
+
+  if (!val) {
+    $('inp-membership').classList.add('error');
+    $('err-membership').classList.add('show');
+    return;
+  }
+
+  // simulate loading
+  const btn = $('btn-step1');
+  btn.disabled = true;
+  $('btn-step1-label').textContent = 'Aranıyor…';
+  $('btn-step1-arrow').innerHTML = '<div class="spinner"></div>';
+
+  setTimeout(() => {
+    foundMember = MEMBERS.find(m => m.tc === val || m.uyeNo.toUpperCase() === val);
+    btn.disabled = false;
+    $('btn-step1-label').textContent = 'Devam Et';
+    $('btn-step1-arrow').innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+    if (!foundMember) {
+      $('inp-membership').classList.add('error');
+      $('err-membership').textContent = 'Kayıt bulunamadı. TC No veya Üye No kontrol ediniz.';
+      $('err-membership').classList.add('show');
+      return;
+    }
+    go('panel-2', ['step-1'], 'step-2');
+  }, 900);
+});
+
+/* ── STEP 2 ── */
+$('btn-step2').addEventListener('click', () => {
+  const nameVal = $('inp-name').value.trim().toUpperCase().replace(/\s+/g,' ');
+  const dobVal  = $('inp-dob').value;
+  $('err-verify').classList.remove('show');
+  $('inp-name').classList.remove('error');
+
+  if (!nameVal || !dobVal) {
+    $('inp-name').classList.add('error');
+    $('err-verify').textContent = 'Lütfen tüm alanları doldurunuz.';
+    $('err-verify').classList.add('show');
+    return;
+  }
+
+  const btn = $('btn-step2');
+  btn.disabled = true;
+  $('btn-step2-label').textContent = 'Doğrulanıyor…';
+  $('btn-step2-arrow').innerHTML = '<div class="spinner"></div>';
+
+  setTimeout(() => {
+    btn.disabled = false;
+    $('btn-step2-label').textContent = 'Doğrula';
+    $('btn-step2-arrow').innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+    const match = foundMember.ad === nameVal && foundMember.dob === dobVal;
+    if (!match) {
+      $('inp-name').classList.add('error');
+      $('err-verify').textContent = 'Bilgiler eşleşmedi. Lütfen kontrol ediniz.';
+      $('err-verify').classList.add('show');
+      return;
+    }
+
+    // fill result
+    $('res-name').textContent   = foundMember.ad;
+    $('res-no').textContent     = foundMember.uyeNo;
+    $('res-tc').textContent     = maskTC(foundMember.tc);
+
+    const statusColors = { active: 'green', passive: 'red', pending: 'orange' };
+    $('res-status').innerHTML   = `<span class="badge ${statusColors[foundMember.durum]}">${foundMember.durumLabel}</span>`;
+
+    const gkColors = { var: 'green', yok: 'red', beklemede: 'orange' };
+    const gkLabels = { var: '✔ Katılım Hakkı Var', yok: '✘ Katılım Hakkı Yok', beklemede: '⏳ Değerlendiriliyor' };
+    $('res-gk').innerHTML       = `<span class="badge ${gkColors[foundMember.gkHak]}">${gkLabels[foundMember.gkHak]}</span>`;
+    $('res-region').textContent = foundMember.bolge;
+
+    go('panel-3', ['step-1','step-2'], 'step-3');
+  }, 800);
+});
+
+/* ── BACK BUTTONS ── */
+$('btn-back1').addEventListener('click', () => {
+  go('panel-1', [], 'step-1');
+  $('inp-name').value = '';
+  $('inp-dob').value  = '';
+  $('err-verify').classList.remove('show');
+});
+$('btn-back2').addEventListener('click', () => {
+  foundMember = null;
+  $('inp-membership').value = '';
+  $('inp-name').value = '';
+  $('inp-dob').value  = '';
+  $('err-membership').classList.remove('show');
+  $('inp-membership').classList.remove('error');
+  go('panel-1', [], 'step-1');
+});
+
+/* ── TC maskeleme ── */
+function maskTC(tc) {
+  if (!tc || tc.length < 5) return tc;
+  return tc.slice(0, 3) + '*'.repeat(tc.length - 5) + tc.slice(-2);
+}
+
+/* enter key support */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  if ($('panel-1').classList.contains('visible')) $('btn-step1').click();
+  else if ($('panel-2').classList.contains('visible')) $('btn-step2').click();
+});
+</script>
+</body>
+</html>

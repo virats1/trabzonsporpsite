@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Giriş Yap – Trabzonspor Kulübü Resmi Roleplay Sitesi</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ================================================================
+   KULLANICI VERİTABANI — burayı düzenleyerek üye ekleyebilirsiniz
+   ================================================================ */
+/*
+  JS tarafındaki const bloklarına bakın (sayfanın altında):
+  WEB_USERS ve GENEL_KURUL_USERS
+*/
+
+:root {
+  --bordo: #6b1a2a;
+  --bordo-dark: #4a0e1c;
+  --mavi: #1a5fa8;
+  --mavi-dark: #0d4580;
+  --altin: #c9a227;
+  --altin-dark: #a8841a;
+  --beyaz: #ffffff;
+  --gri: #f5f5f5;
+  --gri-2: #e8e8e8;
+  --gri-yazi: #6b6b6b;
+  --koyu: #1a1a1a;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background: #111;
+}
+
+/* ── SOL PANEL ── */
+.sol-panel {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ana-sayfa-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: background 0.2s;
+}
+.ana-sayfa-btn:hover { background: rgba(255,255,255,0.25); }
+.ana-sayfa-btn svg { width:16px; height:16px; }
+
+/* Sol panel arka plan resmi */
+.sol-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://cdn.trabzonspor.org.tr/c5f5263d566b4a39853566fb5132868d.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ── SAĞ PANEL (FORM) ── */
+.sag-panel {
+  width: 40%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  overflow-y: auto;
+}
+
+.form-kutu {
+  width: 100%;
+  max-width: 480px;
+}
+
+.form-baslik {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--koyu);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.form-baslik-cubuk {
+  display: inline-block;
+  width: 5px;
+  height: 34px;
+  background: var(--altin);
+  border-radius: 3px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+/* Tab */
+.tab-bar {
+  display: flex;
+  border-bottom: 2px solid var(--gri-2);
+  margin-bottom: 28px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gri-yazi);
+  letter-spacing: 0.3px;
+  position: relative;
+  transition: color 0.2s;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 2px;
+  background: var(--altin);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.tab-btn.aktif { color: var(--koyu); }
+.tab-btn.aktif::after { transform: scaleX(1); }
+
+/* Form panelleri */
+.form-panel { display: none; }
+.form-panel.aktif { display: block; }
+
+/* Input */
+.input-grup {
+  margin-bottom: 16px;
+  position: relative;
+}
+.input-alan {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1.5px solid var(--gri-2);
+  border-radius: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: var(--koyu);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+.input-alan::placeholder { color: #aaa; }
+.input-alan:focus {
+  border-color: var(--mavi);
+  box-shadow: 0 0 0 3px rgba(26,95,168,0.1);
+  background: #fff;
+}
+.input-alan.hata {
+  border-color: #e53935;
+  box-shadow: 0 0 0 3px rgba(229,57,53,0.1);
+}
+
+.goz-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.goz-btn:hover { color: var(--mavi); }
+.goz-btn svg { width: 20px; height: 20px; }
+
+/* Alt satır */
+.alt-satir {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.checkbox-etiket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--gri-yazi);
+  user-select: none;
+}
+.checkbox-etiket input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--mavi);
+  cursor: pointer;
+}
+.sifre-unut {
+  font-size: 13px;
+  color: var(--mavi);
+  text-decoration: none;
+  font-weight: 600;
+}
+.sifre-unut:hover { text-decoration: underline; }
+
+/* reCAPTCHA mock */
+.recaptcha-mock {
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+}
+.recaptcha-sol {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #333;
+}
+.recaptcha-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.recaptcha-checkbox.checked {
+  border-color: #4caf50;
+  background: #4caf50;
+}
+.recaptcha-checkbox.checked::after {
+  content: '✓';
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}
+.recaptcha-sag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.recaptcha-logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #4285F4, #34A853, #FBBC04, #EA4335);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recaptcha-logo svg { width: 20px; height: 20px; }
+.recaptcha-metin {
+  font-size: 9px;
+  color: #666;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Hata mesajı */
+.hata-mesaj {
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #c62828;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: none;
+}
+.hata-mesaj.goster { display: block; }
+
+/* Başarı mesajı */
+.basari-mesaj {
+  background: #f1f8e9;
+  border: 1px solid #c5e1a5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #2e7d32;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: none;
+}
+.basari-mesaj.goster { display: block; }
+
+/* Giriş butonu */
+.giris-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--mavi);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(26,95,168,0.3);
+}
+.giris-btn:hover { background: var(--mavi-dark); box-shadow: 0 6px 20px rgba(26,95,168,0.4); }
+.giris-btn:active { transform: scale(0.99); }
+.giris-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Ayraç */
+.ayrac {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #ccc;
+  font-size: 12px;
+}
+.ayrac-cizgi { flex: 1; height: 1px; background: var(--gri-2); }
+
+/* Kayıt Ol */
+.kayit-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  color: var(--mavi);
+  border: 1.5px solid var(--mavi);
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.kayit-btn:hover { background: var(--mavi); color: #fff; }
+
+.hesap-yok {
+  text-align: center;
+  font-size: 13px;
+  color: var(--gri-yazi);
+  margin-bottom: 12px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sol-panel { display: none; }
+  .sag-panel { width: 100%; padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     SOL PANEL — SLİDER
+════════════════════════════════════════════ -->
+<div class="sol-panel">
+
+  <a href="../index.html" class="ana-sayfa-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+    Ana Sayfaya Dön
+  </a>
+
+  <div class="sol-bg"></div>
+
+</div><!-- /sol-panel -->
+
+
+<!-- ════════════════════════════════════════════
+     SAĞ PANEL — FORM
+════════════════════════════════════════════ -->
+<div class="sag-panel">
+  <div class="form-kutu">
+
+    <div class="form-baslik">
+      <span class="form-baslik-cubuk"></span>
+      Giriş Yap
+    </div>
+
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+      <button class="tab-btn aktif" data-panel="web" onclick="tabDegistir('web', this)">Web Üyeliği</button>
+      <button class="tab-btn" data-panel="genel" onclick="tabDegistir('genel', this)">Genel Kurul Üyeliği</button>
+    </div>
+
+    <!-- ── WEB ÜYELİĞİ PANELI ── -->
+    <div class="form-panel aktif" id="panel-web">
+      <div class="hata-mesaj" id="web-hata">E-posta veya şifre hatalı. Lütfen tekrar deneyin.</div>
+      <div class="basari-mesaj" id="web-basari">Giriş başarılı! Yönlendiriliyorsunuz...</div>
+
+      <div class="input-grup">
+        <input type="email" class="input-alan" id="web-email" placeholder="E-posta Adresi" autocomplete="email"/>
+      </div>
+      <div class="input-grup">
+        <input type="password" class="input-alan" id="web-sifre" placeholder="Şifre" autocomplete="current-password"/>
+        <button class="goz-btn" type="button" onclick="sifreGoster('web-sifre', this)" tabindex="-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+
+      <div class="alt-satir">
+        <label class="checkbox-etiket">
+          <input type="checkbox" id="web-hatirla"/> Beni Hatırla
+        </label>
+        <a href="#" class="sifre-unut">Şifremi Unuttum</a>
+      </div>
+
+      <!-- reCAPTCHA mock -->
+      <div class="recaptcha-mock">
+        <div class="recaptcha-sol">
+          <div class="recaptcha-checkbox" id="web-captcha" onclick="captchaToggle('web-captcha')"></div>
+          <span>Ben robot değilim</span>
+        </div>
+        <div class="recaptcha-sag">
+          <div class="recaptcha-logo">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="recaptcha-metin">reCAPTCHA<br/>Gizlilik · Koşullar</div>
+        </div>
+      </div>
+
+      <button class="giris-btn" onclick="webGirisYap()">Giriş Yap</button>
+
+      <div class="ayrac"><span class="ayrac-cizgi"></span><span>veya</span><span class="ayrac-cizgi"></span></div>
+      <p class="hesap-yok">Hesabınız yok mu?</p>
+      <button class="kayit-btn">Kayıt Ol</button>
+    </div>
+
+    <!-- ── GENEL KURUL PANELİ ── -->
+    <div class="form-panel" id="panel-genel">
+      <div class="hata-mesaj" id="genel-hata">TC Kimlik / Üye Numarası veya şifre hatalı.</div>
+      <div class="basari-mesaj" id="genel-basari">Giriş başarılı! Yönlendiriliyorsunuz...</div>
+
+      <div class="input-grup">
+        <input type="text" class="input-alan" id="genel-tc" placeholder="TC Kimlik Numarası ya da Üye Numarası" autocomplete="username"/>
+      </div>
+      <div class="input-grup">
+        <input type="password" class="input-alan" id="genel-sifre" placeholder="Şifre" autocomplete="current-password"/>
+        <button class="goz-btn" type="button" onclick="sifreGoster('genel-sifre', this)" tabindex="-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+
+      <div class="alt-satir">
+        <label class="checkbox-etiket">
+          <input type="checkbox" id="genel-hatirla"/> Beni Hatırla
+        </label>
+        <a href="#" class="sifre-unut">Şifremi Unuttum</a>
+      </div>
+
+      <!-- reCAPTCHA mock -->
+      <div class="recaptcha-mock">
+        <div class="recaptcha-sol">
+          <div class="recaptcha-checkbox" id="genel-captcha" onclick="captchaToggle('genel-captcha')"></div>
+          <span>Ben robot değilim</span>
+        </div>
+        <div class="recaptcha-sag">
+          <div class="recaptcha-logo">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="recaptcha-metin">reCAPTCHA<br/>Gizlilik · Koşullar</div>
+        </div>
+      </div>
+
+      <button class="giris-btn" onclick="genelGirisYap()">Giriş Yap</button>
+
+      <div class="ayrac"><span class="ayrac-cizgi"></span><span>veya</span><span class="ayrac-cizgi"></span></div>
+      <p class="hesap-yok">Hesabınız yok mu?</p>
+      <button class="kayit-btn">Kayıt Ol</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   ╔══════════════════════════════════════════════════════════════╗
+   ║         KULLANICI VERİTABANI — BURADAN DÜZENLEYİN          ║
+   ╚══════════════════════════════════════════════════════════════╝
+
+   WEB_USERS: Web Üyeliği için kullanıcılar
+   Format: { email: "...", sifre: "...", ad: "..." }
+
+   GENEL_KURUL_USERS: Genel Kurul Üyeliği için kullanıcılar
+   Format: { tc_veya_uye_no: "...", sifre: "...", ad: "..." }
+   tc_veya_uye_no → TC Kimlik No (11 hane) veya Üye No girin
+================================================================ */
+
+const WEB_USERS = [
+  { email: "admin@trabzonspor.org",   sifre: "Admin2024!",   ad: "Admin Kullanıcı"   },
+  { email: "test@trabzonspor.org",    sifre: "Test123!",     ad: "Test Kullanıcı"    },
+  { email: "uye@trabzonspor.org",     sifre: "Uye2024!",     ad: "Web Üye"           },
+  // Buraya yeni web üyesi ekleyin:
+  // { email: "yeni@trabzonspor.org", sifre: "Sifre123!", ad: "Yeni Üye" },
+];
+
+const GENEL_KURUL_USERS = [
+  { tc_veya_uye_no: "12345678901",  sifre: "Genel2024!", ad: "Genel Kurul Üye 1" },
+  { tc_veya_uye_no: "98765432100",  sifre: "Kurul123!",  ad: "Genel Kurul Üye 2" },
+  { tc_veya_uye_no: "GK-1001",      sifre: "Uye1001!",   ad: "Üye Numaralı Kişi" },
+  // Buraya yeni genel kurul üyesi ekleyin:
+  // { tc_veya_uye_no: "11111111111", sifre: "Sifre!", ad: "Yeni Üye" },
+];
+
+/* ================================================================
+   ════════ KOD ALANI — AŞAĞISINI DEĞİŞTİRMEYİN ════════
+================================================================ */
+
+// Tab
+function tabDegistir(panel, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('aktif'); });
+  document.querySelectorAll('.form-panel').forEach(function(p) { p.classList.remove('aktif'); });
+  btn.classList.add('aktif');
+  document.getElementById('panel-' + panel).classList.add('aktif');
+  mesajGizle('web'); mesajGizle('genel');
+}
+
+// Şifre göster/gizle
+function sifreGoster(inputId, btn) {
+  var input = document.getElementById(inputId);
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+  } else {
+    input.type = 'password';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+  }
+}
+
+// reCAPTCHA mock
+function captchaToggle(id) {
+  document.getElementById(id).classList.toggle('checked');
+}
+
+// Mesaj yardımcıları
+function mesajGoster(tip, tur) {
+  document.getElementById(tur + '-' + tip).classList.add('goster');
+}
+function mesajGizle(tur) {
+  ['hata','basari'].forEach(function(t) {
+    var el = document.getElementById(tur + '-' + t);
+    if (el) el.classList.remove('goster');
+  });
+}
+
+// ── WEB GİRİŞ ──
+function webGirisYap() {
+  mesajGizle('web');
+  var email  = document.getElementById('web-email').value.trim().toLowerCase();
+  var sifre  = document.getElementById('web-sifre').value;
+  var captcha = document.getElementById('web-captcha').classList.contains('checked');
+
+  if (!email || !sifre) {
+    document.getElementById('web-hata').textContent = 'Lütfen e-posta ve şifrenizi girin.';
+    mesajGoster('hata', 'web'); return;
+  }
+  if (!captcha) {
+    document.getElementById('web-hata').textContent = '"Ben robot değilim" kutusunu işaretleyin.';
+    mesajGoster('hata', 'web'); return;
+  }
+
+  var kullanici = WEB_USERS.find(function(u) {
+    return u.email.toLowerCase() === email && u.sifre === sifre;
+  });
+
+  if (kullanici) {
+    mesajGoster('basari', 'web');
+    document.getElementById('web-basari').textContent = 'Hoş geldiniz, ' + kullanici.ad + '! Yönlendiriliyorsunuz...';
+    setTimeout(function() { window.location.href = 'index.html'; }, 1800);
+  } else {
+    document.getElementById('web-hata').textContent = 'E-posta veya şifre hatalı. Lütfen tekrar deneyin.';
+    mesajGoster('hata', 'web');
+    document.getElementById('web-email').classList.add('hata');
+    document.getElementById('web-sifre').classList.add('hata');
+    setTimeout(function() {
+      document.getElementById('web-email').classList.remove('hata');
+      document.getElementById('web-sifre').classList.remove('hata');
+    }, 2000);
+  }
+}
+
+// ── GENEL KURUL GİRİŞ ──
+function genelGirisYap() {
+  mesajGizle('genel');
+  var tc     = document.getElementById('genel-tc').value.trim();
+  var sifre  = document.getElementById('genel-sifre').value;
+  var captcha = document.getElementById('genel-captcha').classList.contains('checked');
+
+  if (!tc || !sifre) {
+    document.getElementById('genel-hata').textContent = 'Lütfen TC/Üye No ve şifrenizi girin.';
+    mesajGoster('hata', 'genel'); return;
+  }
+  if (!captcha) {
+    document.getElementById('genel-hata').textContent = '"Ben robot değilim" kutusunu işaretleyin.';
+    mesajGoster('hata', 'genel'); return;
+  }
+
+  var kullanici = GENEL_KURUL_USERS.find(function(u) {
+    return u.tc_veya_uye_no === tc && u.sifre === sifre;
+  });
+
+  if (kullanici) {
+    mesajGoster('basari', 'genel');
+    document.getElementById('genel-basari').textContent = 'Hoş geldiniz, ' + kullanici.ad + '! Yönlendiriliyorsunuz...';
+    setTimeout(function() { window.location.href = 'index.html'; }, 1800);
+  } else {
+    document.getElementById('genel-hata').textContent = 'TC Kimlik / Üye Numarası veya şifre hatalı.';
+    mesajGoster('hata', 'genel');
+    document.getElementById('genel-tc').classList.add('hata');
+    document.getElementById('genel-sifre').classList.add('hata');
+    setTimeout(function() {
+      document.getElementById('genel-tc').classList.remove('hata');
+      document.getElementById('genel-sifre').classList.remove('hata');
+    }, 2000);
+  }
+}
+
+// Enter tuşu desteği
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('panel-web').classList.contains('aktif')) webGirisYap();
+  else genelGirisYap();
+});
+</script>
+</body>
+</html>

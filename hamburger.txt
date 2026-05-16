@@ -1,0 +1,80 @@
+  <div class="thin-panel" id="sidePanel">
+        <div class="panel-content">
+            <a href="https://trabzonspor.com.tr/?srsltid=AfmBOoqRxib4O-UoXlzSCon41Ppy6BhHWGG9CNU4xbo3ZjHNLvjRBKUz" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</span>
+            </a>
+            <a href="../online-islemler/mustafa-samil-ekinci-muzesi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ŞAMİL EKİNCİ MÜZESİ" data-en="SAMIL EKINCI MUSEUM">ŞAMİL EKİNCİ MÜZESİ</span>
+            </a>
+            <a href="../online-islemler/giris-yap.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</span>
+            </a>
+            <a href="../online-islemler/localarımız.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="white">
+    <path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</span>
+            </a>
+            <a href="../online-islemler/trabzonspor-dergisi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="DERGİ" data-en="MAGAZINE">DERGİ</span>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="thin-panel" id="sidePanel">
+        <div class="panel-content">
+            <a href="https://trabzonspor.com.tr/?srsltid=AfmBOoqRxib4O-UoXlzSCon41Ppy6BhHWGG9CNU4xbo3ZjHNLvjRBKUz" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="TS CLUB" data-en="TS CLUB">TS CLUB</span>
+            </a>
+            <a href="online-islemler/mustafa-samil-ekinci-muzesi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 7v2h22V7L12 2zm10 19v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9h-2v9h2zm-4 0v-9H8v9h2zm-4 0v-9H4v9h2zM2 22h20v-2H2v2z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ŞAMİL EKİNCİ MÜZESİ" data-en="SAMIL EKINCI MUSEUM">ŞAMİL EKİNCİ MÜZESİ</span>
+            </a>
+            <a href="online-islemler/giris-yap.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="ÜYELİK İŞLEMLERİ" data-en="MEMBERSHIP">ÜYELİK İŞLEMLERİ</span>
+            </a>
+            <a href="online-islemler/localarımız.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="white">
+    <path d="M19,10V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3v7a4,4,0,0,0-4,4v5a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V14A4,4,0,0,0,19,10ZM7,4H17v6H15V8H9v2H7ZM3,15H21v4H3Zm16-3a2,2,0,0,1,2,2H3a2,2,0,0,1,2-2Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="LOCALARIMIZ" data-en="LODGES">LOCALARIMIZ</span>
+            </a>
+            <a href="online-islemler/trabzonspor-dergisi.html" class="quick-item">
+                <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M20 5L20 19L4 19L4 5L20 5M20 3L4 3C2.89 3 2 3.89 2 5L2 19C2 20.11 2.89 21 4 21L20 21C21.11 21 22 20.11 22 19L22 5C22 3.89 21.11 3 20 3M18 15L6 15L6 17L18 17L18 15M10 7L6 7L6 13L10 13L10 7M18 7L12 7L12 9L18 9L18 7M18 11L12 11L12 13L18 13L18 11Z"/></svg></div>
+                <div class="quick-divider"></div>
+                <span class="quick-text ln" data-tr="DERGİ" data-en="MAGAZINE">DERGİ</span>
+            </a>
+        </div>
+    </div>
