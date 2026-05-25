@@ -1067,7 +1067,7 @@
 
         .news-card-thumb {
             width: 100%;
-            height: 190px;
+            height: 250px;
             object-fit: cover;
             display: block;
         }
@@ -2055,29 +2055,76 @@ setTimeout(hideLoader, 1000);
 
         /* ============================================================
            == HABER LİSTESİ ==
-           Yeni haber eklemek için en alta yeni bir satır ekleyin.
-           Başka hiçbir yere dokunmayın — en son eklenen otomatik ilk sıraya gelir.
-           image: null → placeholder, string URL → resim.
-        ============================================================ */
-
-        /* ============================================================
-           == HABER LİSTESİ ==
            Yeni haber eklemek için en alta HABER({...}) satırı ekleyin.
            Başka hiçbir yere dokunmayın — en son eklenen otomatik ilk sıraya gelir.
-           image: null → placeholder, string URL → resim.
+
+           ALANLAR:
+             id       : adres çubuğunda görünecek hash (isteğe bağlı)
+                        Örnek → id: 'besiktas-kamp-kadrosu'
+                                 Açılınca URL: haberler.html#besiktas-kamp-kadrosu
+                        Boş bırakılırsa otomatik olarak #haber-0, #haber-1 ... atanır.
+                        Türkçe karakter ve boşluk kullanmayın, sadece harf-rakam-tire.
+             category : kategori slug'ı ('futbol-a-takim', 'kadin-futbol', 'akademi' vb.)
+             team     : takım slug'ı ('trabzonspor' vb.)
+             date     : tarih ve saat ('08.05.2026 | 14:28')
+             title    : haber başlığı
+             desc     : kart üzerinde görünen kısa özet (1-2 cümle)
+             image    : null → placeholder | 'https://...' → resim URL
+             content  : haber içeriği — her eleman ayrı bir paragraf olur:
+                        content: [
+                            'Birinci paragraf buraya.',
+                            'İkinci paragraf buraya.',
+                            'Üçüncü paragraf buraya.',
+                        ]
         ============================================================ */
 
         const HABERLER = [];
         function HABER(h) { HABERLER.unshift(h); }
 
         HABER({ 
+            id: 'trabzonspor-2-1-fenerbahce-05-04-2026',
             category: 'futbol-a-takim', 
             team: 'trabzonspor', 
-            date: '08.05.2026 | 14:28', 
-            title: 'Beşiktaş maçı kamp kadromuz belli oldu',                   
-            desc: 'Trendyol Süper Lig\'in 33. haftasında Beşiktaş ile oynayacağımız maç için kamp kadromuz teknik heyet tarafından açıklandı.',                                  
-            href: '#', 
-            image: null });
+            date: '05.04.2026 | 23:02', 
+            title: 'Trabzonspor 2-1 Fenerbahçe',                   
+            desc: 'Trendyol Süper Lig\'in 28. haftasında sahamızda Fenerbahçe\'yi 2-1 mağlup ettik.',                                  
+            image: "assets/img/44fe753b92e9433391771bb50cf6f59a.jpeg",
+            content: [
+                'Takımımız, Trendyol Süper Lig’in 28. haftasında Beşiktaş’ı konuk etti.',
+                'Papara Park’ta oynanan karşılaşma 2-1’lik üstünlüğümüzle sona erdi.',
+                'Takımımıza galibiyet getiren golleri; 3.dakikada Paul Onuachu, 90+5.dakikada Ernest Muçi kaydetti.',
+            ]
+        });
+
+        HABER({ 
+            id: 'futbolcumuz-wagner-pinanin-saglik-durumuyla-ilgili-aciklama-06-04-2026',
+            category: 'futbol-a-takim', 
+            team: 'trabzonspor', 
+            date: '06.04.2026 | 16:30', 
+            title: 'Futbolcumuz Wagner Pina\'nın sağlık durumuyla ilgili açıklama',                   
+            desc: 'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, futbolcumuz Wagner Pina’nın sağlık durumuna ilişkin açıklamada bulundu.',                                  
+            image: "assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg",
+            content: [
+                'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, futbolcumuz Wagner Pina’nın sağlık durumuna ilişkin açıklamada bulundu.',
+                'Beşir, <em>“Fenerbahçe maçında sağ bacağına gelen darbe sonucunda ağrı hisseden oyuncumuz Wagner Pina\'nın yapılan muayene ve tıbbi görüntülemeleri sonucunda, sağ arka adale kasında 1. derece zorlanma ve kısmi kanama tespit edilmiştir. Oyuncumuzun tedavisine sağlık ekibimizce başlanmıştır.”</em> ifadelerini kullandı.',
+            ]
+        });
+
+        HABER({
+            id: 'goztepe-0-2-trabzonspor-12-04-2026',
+            category: 'futbol-a-takim',
+            team: 'trabzonspor',
+            date: '12.04.2026 | 19:12',
+            title: 'Göztepe 0-2 Trabzonspor',
+            desc: 'Trendyol Süper Lig\'in 29. haftasında deplasmanda Göztepe\'yi 0-2 mağlup ettik.',
+            image: 'assets/img/trabzonspor_7ae4a1ffc5d44f93948cd8a5fecfa1f7.JPG',
+            content: [
+                'Takımımız Trendyol Süper Lig’in 29. haftasında deplasmanda Göztepe ile karşı karşıya geldi.',
+                'ISONEM Park’ta oynanan karşılaşma 2-0’lık üstünlüğümüzle tamamlandı.',
+                'Takımımıza galibiyeti getiren golleri; 51.dakikada Felipe Augusto, 69.dakikada Chibuike Nwaiwu kaydetti.',
+                'Trendyol Süper Lig’in 30. haftasında Papara Park’ta Zecorner Kayserispor’u konuk edeceğiz.'
+            ]
+        });
 
         /* ↑ YENİ HABER: buraya yeni bir HABER({...}); satırı ekleyin — başka hiçbir yere dokunmayın */
 
@@ -2379,9 +2426,9 @@ setTimeout(hideLoader, 1000);
             if (haber.desc) {
                 subtitleEl.textContent = haber.desc;
             } else {
-                // İçerik varsa ilk cümlesini al, yoksa varsayılan
+                // İçerik varsa ilk paragrafı al, yoksa varsayılan
                 const firstPara = haber.content
-                    ? haber.content.split('\n')[0]
+                    ? (Array.isArray(haber.content) ? haber.content[0] : haber.content.split('\n')[0])
                     : `${getCategoryLabel(haber.category)} kategorisindeki bu haberin detayları aşağıda yer almaktadır.`;
                 subtitleEl.textContent = firstPara;
             }
@@ -2389,12 +2436,14 @@ setTimeout(hideLoader, 1000);
             // Ana içerik
             const main = document.getElementById('newsModalMain');
 
-            // Haber metni: haber.content varsa göster, yoksa varsayılan üret
-            const textContent = haber.content
-                ? haber.content.split('\n').map(p => `<p>${p}</p>`).join('')
-                : `<p>${haber.title.charAt(0).toUpperCase() + haber.title.slice(1)} konusu ile ilgili detaylı içerik burada yer alacaktır.</p>
-                   <p>Başarılı geçen operasyonun ardından sporcumuzun rehabilitasyon sürecine başlanmıştır.</p>
-                   <p>En kısa sürede sağlığına kavuşarak sahalara dönmesini temenni ediyoruz.</p>`;
+            // Haber metni: haber.content (dizi) varsa her elemanı ayrı <p> yap
+            // Geriye dönük uyumluluk: string gelirse \n'e göre böl
+            function icerikHTML(c) {
+                if (!c) return '<p>Haber içeriği henüz eklenmemiştir.</p>';
+                if (Array.isArray(c)) return c.filter(Boolean).map(p => `<p>${p}</p>`).join('');
+                return String(c).split('\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
+            }
+            const textContent = icerikHTML(haber.content);
 
             main.innerHTML = `
                 <div class="news-modal-img-wrap">

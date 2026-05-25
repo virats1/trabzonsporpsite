@@ -2507,8 +2507,6 @@
                 <span class="flt-arrow">▼</span>
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">2025/2026</div>
-                    <div class="flt-item" onclick="fltSelect(this)">2024/2025</div>
-                    <div class="flt-item" onclick="fltSelect(this)">2023/2024</div>
                 </div>
             </div>
             <!-- Branş -->
@@ -2518,7 +2516,6 @@
                 <span class="flt-arrow">▼</span>
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">Futbol</div>
-                    <div class="flt-item" onclick="fltSelect(this)">Basketbol</div>
                 </div>
             </div>
             <!-- Turnuva -->
@@ -2529,7 +2526,6 @@
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">Trendyol Süper Lig</div>
                     <div class="flt-item" onclick="fltSelect(this)">Ziraat Türkiye Kupası</div>
-                    <div class="flt-item" onclick="fltSelect(this)">UEFA Konferans Ligi</div>
                 </div>
             </div>
             <!-- Takım (Disabled) -->
@@ -2885,19 +2881,7 @@ function turnuvaLogoAl(adi) { return turnuvaLogolari[adi]      || ""; }
 
 
 const fikstur = [
-    {
-        hafta: "Hafta 28",
-        tarih: "09 Mayıs 2026",
-        saat: "20:00",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        evSahibi: { isim: "Trabzonspor"    },
-        misafir:  { isim: "Fenerbahçe" },
-        geriSayim: false,
-        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
-        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 11 }
-    },
-    {
+   {
         hafta: "Hafta 29",
         tarih: "17 Mayıs 2026",
         saat: null,
@@ -2905,7 +2889,9 @@ const fikstur = [
         stadyum: "ISONEM Park",
         evSahibi: { isim: "Göztepe" },
         misafir:  { isim: "Trabzonspor"  },
-        geriSayim: false
+        geriSayim: false,
+        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
+        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 11 }
     },
     {
         hafta: "Hafta 30",
@@ -2915,7 +2901,9 @@ const fikstur = [
         stadyum: "Papara Park",
         evSahibi: { isim: "Trabzonspor" },
         misafir:  { isim: "Zecorner Kayserispor"  },
-        geriSayim: false
+        geriSayim: false,
+        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
+        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 11 }
     },
     {
         hafta: "Hafta 31",
@@ -2956,44 +2944,6 @@ const fikstur = [
         evSahibi: { isim: "Trabzonspor" },
         misafir:  { isim: "Galatasaray"  },
         geriSayim: false
-    }
-];
-
-const gecmisMaclar = [
-    {
-        hafta: "Hafta 32", tarih: "27 Nisan 2026",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        ev:  { isim: "Trabzonspor", gol: 1 },
-        mis: { isim: "Göztepe",     gol: 1 }
-    },
-    {
-        hafta: "Hafta 31", tarih: "20 Nisan 2026",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Medaş Konya Büyükşehir Stadyumu",
-        ev:  { isim: "Konyaspor",   gol: 2 },
-        mis: { isim: "Trabzonspor", gol: 1 }
-    },
-    {
-        hafta: "Hafta 30", tarih: "13 Nisan 2026",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        ev:  { isim: "Trabzonspor", gol: 1 },
-        mis: { isim: "Başakşehir",  gol: 1 }
-    },
-    {
-        hafta: "Hafta 29", tarih: "06 Nisan 2026",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "GAIN Park Stadyumu",
-        ev:  { isim: "Alanyaspor",  gol: 1 },
-        mis: { isim: "Trabzonspor", gol: 1 }
-    },
-    {
-        hafta: "Hafta 28", tarih: "30 Mart 2026",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        ev:  { isim: "Trabzonspor", gol: 2 },
-        mis: { isim: "Galatasaray", gol: 1 }
     }
 ];
 

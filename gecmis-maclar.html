@@ -2042,8 +2042,6 @@
                 <span class="flt-arrow">▼</span>
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">2025/2026</div>
-                    <div class="flt-item" onclick="fltSelect(this)">2024/2025</div>
-                    <div class="flt-item" onclick="fltSelect(this)">2023/2024</div>
                 </div>
             </div>
             <!-- Branş -->
@@ -2053,7 +2051,6 @@
                 <span class="flt-arrow">▼</span>
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">Futbol</div>
-                    <div class="flt-item" onclick="fltSelect(this)">Basketbol</div>
                 </div>
             </div>
             <!-- Turnuva -->
@@ -2064,7 +2061,6 @@
                 <div class="flt-dropdown">
                     <div class="flt-item sel" onclick="fltSelect(this)">Trendyol Süper Lig</div>
                     <div class="flt-item" onclick="fltSelect(this)">Ziraat Türkiye Kupası</div>
-                    <div class="flt-item" onclick="fltSelect(this)">UEFA Konferans Ligi</div>
                 </div>
             </div>
             <!-- Takım (Disabled) -->
@@ -2182,30 +2178,19 @@ function turnuvaLogoAl(adi) { return turnuvaLogolari[adi]      || ""; }
 //  ► logo / turnuvaLogo alanlarını YAZMA — otomatik gelir!
 // ================================================================
 
-const fikstur = [
-    {
-        hafta: "Hafta 33",
-        tarih: "09 Mayıs 2026",
-        saat: "20:00",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Tüpraş Stadyumu",
-        evSahibi: { isim: "Beşiktaş"    },
-        misafir:  { isim: "Trabzonspor" },
-        geriSayim: true
-    },
-    {
-        hafta: "Hafta 34",
-        tarih: "17 Mayıs 2026",
-        saat: null,
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        evSahibi: { isim: "Trabzonspor" },
-        misafir:  { isim: "Ankaragücü"  },
-        geriSayim: false
-    }
-];
+
 
 const gecmisMaclar = [
+    {
+        hafta: "Hafta 28", tarih: "5 Nisan 2026",
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "Papara Park",
+        ev: { isim: "Trabzonspor", gol: 2 },
+        mis: { isim: "Fenerbahçe", gol: 1 }
+    },    
+
+
+
     {
         hafta: "Hafta 27", tarih: "18 Mart 2026",
         turnuva: "Trendyol Süper Lig",

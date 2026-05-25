@@ -790,7 +790,7 @@
         .hero-slider-wrapper {
             position: relative;
             width: 100%;
-            margin-top: 90px;
+            margin-top: 66px;
             background: #0a0a0a;
             display: flex;
             align-items: center;
@@ -949,11 +949,11 @@
         }
 
         .hero-slide-title {
-            font-family: 'Anton', sans-serif;
+            font-family: 'Oswald', sans-serif;
             font-size: clamp(26px, 3.5vw, 52px);
-            line-height: 1.1;
+            line-height: 1.0;
             color: #ffffff;
-            text-transform: uppercase;
+            text-transform: auto;
             letter-spacing: 1px;
             margin-bottom: 14px;
             text-shadow: 0 2px 20px rgba(0,0,0,0.5);
@@ -2388,26 +2388,25 @@
        ============================================================ */
     const HERO_SLIDES = [
         {
-            image: 'https://i.imgur.com/zJDF5Sp.png',
-            href:  'haberler.html?cat=futbol-a-takim',
-            label: 'Ziraat Türkiye Kupası',
-            title: 'Natura Dünyası Gençlerbirliği Maçının Hakemi Belli Oldu',
-            desc:  'Ziraat Türkiye Kupası Yarı Finalinde, 13 Mayıs Çarşamba günü Natura Dünyası Gençlerbirliği ile oynayacağımız karşılaşmanın hakemi belli oldu.'
+            image: 'assets/img/trabzonspor_7ae4a1ffc5d44f93948cd8a5fecfa1f7.JPG',
+            href:  'haberler.html?cat=all#goztepe-0-2-trabzonspor-12-04-2026',
+            title: 'Göztepe 0-2 Trabzonspor',
+            desc:  'Trendyol Süper Lig\'in 29. haftasında deplasmanda Göztepe\'yi 0-2 mağlup ettik.'
         },
+    
         {
-            image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600&q=80',
-            href:  'haberler.html?cat=futbol-a-takim',
-            label: 'Hazırlık',
-            title: 'Natura Dünyası Gençlerbirliği Maçı Hazırlıklarımız Devam Ediyor',
-            desc:  'Teknik ekibimiz ve oyuncularımız, kritik kupa maçı öncesinde yoğun tempo çalışmalarını sürdürüyor.'
+            image: 'assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg',
+            href:  'haberler.html?cat=all#futbolcumuz-wagner-pinanin-saglik-durumuyla-ilgili-aciklama-06-04-2026',
+            title: 'Futbolcumuz Wagner Pina\'nın sağlık durumuyla ilgili açıklama',
+            desc:  'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, futbolcumuz Wagner Pina’nın sağlık durumuna ilişkin açıklamada bulundu.'
         },
+    
         {
-            image: 'https://images.unsplash.com/photo-1551280857-2b9bbe52acf4?w=1600&q=80',
-            href:  'mac-merkezi.html',
-            label: 'Bilet',
-            title: 'Natura Dünyası Gençlerbirliği Maçı Biletleri Satışa Çıktı',
-            desc:  'VIP Platinum\'dan Misafir Tribünü\'ne kadar tüm kategorilerde biletlerinizi hemen satın alabilirsiniz.'
-        }
+            image: 'assets/img/44fe753b92e9433391771bb50cf6f59a.jpeg',
+            href:  'haberler.html?cat=all#trabzonspor-2-1-fenerbahce-05-04-2026',
+            title: 'Trabzonspor 2-1 Fenerbahçe',
+            desc:  'Trendyol Süper Lig\'in 28. haftasında sahamızda Fenerbahçe\'yi 2-1 mağlup ettik.'
+        },
     ];
     /* ============================================================
        SLIDER MOTORU — Aşağısını değiştirmenize gerek yok
@@ -2594,19 +2593,36 @@
         '2025/26': {
             'tsl': {
                 gecmis: [
-                    { ev:true,  rakip:'Göztepe',    skor:[1,1], tarih:'02.05.2026', saat:'20:00', stadyum:'Papara Park',      hafta:'32. Hafta' },
-                    { ev:false, rakip:'Beşiktaş',   skor:[1,2], tarih:'09.05.2026', saat:'20:00', stadyum:'Tüpraş Stadyumu',  hafta:'33. Hafta' },
+                    
+                    { ev:true, 
+                      rakip:'Fenerbahçe',   
+                      skor:[2,1], 
+                      tarih:'05.04.2026', 
+                      saat:'20:00', 
+                      stadyum:'Tüpraş Stadyumu',  
+                      hafta:'28. Hafta' },
+
+                    { ev:false,  
+                        rakip:'Göztepe',    
+                        skor:[2,0], 
+                        tarih:'12.04.2026', 
+                        saat:'16:00', 
+                        stadyum:'ISONEM Park',      
+                        hafta:'29. Hafta'
+                    },      
                 ],
                 yaklasan: {
-                    ev:true, rakip:'Gençlerbirliği',
-                    tarih:'17.05.2026', saat:'20:00',
-                    stadyum:'Papara Park', hafta:'34. Hafta',
-                    hedef:'2026-05-17T20:00:00',
+                    ev:true, rakip:'Zecorner Kayserispor',
+                    tarih:'', saat:'',
+                    stadyum:'Papara Park', hafta:'30. Hafta',
+                    // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
+                    // null yaparsanız sayaç gösterilmez
+                    manuelSayac: null /*{ gun: 2, saat: 21, dk: 42, sn: 59 }*/
                 },
                 puan: [
-                    { pos:1, takim:'Trabzonspor', averaj:'+30', p:66 },
-                    { pos:2, takim:'Beşiktaş',  averaj:'+21', p:61 },
-                    { pos:3, takim:'Galatasaray', averaj:'+32', p:58 },
+                    { pos:1, takim:'Trabzonspor', averaj:'+31', p:69 },
+                    { pos:2, takim:'Beşiktaş',  averaj:'+23', p:64 },
+                    { pos:3, takim:'Galatasaray', averaj:'+33', p:61 },
                 ],
             },
             'zk': {
@@ -2629,10 +2645,12 @@
                       }, 
                 ],
                 yaklasan: {
-                    ev:true, rakip:'Gençlerbirliği',
+                    ev:true, rakip:'Kasımpaşa',
                     tarih:'13.05.2026', saat:'19:00',
-                    stadyum:'Papara Park', hafta:'Yarı Final 2. Maç',
-                    hedef:'2026-05-13T19:00:00',
+                    stadyum:'Papara Park', hafta:'Çeyrek Final',
+                    // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
+                    // null yaparsanız sayaç gösterilmez
+                    manuelSayac: null
                 },
                 puan: [
                     { pos:1, takim:'Trabzonspor', averaj:'+3', p:10 },
@@ -2652,101 +2670,69 @@
         return `<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
     }
 
-    /* ── COUNTDOWN ───────────────────────────────────────────────── */
-    let _cdInt = null;
+    /* ── COUNTDOWN (fikstur.html ile aynı sistem) ───────────────── */
 
-    /**
-     * Sayacı başlatır.
-     * Önce localStorage'da 'mm_cd_ozel_bitis' anahtarına bakılır.
-     * Bu anahtar varsa, kaydedilen bitiş zamanından geri sayım yapılır.
-     * Yoksa, maç verisindeki 'hedef' tarihi kullanılır.
-     *
-     * Özel süre ayarlamak için sayfanın konsolu veya herhangi bir script üzerinden:
-     *   mmSayacAyarla(gun, saat, dakika, saniye)
-     * fonksiyonu çağrılabilir. Örnek: mmSayacAyarla(1, 2, 4, 0)
-     */
-    function mmStartCountdown(hedef) {
-        if (_cdInt) clearInterval(_cdInt);
+    // ================================================================
+    //  GERİ SAYIM — Manuel Girişli, localStorage Destekli Sistem
+    //  manuelSayac: { gun, saat, dk, sn } ile tanımlanır.
+    //  İmza tabanlı anahtar: değer değişince yeni sayaç başlar,
+    //  sayfa yenilenince kaldığı yerden devam eder.
+    // ================================================================
+    function mmStartCountdown(manuelSayac) {
+        const sayacWrap  = document.getElementById('mmSayacWrap');
+        const macBasladi = document.getElementById('mmMacBasladi');
 
-        // localStorage'da özel bitiş zamanı var mı?
-        let hedefZaman;
-        const ozelBitis = localStorage.getItem('mm_cd_ozel_bitis');
-        if (ozelBitis) {
-            hedefZaman = parseInt(ozelBitis, 10);
-        } else {
-            hedefZaman = new Date(hedef).getTime();
-            localStorage.setItem('mm_cd_hedef', hedef);
+        if (!manuelSayac || typeof manuelSayac !== 'object') return;
+
+        const gun  = parseInt(manuelSayac.gun,  10) || 0;
+        const saat = parseInt(manuelSayac.saat, 10) || 0;
+        const dk   = parseInt(manuelSayac.dk,   10) || 0;
+        const sn   = parseInt(manuelSayac.sn,   10) || 0;
+
+        // İmza: değerler değişince eski localStorage kaydı yok sayılır
+        const imza       = `${gun}_${saat}_${dk}_${sn}`;
+        const bitisKey   = `mm_sayac_bitis_${imza}`;
+        const basladiKey = `mm_sayac_basladi_${imza}`;
+        const toplamMs   = ((gun * 86400) + (saat * 3600) + (dk * 60) + sn) * 1000;
+
+        // Bu imzaya ait sayaç daha önce bitmişse → MAÇ BAŞLADI, yeniden başlatma
+        if (localStorage.getItem(basladiKey) === '1') {
+            if (sayacWrap)  sayacWrap.style.display = 'none';
+            if (macBasladi) macBasladi.classList.add('goster');
+            return;
+        }
+
+        // Bitiş zamanını al; yoksa hesapla ve kaydet (ilk açılışta bir kez)
+        let bitis = parseInt(localStorage.getItem(bitisKey) || '0');
+        if (!bitis) {
+            bitis = Date.now() + toplamMs;
+            localStorage.setItem(bitisKey, String(bitis));
+        }
+
+        function gosterBasladi() {
+            localStorage.setItem(basladiKey, '1');
+            if (sayacWrap)  sayacWrap.style.display = 'none';
+            if (macBasladi) macBasladi.classList.add('goster');
         }
 
         function tick() {
-            const diff = hedefZaman - Date.now();
-            const elems = {
-                cdG:  document.getElementById('mmCdG'),
-                cdS:  document.getElementById('mmCdS'),
-                cdD:  document.getElementById('mmCdD'),
-                cdSn: document.getElementById('mmCdSn')
-            };
-            if (!elems.cdG) { clearInterval(_cdInt); return; }
-            if (diff <= 0) {
-                // Sayacı gizle, MAÇ BAŞLADI badge'ini göster
-                const sayacWrap  = document.getElementById('mmSayacWrap');
-                const macBasladi = document.getElementById('mmMacBasladi');
-                if (sayacWrap)  sayacWrap.style.display  = 'none';
-                if (macBasladi) macBasladi.classList.add('goster');
-                clearInterval(_cdInt); return;
-            }
+            const diff = bitis - Date.now();
+            const cdG  = document.getElementById('mmCdG');
+            if (!cdG) return;
+            if (diff <= 0) { gosterBasladi(); return; }
             const g  = Math.floor(diff / 86400000);
             const s  = Math.floor((diff % 86400000) / 3600000);
             const d  = Math.floor((diff % 3600000)  / 60000);
             const sn = Math.floor((diff % 60000)    / 1000);
-            if(elems.cdG)  elems.cdG.textContent  = String(g ).padStart(2,'0');
-            if(elems.cdS)  elems.cdS.textContent  = String(s ).padStart(2,'0');
-            if(elems.cdD)  elems.cdD.textContent  = String(d ).padStart(2,'0');
-            if(elems.cdSn) elems.cdSn.textContent = String(sn).padStart(2,'0');
+            const fmt = n => String(n).padStart(2, '0');
+            document.getElementById('mmCdG').textContent  = fmt(g);
+            document.getElementById('mmCdS').textContent  = fmt(s);
+            document.getElementById('mmCdD').textContent  = fmt(d);
+            document.getElementById('mmCdSn').textContent = fmt(sn);
         }
         tick();
-        _cdInt = setInterval(tick, 1000);
+        setInterval(tick, 1000);
     }
-
-    /**
-     * Sayacı istediğin sürede başlatmak için bu fonksiyonu kullan.
-     * localStorage'a kaydeder, sayfa yenilenince de devam eder.
-     *
-     * Örnek kullanım (tarayıcı konsolunda):
-     *   mmSayacAyarla(1, 2, 4, 0)   // 1 gün, 2 saat, 4 dakika, 0 saniye
-     *   mmSayacAyarla(0, 0, 30, 0)  // 30 dakika
-     *
-     * Sıfırlamak için:
-     *   mmSayacSifirla()
-     */
-    window.mmSayacAyarla = function(gun, saat, dakika, saniye) {
-        gun     = parseInt(gun,     10) || 0;
-        saat    = parseInt(saat,    10) || 0;
-        dakika  = parseInt(dakika,  10) || 0;
-        saniye  = parseInt(saniye,  10) || 0;
-        const toplamMs = ((gun * 86400) + (saat * 3600) + (dakika * 60) + saniye) * 1000;
-        const bitisZamani = Date.now() + toplamMs;
-        localStorage.setItem('mm_cd_ozel_bitis', String(bitisZamani));
-        // Badge'i gizle, sayacı geri göster
-        const sayacWrap  = document.getElementById('mmSayacWrap');
-        const macBasladi = document.getElementById('mmMacBasladi');
-        if (sayacWrap)  sayacWrap.style.display = '';
-        if (macBasladi) macBasladi.classList.remove('goster');
-        // Sayacı yeniden başlat
-        const cdG = document.getElementById('mmCdG');
-        if (cdG) { mmStartCountdown(null); }
-        console.log('Sayaç ayarlandı:', gun + 'g ' + saat + 's ' + dakika + 'd ' + saniye + 'sn');
-    };
-
-    window.mmSayacSifirla = function() {
-        localStorage.removeItem('mm_cd_ozel_bitis');
-        // Badge'i gizle, sayacı geri göster
-        const sayacWrap  = document.getElementById('mmSayacWrap');
-        const macBasladi = document.getElementById('mmMacBasladi');
-        if (sayacWrap)  sayacWrap.style.display = '';
-        if (macBasladi) macBasladi.classList.remove('goster');
-        console.log('Özel sayaç silindi. Maç tarihi kullanılacak.');
-    };
 
     /* ── ANA RENDER ─────────────────────────────────────────────── */
     let MM_SEZON    = '2025/26';
@@ -2837,7 +2823,7 @@
                 </div>
                 <div class="mm-orta-yer">${mmPin()}<span>${y.stadyum}</span></div>
             </div>`;
-            mmStartCountdown(y.hedef);
+            mmStartCountdown(y.manuelSayac || null);
         } else {
             orta.innerHTML = '<div class="mm-orta-kart" style="display:flex;align-items:center;justify-content:center;min-height:180px;color:#aaa;font-size:14px;">Yaklaşan maç bulunmuyor.</div>';
         }
@@ -3464,7 +3450,7 @@
 /* Büyük kart (top-row) */
 .haber-kart-buyuk .haber-img-wrap {
     width: 100%;
-    height: 280px;
+    height: 350px;
 }
 
 /* Küçük kart (bottom-row) */
@@ -3691,53 +3677,27 @@
     /* ── HABER VERİLERİ ────────────────────────────────────────────── */
     const HABERLER = [
         {
+            category: 'guncel',
+            date: '06.04.2026 | 16:30',
+            title: 'Futbolcumuz Wagner Pina\'nın sağlık durumuyla ilgili açıklama',
+            desc: 'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, futbolcumuz Wagner Pina’nın sağlık durumuna ilişkin açıklamada bulundu.',
+            href: 'haberler.html?cat=all#futbolcumuz-wagner-pinanin-saglik-durumuyla-ilgili-aciklama-06-04-2026',
+            image: 'assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg'
+        },
+    
+    
+    
+    
+    
+        {
             category: 'futbol-a-takim',
-            date: '08.05.2026 | 14:28',
-            title: 'Beşiktaş Maçı Kamp Kadromuz Belli Oldu',
-            desc: 'Trendyol Süper Lig\'in 33. haftasında Beşiktaş ile oynayacağımız maç için kamp kadromuz teknik heyet tarafından açıklandı.',
-            href: '#',
-            image: null
+            date: '05.04.2026 | 23:02',
+            title: 'Trabzonspor 2-1 Fenerbahçe',
+            desc: 'Trendyol Süper Lig\'in 28. haftasında sahamızda Fenerbahçe\'yi 2-1 mağlup ettik.',
+            href: 'haberler.html#trabzonspor-2-1-fenerbahce-05-04-2026',
+            image: 'assets/img/44fe753b92e9433391771bb50cf6f59a.jpeg'
         },
-        {
-            category: 'guncel',
-            date: '07.05.2026 | 18:00',
-            title: 'Kulübümüzden Açıklama',
-            desc: 'Trabzonspor Kulübü olarak kamuoyunu bilgilendirmek amacıyla aşağıdaki açıklamanın yapılması zaruri görülmüştür.',
-            href: '#',
-            image: null
-        },
-        {
-            category: 'guncel',
-            date: '05.05.2026 | 22:57',
-            title: 'Eski Başkan Yardımcımız Muhittin Fisunoğlu\'nu Kaybettik',
-            desc: 'Kulübümüzün eski başkan yardımcısı Muhittin Fisunoğlu hayatını kaybetmiştir. Ruhu şad, mekanı cennet olsun.',
-            href: '#',
-            image: null
-        },
-        {
-            category: 'guncel',
-            date: '01.05.2026 | 18:03',
-            title: 'ASKF Trabzon Şubesi Genel Kurulu\'nda Zeki Kurt Yeniden Başkan Seçildi',
-            desc: '',
-            href: '#',
-            image: null
-        },
-        {
-            category: 'guncel',
-            date: '30.04.2026 | 18:30',
-            title: 'Kamuoyuna Duyuru ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
-            desc: '',
-            href: '#',
-            image: null
-        },
-        {
-            category: 'uyelik',
-            date: '29.04.2026 | 13:43',
-            title: 'TS Club 2026/2027 Kış Koleksiyonu Bayi Toplantımız Yapıldı',
-            desc: '',
-            href: '#',
-            image: null
-        },
+        
         
     ];
 
@@ -4270,40 +4230,10 @@
     ─────────────────────────────────────────────────────────────────── */
     const TSTV_VIDEOLAR = [
         {
-            image: null,
-            href:  '#',
-            title: 'Inside Story - Bölüm 1'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Jaja Coelho Belgeseli'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Inside Story - Bölüm 2'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Sezon Özeti 2025/26'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Papara Park Belgeseli'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Trabzonspor Tarihi'
-        },
-        {
-            image: null,
-            href:  '#',
-            title: 'Gençlik Akademisi'
-        },
+            image: "assets/img/İnside Story.jpg",
+            href:  'online-islemler/trabzonspor-tv.html',
+            title: '#insidestory | Fenerbahçe maçı hikayesi'
+        }
     ];
 
     const TS_LOGO = 'https://cdn.trabzonspor.org.tr/trabzonspor_4694756d8ee1438ca8da71aada6775d1.png';

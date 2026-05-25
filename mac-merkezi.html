@@ -1843,31 +1843,50 @@ function turnuvaLogoAl(adi) { return turnuvaLogolari[adi]      || ""; }
 
 
 const fikstur = [
+    
     {
-        hafta: "Hafta 33",
-        tarih: "09 Mayıs 2026",
-        saat: "20:00",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Tüpraş Stadyumu",
-        evSahibi: { isim: "Konyaspor"    },
-        misafir:  { isim: "Trabzonspor" },
-        geriSayim: true,
-        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
-        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 1 }
-    },
-    {
-        hafta: "Hafta 34",
-        tarih: "17 Mayıs 2026",
+        hafta: "Hafta 30",
+        tarih: "Kesinleşmedi ",
         saat: null,
         turnuva: "Trendyol Süper Lig",
         stadyum: "Papara Park",
         evSahibi: { isim: "Trabzonspor" },
-        misafir:  { isim: "Ankaragücü"  },
-        geriSayim: false
+        misafir:  { isim: "Zecorner Kayserispor"  },
+        geriSayim: false,
+        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
+        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 1 }
+    },
+    {
+        hafta: "Hafta 31",
+        tarih: "Kesinleşmedi ",
+        saat: null,
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "Recep Tayyip Erdoğan Stadyumu",
+        evSahibi: { isim: "Kasımpaşa" },
+        misafir:  { isim: "Trabzonspor"  },
+        geriSayim: false,
+        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
+        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 1 }
     }
 ];
 
 const gecmisMaclar = [
+    {
+        hafta: "Hafta 29", tarih: "12.04.2026",
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "ISONEM Park",
+        ev:  { isim: "Göztepe", gol: 0 },
+        mis: { isim: "Trabzonspor",     gol: 2 }
+    },
+
+    {
+        hafta: "Hafta 28", tarih: "05.04.2026",
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "Papara Park",
+        ev:  { isim: "Trabzonspor", gol: 2 },
+        mis: { isim: "Fenerbahçe",     gol: 1 }
+    },
+
     {
         hafta: "Hafta 27", tarih: "18 Mart 2026",
         turnuva: "Trendyol Süper Lig",
@@ -1906,24 +1925,24 @@ const gecmisMaclar = [
 ];
 
 const puanDurumu = [
-    { sira:1,  takim:"Trabzonspor",                 OM:27,G:21,B:3, M:3, Av:"+30",P:66, ts:true },
-    { sira:2,  takim:"Beşiktaş",                    OM:27,G:19,B:4, M:4, Av:"+21",P:61 },
-    { sira:3,  takim:"Galatasaray",                 OM:27,G:18,B:4, M:5, Av:"+32",P:58 },
-    { sira:4,  takim:"Fenerbahçe",                  OM:27,G:17,B:2, M:8, Av:"+25",P:53 },
-    { sira:5,  takim:"Rams İstanbul Başakşehir",    OM:27,G:13,B:8,M:6, Av:"+15",P:47 },
-    { sira:6,  takim:"Göztepe",                     OM:27,G:12,B:8, M:7, Av:"+6",P:44 },
-    { sira:7,  takim:"Samsunspor",                  OM:27,G:11,B:6,M:10, Av:"+1", P:39 },
-    { sira:8,  takim:"Konyaspor",                   OM:27,G:11,B:5,M:11,Av:"+3", P:38 },
-    { sira:9,  takim:"Kasımpaşa",                   OM:27,G:9,B:9,M:9,Av:"0", P:36 },
-    { sira:10, takim:"Kocaelispor",                 OM:27,G:9, B:9,M:9,Av:"-3",P:36 },
-    { sira:11, takim:"Zecorner Kayserispor",        OM:27,G:8, B:7,M:12,Av:"-6", P:31 },
-    { sira:12, takim:"Çaykur Rizespor",             OM:27,G:8, B:6,M:13,Av:"-7",P:30 },
-    { sira:13, takim:"Fatih Karagümrük",            OM:27,G:7, B:8, M:12,Av:"-12",P:29 },
-    { sira:14, takim:"Eyüpspor",                   OM:27,G:8, B:3,M:16,Av:"-15",P:27 },
-    { sira:15, takim:"Antalyaspor",                 OM:27,G:6, B:7, M:14,Av:"-17",P:25 },
-    { sira:16, takim:"Alanyaspor",                   OM:27,G:5, B:6, M:16,Av:"-22",P:21 },
-    { sira:17, takim:"Gaziantep FK",                  OM:27,G:4, B:6, M:17,Av:"-23",P:18 },
-    { sira:18, takim:"Gençlerbirliği",                    OM:27,G:3, B:7, M:17,Av:"-28",P:16 }
+    { sira:1,  takim:"Trabzonspor",                 OM:28,G:22,B:3, M:3, Av:"+31",P:69, ts:true },
+    { sira:2,  takim:"Beşiktaş",                    OM:28,G:20,B:4, M:4, Av:"+23",P:64 },
+    { sira:3,  takim:"Galatasaray",                 OM:28,G:19,B:4, M:5, Av:"+33",P:61 },
+    { sira:4,  takim:"Fenerbahçe",                  OM:28,G:17,B:2, M:9, Av:"+24",P:53 },
+    { sira:5,  takim:"Rams İstanbul Başakşehir",    OM:28,G:13,B:9,M:6, Av:"+15",P:48 },
+    { sira:6,  takim:"Göztepe",                     OM:28,G:13,B:8, M:7, Av:"+7",P:47 },
+    { sira:7,  takim:"Samsunspor",                  OM:28,G:12,B:6,M:10, Av:"+2", P:42 },
+    { sira:8,  takim:"Konyaspor",                   OM:28,G:11,B:6,M:11,Av:"+3", P:39 },
+    { sira:9,  takim:"Kocaelispor",                   OM:28,G:10,B:9,M:9,Av:"-2", P:39 },
+    { sira:10, takim:"Kasımpaşa",                 OM:28,G:9, B:10,M:9,Av:"0",P:37 },
+    { sira:11, takim:"Zecorner Kayserispor",        OM:28,G:8, B:7,M:13,Av:"-7", P:31 },
+    { sira:12, takim:"Çaykur Rizespor",             OM:28,G:8, B:6,M:14,Av:"-8",P:30 },
+    { sira:13, takim:"Fatih Karagümrük",            OM:28,G:7, B:8, M:13,Av:"-14",P:29 },
+    { sira:14, takim:"Eyüpspor",                   OM:28,G:8, B:3,M:17,Av:"-16",P:27 },
+    { sira:15, takim:"Antalyaspor",                 OM:28,G:6, B:7, M:15,Av:"-18",P:25 },
+    { sira:16, takim:"Alanyaspor",                   OM:28,G:5, B:7, M:16,Av:"-22",P:22 },
+    { sira:17, takim:"Gaziantep FK",                  OM:28,G:5, B:6, M:17,Av:"-22",P:21 },
+    { sira:18, takim:"Gençlerbirliği",                    OM:28,G:3, B:7, M:18,Av:"-29",P:16 }
 ];
 
 // ================================================================
