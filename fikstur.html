@@ -2744,25 +2744,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // ================================================================
 const fiksturKupa = [
     {
-        hafta: "Yarı Final 2. Maç",
-        tarih: "14 Mayıs 2026",
-        saat: "20:00",
+        hafta: "Çeyrek Final",
+        tarih: "22 Nisan 2026",
+        saat: "20:30",
         turnuva: "Ziraat Türkiye Kupası",
         stadyum: "Papara Park",
         evSahibi: { isim: "Trabzonspor" },
-        misafir:  { isim: "Fenerbahçe"  },
-        geriSayim: false
+        misafir:  { isim: "Kasımpaşa"  },
+        geriSayim: true,
+        manuelSayac: { gun: 6, saat: 3, dk: 0, sn: 1 }
     },
-    {
-        hafta: "Final",
-        tarih: "25 Mayıs 2026",
-        saat: null,
-        turnuva: "Ziraat Türkiye Kupası",
-        stadyum: "Atatürk Olimpiyat Stadyumu",
-        evSahibi: { isim: "TBD" },
-        misafir:  { isim: "TBD" },
-        geriSayim: false
-    }
 ];
 
 // ================================================================
@@ -2881,18 +2872,6 @@ function turnuvaLogoAl(adi) { return turnuvaLogolari[adi]      || ""; }
 
 
 const fikstur = [
-   {
-        hafta: "Hafta 29",
-        tarih: "17 Mayıs 2026",
-        saat: null,
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "ISONEM Park",
-        evSahibi: { isim: "Göztepe" },
-        misafir:  { isim: "Trabzonspor"  },
-        geriSayim: false,
-        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
-        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 11 }
-    },
     {
         hafta: "Hafta 30",
         tarih: "17 Mayıs 2026",
@@ -2901,9 +2880,9 @@ const fikstur = [
         stadyum: "Papara Park",
         evSahibi: { isim: "Trabzonspor" },
         misafir:  { isim: "Zecorner Kayserispor"  },
-        geriSayim: false,
+        geriSayim: true,
         // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
-        manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 11 }
+        manuelSayac:{ gun: 3, saat: 18, dk: 0, sn: 2 }
     },
     {
         hafta: "Hafta 31",
