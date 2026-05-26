@@ -2388,13 +2388,26 @@
        ============================================================ */
     const HERO_SLIDES = [
         {
+            image: 'assets/img/trabzonspor_79018231232.jpg',
+            href:  'haberler.html#zecorner-kayserispor-maci-biletleri-satisa-cikti-15-04-2026',
+            title: 'Zecorner Kayserispor maçı biletleri satışa çıktı',
+            desc:  'Takımımızın, Trendyol Süper Lig’in 30. haftasında Zecorner Kayserispor ile oynayacağı maçın biletleri satışa sunuldu.'
+        },
+    
+    
+        {
+            image: 'assets/img/macinhakemikayseriev.jpg',
+            href:  'haberler.html#zecorner-kayserispor-macinin-hakemi-belli-oldu-14-04-2026',
+            title: 'Zecorner Kayserispor maçının hakemi belli oldu',
+            desc:  'Trendyol Süper Lig’in 30. haftasında, 19 Nisan Pazar günü Zecorner Kayserispor ile oynayacağımız karşılaşmayı hakem Atilla Karaoğlan yönetecek.'
+        },
+    
+        {
             image: 'assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg',
             href:  'haberler.html#futbolcumuz-paul-onuachunun-saglik-durumuyla-ilgili-aciklama-13-04-2026',
             title: 'Futbolcumuz Paul Onuachu’nun sağlık durumuyla ilgili açıklama',
             desc:  'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, Futbolcumuz Paul Onuachu’nun sağlık durumuna ilişkin açıklamalarda bulundu.'
         },
-    
-    
     
     
         {
@@ -2623,16 +2636,16 @@
                 ],
                 yaklasan: {
                     ev:true, rakip:'Zecorner Kayserispor',
-                    tarih:'', saat:'',
+                    tarih:'19 Nisan Pazar', saat:'20:00',
                     stadyum:'Papara Park', hafta:'30. Hafta',
                     // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
                     // null yaparsanız sayaç gösterilmez
-                    manuelSayac: null /*{ gun: 2, saat: 21, dk: 42, sn: 59 }*/
+                    manuelSayac: { gun: 3, saat: 18, dk: 0, sn: 1 }
                 },
                 puan: [
-                    { pos:1, takim:'Trabzonspor', averaj:'+31', p:69 },
-                    { pos:2, takim:'Beşiktaş',  averaj:'+23', p:64 },
-                    { pos:3, takim:'Galatasaray', averaj:'+33', p:61 },
+                    { pos:1, takim:'Trabzonspor', averaj:'+33', p:72 },
+                    { pos:2, takim:'Beşiktaş',  averaj:'+21', p:64 },
+                    { pos:3, takim:'Galatasaray', averaj:'+33', p:62 },
                 ],
             },
             'zk': {
@@ -2687,8 +2700,17 @@
     //  manuelSayac: { gun, saat, dk, sn } ile tanımlanır.
     //  İmza tabanlı anahtar: değer değişince yeni sayaç başlar,
     //  sayfa yenilenince kaldığı yerden devam eder.
+    //  Turnuva anahtarı imzaya dahil edilir — her turnuva ayrı sayar.
     // ================================================================
-    function mmStartCountdown(manuelSayac) {
+    let _mmCountdownInterval = null; // Aktif sayaç interval'i (temizlemek için)
+
+    function mmStartCountdown(manuelSayac, turnuvaKey) {
+        // Önceki sayaç interval'ini temizle
+        if (_mmCountdownInterval) {
+            clearInterval(_mmCountdownInterval);
+            _mmCountdownInterval = null;
+        }
+
         const sayacWrap  = document.getElementById('mmSayacWrap');
         const macBasladi = document.getElementById('mmMacBasladi');
 
@@ -2699,8 +2721,8 @@
         const dk   = parseInt(manuelSayac.dk,   10) || 0;
         const sn   = parseInt(manuelSayac.sn,   10) || 0;
 
-        // İmza: değerler değişince eski localStorage kaydı yok sayılır
-        const imza       = `${gun}_${saat}_${dk}_${sn}`;
+        // İmza: turnuva anahtarı + değerler — her turnuva için ayrı localStorage kaydı
+        const imza       = `${turnuvaKey}_${gun}_${saat}_${dk}_${sn}`;
         const bitisKey   = `mm_sayac_bitis_${imza}`;
         const basladiKey = `mm_sayac_basladi_${imza}`;
         const toplamMs   = ((gun * 86400) + (saat * 3600) + (dk * 60) + sn) * 1000;
@@ -2741,7 +2763,7 @@
             document.getElementById('mmCdSn').textContent = fmt(sn);
         }
         tick();
-        setInterval(tick, 1000);
+        _mmCountdownInterval = setInterval(tick, 1000);
     }
 
     /* ── ANA RENDER ─────────────────────────────────────────────── */
@@ -2833,7 +2855,7 @@
                 </div>
                 <div class="mm-orta-yer">${mmPin()}<span>${y.stadyum}</span></div>
             </div>`;
-            mmStartCountdown(y.manuelSayac || null);
+            mmStartCountdown(y.manuelSayac || null, MM_TURNUVA);
         } else {
             orta.innerHTML = '<div class="mm-orta-kart" style="display:flex;align-items:center;justify-content:center;min-height:180px;color:#aaa;font-size:14px;">Yaklaşan maç bulunmuyor.</div>';
         }
@@ -3688,6 +3710,25 @@
     const HABERLER = [
         {
             category: 'futbol-a-takim',
+            date: '16.04.2026 | 12:00',
+            title: 'Zecorner Kayserispor maçı biletleri satışa çıktı',
+            desc: 'Takımımızın, Trendyol Süper Lig’in 30. haftasında Zecorner Kayserispor ile oynayacağı maçın biletleri satışa sunuldu.',
+            href: 'haberler.html#zecorner-kayserispor-maci-biletleri-satisa-cikti-15-04-2026',
+            image: 'assets/img/trabzonspor_79018231232.jpg',
+        },
+    
+    
+        {
+            category: 'futbol-a-takim',
+            date: '15.04.2026 | 13:00',
+            title: 'Zecorner Kayserispor maçının hakemi belli oldu',
+            desc: 'Trendyol Süper Lig’in 30. haftasında, 19 Nisan Pazar günü Zecorner Kayserispor ile oynayacağımız karşılaşmayı hakem Atilla Karaoğlan yönetecek.',
+            href: 'haberler.html#zecorner-kayserispor-macinin-hakemi-belli-oldu-14-04-2026',
+            image: 'assets/img/macinhakemikayseriev.jpg',
+        },   
+    
+        {
+            category: 'futbol-a-takim',
             date: '13.04.2026 | 20:01',
             title: 'Futbolcumuz Paul Onuachu’nun sağlık durumuyla ilgili açıklama',
             desc: 'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, Futbolcumuz Paul Onuachu’nun sağlık durumuna ilişkin açıklamalarda bulundu.',
@@ -3695,19 +3736,14 @@
             image: 'assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg',
         },   
     
-    
-    
-    
-    
         {
             category: 'futbol-a-takim',
             date: '12.04.2026 | 19:12',
-            title: 'Göztepe 0-2 Trabzonspor',
+            title: 'Göztepe 0-2 Trabzonspor   ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
             desc: 'Trendyol Süper Lig\'in 29. haftasında deplasmanda Göztepe\'yi 0-2 mağlup ettik.',
             href: 'haberler.html?cat=all#goztepe-0-2-trabzonspor-12-04-2026',
             image: 'assets/img/trabzonspor_7ae4a1ffc5d44f93948cd8a5fecfa1f7.JPG',
         },   
-    
 
         {
             category: 'futbol-a-takim',
@@ -3725,7 +3761,7 @@
         {
             category: 'futbol-a-takim',
             date: '05.04.2026 | 23:02',
-            title: 'Trabzonspor 2-1 Fenerbahçe',
+            title: 'Trabzonspor 2-1 Fenerbahçe   ㅤㅤㅤㅤㅤㅤㅤㅤ',
             desc: 'Trendyol Süper Lig\'in 28. haftasında sahamızda Fenerbahçe\'yi 2-1 mağlup ettik.',
             href: 'haberler.html#trabzonspor-2-1-fenerbahce-05-04-2026',
             image: 'assets/img/44fe753b92e9433391771bb50cf6f59a.jpeg'
