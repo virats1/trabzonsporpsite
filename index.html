@@ -2388,6 +2388,13 @@
        ============================================================ */
     const HERO_SLIDES = [
         {
+            image: 'assets/img/52dd680a03d64ad580a28d9eea52402b.jpg',
+            href:  'haberler.html#kamuoyuna-duyuru-17-04-2026',
+            title: 'Kamuoyuna Duyuru',
+            desc:  'Profesyonel futbolcumuz Kazeem Olaigbe’nin, Konyaspor Kulübü’ne kesin transferi konusunda anlaşma sağlanmıştır.'
+        },
+    
+        {
             image: 'assets/img/trabzonspor_79018231232.jpg',
             href:  'haberler.html#zecorner-kayserispor-maci-biletleri-satisa-cikti-15-04-2026',
             title: 'Zecorner Kayserispor maçı biletleri satışa çıktı',
@@ -3710,6 +3717,15 @@
     const HABERLER = [
         {
             category: 'futbol-a-takim',
+            date: '17.04.2026 | 13:01',
+            title: 'Kamuoyuna Duyuru',
+            desc: 'Profesyonel futbolcumuz Kazeem Olaigbe’nin, Konyaspor Kulübü’ne kesin transferi konusunda anlaşma sağlanmıştır.',
+            href: 'haberler.html#kamuoyuna-duyuru-17-04-2026',
+            image: 'assets/img/52dd680a03d64ad580a28d9eea52402b.jpg',
+        },
+
+        {
+            category: 'futbol-a-takim',
             date: '16.04.2026 | 12:00',
             title: 'Zecorner Kayserispor maçı biletleri satışa çıktı',
             desc: 'Takımımızın, Trendyol Süper Lig’in 30. haftasında Zecorner Kayserispor ile oynayacağı maçın biletleri satışa sunuldu.',
@@ -3757,16 +3773,7 @@
     
     
     
-    
-        {
-            category: 'futbol-a-takim',
-            date: '05.04.2026 | 23:02',
-            title: 'Trabzonspor 2-1 Fenerbahçe   ㅤㅤㅤㅤㅤㅤㅤㅤ',
-            desc: 'Trendyol Süper Lig\'in 28. haftasında sahamızda Fenerbahçe\'yi 2-1 mağlup ettik.',
-            href: 'haberler.html#trabzonspor-2-1-fenerbahce-05-04-2026',
-            image: 'assets/img/44fe753b92e9433391771bb50cf6f59a.jpeg'
-        }, 
-            
+
 
 
         
@@ -4982,7 +4989,7 @@
     function buildCard(o) {
         var a = document.createElement('a');
         a.className = 'player-card';
-        a.href = o.href || '#';
+        a.href = o.href || 'branslar/futbol/a-takimi.html';
         a.innerHTML =
             '<span class="player-pos">'  + o.pozisyon + '</span>' +
             '<span class="player-num">'  + o.no       + '</span>' +
