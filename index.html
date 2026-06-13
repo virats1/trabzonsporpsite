@@ -2388,6 +2388,13 @@
        ============================================================ */
     const HERO_SLIDES = [
         {
+            image: 'assets/img/trabzonspor_15a5169322e84a93827c864a40ece64e.JPG',
+            href: 'haberler.html?cat=all#trabzonspor-1-0-zecorner-kayserispor-19-04-2026',
+            title: 'Trabzonspor 1-0 Zecorner Kayserispor',
+            desc: 'Trendyol Süper Lig\'in 30. haftasında deplasmanda Zecorner Kayserispor\'u 1-0 mağlup ettik.'
+        },    
+    
+        {
             image: 'assets/img/52dd680a03d64ad580a28d9eea52402b.jpg',
             href:  'haberler.html#kamuoyuna-duyuru-17-04-2026',
             title: 'Kamuoyuna Duyuru',
@@ -2623,14 +2630,6 @@
         '2025/26': {
             'tsl': {
                 gecmis: [
-                    
-                    { ev:true, 
-                      rakip:'Fenerbahçe',   
-                      skor:[2,1], 
-                      tarih:'05.04.2026', 
-                      saat:'20:00', 
-                      stadyum:'Tüpraş Stadyumu',  
-                      hafta:'28. Hafta' },
 
                     { ev:false,  
                         rakip:'Göztepe',    
@@ -2639,15 +2638,23 @@
                         saat:'16:00', 
                         stadyum:'ISONEM Park',      
                         hafta:'29. Hafta'
-                    },      
+                    },
+                    
+                     { ev:true, 
+                      rakip:'Zecorner Kayserispor',   
+                      skor:[1,0], 
+                      tarih:'19.04.2026', 
+                      saat:'20:00', 
+                      stadyum:'Papara Park',  
+                      hafta:'30. Hafta' },
                 ],
                 yaklasan: {
-                    ev:true, rakip:'Zecorner Kayserispor',
-                    tarih:'19 Nisan Pazar', saat:'20:00',
-                    stadyum:'Papara Park', hafta:'30. Hafta',
+                    ev:false, rakip:'Kasımpaşa',
+                    tarih:'Kesinleşmedi', saat:'Belirlenmedi',
+                    stadyum:'Papara Park', hafta:'31. Hafta',
                     // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
                     // null yaparsanız sayaç gösterilmez
-                    manuelSayac: { gun: 0, saat: 0, dk: 10, sn: 0 }
+                    manuelSayac: null /*{ gun: 0, saat: 0, dk: 10, sn: 0 }*/
                 },
                 puan: [
                     { pos:1, takim:'Trabzonspor', averaj:'+33', p:72 },
@@ -2680,7 +2687,7 @@
                     stadyum:'Papara Park', hafta:'Çeyrek Final',
                     // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
                     // null yaparsanız sayaç gösterilmez
-                    manuelSayac: { gun: 6, saat: 3, dk: 0, sn: 1 }
+                    manuelSayac: { gun: 1, saat: 3, dk: 0, sn: 1 }
                 },
                 puan: [
                     { pos:1, takim:'Trabzonspor', averaj:'+3', p:10 },
@@ -3717,6 +3724,15 @@
     const HABERLER = [
         {
             category: 'futbol-a-takim',
+            date: '19.04.2026 | 16:54',
+            title: 'Trabzonspor 1-0 Zecorner Kayserispor',
+            desc: 'Trendyol Süper Lig\'in 30. haftasında deplasmanda Zecorner Kayserispor\'u 1-0 mağlup ettik.',
+            href: 'haberler.html?cat=all#trabzonspor-1-0-zecorner-kayserispor-19-04-2026',
+            image: 'assets/img/trabzonspor_15a5169322e84a93827c864a40ece64e.JPG',
+        },
+    
+        {
+            category: 'futbol-a-takim',
             date: '17.04.2026 | 13:01',
             title: 'Kamuoyuna Duyuru',
             desc: 'Profesyonel futbolcumuz Kazeem Olaigbe’nin, Konyaspor Kulübü’ne kesin transferi konusunda anlaşma sağlanmıştır.',
@@ -3761,14 +3777,7 @@
             image: 'assets/img/trabzonspor_7ae4a1ffc5d44f93948cd8a5fecfa1f7.JPG',
         },   
 
-        {
-            category: 'futbol-a-takim',
-            date: '06.04.2026 | 16:30',
-            title: 'Futbolcumuz Wagner Pina\'nın sağlık durumuyla ilgili açıklama',
-            desc: 'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, futbolcumuz Wagner Pina’nın sağlık durumuna ilişkin açıklamada bulundu.',
-            href: 'haberler.html?cat=all#futbolcumuz-wagner-pinanin-saglik-durumuyla-ilgili-aciklama-06-04-2026',
-            image: 'assets/img/64cce4fa9f114f92bce4b9009b4020e8.jpg'
-        },
+        
     
     
     

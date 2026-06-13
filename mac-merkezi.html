@@ -1845,18 +1845,6 @@ function turnuvaLogoAl(adi) { return turnuvaLogolari[adi]      || ""; }
 const fikstur = [
     
     {
-        hafta: "Hafta 30",
-        tarih: "19 Nisan Pazar 2026",
-        saat: "20:00",
-        turnuva: "Trendyol Süper Lig",
-        stadyum: "Papara Park",
-        evSahibi: { isim: "Trabzonspor" },
-        misafir:  { isim: "Zecorner Kayserispor"  },
-        geriSayim: true,
-        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
-        manuelSayac: { gun: 0, saat: 0, dk: 10, sn: 0 }
-    },
-    {
         hafta: "Hafta 31",
         tarih: "Kesinleşmedi ",
         saat: null,
@@ -1867,10 +1855,31 @@ const fikstur = [
         geriSayim: false,
         // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
         manuelSayac: { gun: 0, saat: 0, dk: 0, sn: 1 }
-    }
+    },
+
+        {
+        hafta: "Hafta 32",
+        tarih: "Kesinleşmedi",
+        saat: null,
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "Papara Park",
+        evSahibi: { isim: "Trabzonspor" },
+        misafir:  { isim: "Beşiktaş"  },
+        geriSayim: false,
+        // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn cinsinden kalan süre
+        manuelSayac: { gun: 0, saat: 0, dk: 10, sn: 0 }
+    },
 ];
 
 const gecmisMaclar = [
+    {
+        hafta: "Hafta 30", tarih: "19.04.2026",
+        turnuva: "Trendyol Süper Lig",
+        stadyum: "Papara Park",
+        ev:  { isim: "Trabzonspor", gol: 1 },
+        mis: { isim: "Zecorner Kayserispor", gol: 0 }
+    },
+    
     {
         hafta: "Hafta 29", tarih: "12.04.2026",
         turnuva: "Trendyol Süper Lig",
@@ -1960,7 +1969,7 @@ const fiksturKupa = [
         evSahibi: { isim: "Trabzonspor" },
         misafir:  { isim: "Kasımpaşa" },
         geriSayim: true,
-        manuelSayac: { gun: 5, saat: 12, dk: 10, sn: 0 }
+        manuelSayac: { gun: 1, saat: 3, dk: 0, sn: 1 }
     },
 ];
 
