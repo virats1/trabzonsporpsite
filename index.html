@@ -2388,6 +2388,13 @@
        ============================================================ */
     const HERO_SLIDES = [
         {
+            image: 'assets/img/a1bd998a507345a4aede7f6d509d3dff.jpg',
+            href: 'haberler.html#ziraat-turkiye-kupasinda-yari-finaldeyiz-22-04-2026',
+            title: 'Ziraat Türkiye Kupası’nda Yarı Finaldeyiz!',
+            desc: 'Ziraat Türkiye Kupası Çeyrek Final maçında sahamızda Kasımpaşa’yı 1-0 mağlup ederek yarı finalde Beşiktaş’ın rakibi olduk.'
+        },    
+
+        {
             image: 'assets/img/38d54fb8af424f2499d85b5939de3513.jpg',
             href: 'haberler.html#orhan-kaynak-icin-toren-duzenlenecek-21-04-2026',
             title: 'Orhan Kaynak İçin Tören Düzenlenecek',
@@ -2442,14 +2449,6 @@
             href:  'haberler.html#futbolcumuz-paul-onuachunun-saglik-durumuyla-ilgili-aciklama-13-04-2026',
             title: 'Futbolcumuz Paul Onuachu’nun sağlık durumuyla ilgili açıklama',
             desc:  'Sağlık Kurulu Başkanımız Prof. Dr. Ahmet Beşir, Futbolcumuz Paul Onuachu’nun sağlık durumuna ilişkin açıklamalarda bulundu.'
-        },
-    
-    
-        {
-            image: 'assets/img/trabzonspor_7ae4a1ffc5d44f93948cd8a5fecfa1f7.JPG',
-            href:  'haberler.html?cat=all#goztepe-0-2-trabzonspor-12-04-2026',
-            title: 'Göztepe 0-2 Trabzonspor',
-            desc:  'Trendyol Süper Lig\'in 29. haftasında deplasmanda Göztepe\'yi 0-2 mağlup ettik.'
         },
 
     
@@ -2669,19 +2668,11 @@
                 puan: [
                     { pos:1, takim:'Trabzonspor', averaj:'+34', p:75 },
                     { pos:2, takim:'Galatasaray',  averaj:'+34', p:65 },
-                    { pos:3, takim:'Galatasaray', averaj:'+20', p:64 },
+                    { pos:3, takim:'Beşiktaş', averaj:'+20', p:64 },
                 ],
             },
             'zk': {
                 gecmis: [
-                    { ev:true,  
-                    rakip:'Sivasspor', 
-                    skor:[2,1], 
-                    tarih:'', 
-                    saat:'', 
-                    stadyum:'Papara Park',     
-                    hafta:'3.Hafta' 
-                    },
                     { ev:true, 
                       rakip:'Konyaspor',       
                       skor:[1,0], 
@@ -2689,15 +2680,24 @@
                       saat:'', 
                       stadyum:'Medaş Konya Büyükşehir Stadyumu', 
                       hafta:'4.Hafta'
-                      }, 
+                      },
+                      { 
+                        ev:true,  
+                        rakip:'Kasımpaşa', 
+                        skor:[1,0], 
+                        tarih:'22.04.2026', 
+                        saat:'20:30', 
+                        stadyum:'Papara Park',     
+                        hafta:'Çeyrek Final' 
+                    }, 
                 ],
                 yaklasan: {
-                    ev:true, rakip:'Kasımpaşa',
-                    tarih:'22 Nisan 2026', saat:'20:30',
-                    stadyum:'Papara Park', hafta:'Çeyrek Final',
+                    ev:true, rakip:'Beşiktaş',
+                    tarih:'Kesinleşmedi', saat:'Saat Belirlenmedi',
+                    stadyum:'Papara Park', hafta:'Yarı Final',
                     // ▼ SAYACI BURAYA AYARLAYIN: gün, saat, dk, sn
                     // null yaparsanız sayaç gösterilmez
-                    manuelSayac: { gun: 1, saat: 3, dk: 0, sn: 1 }
+                    manuelSayac:null /*{ gun: 1, saat: 3, dk: 0, sn: 1 }*/
                 },
                 puan: [
                     { pos:1, takim:'Trabzonspor', averaj:'+3', p:10 },
@@ -3733,6 +3733,15 @@
     /* ── HABER VERİLERİ ────────────────────────────────────────────── */
     const HABERLER = [
         {
+            category: 'futbol-a-takim',
+            date: '22.04.2026 | 21:40',
+            title: 'Ziraat Türkiye Kupası’nda Yarı Finaldeyiz!',
+            desc: 'Ziraat Türkiye Kupası Çeyrek Final maçında sahamızda Kasımpaşa’yı 1-0 mağlup ederek yarı finalde Beşiktaş’ın rakibi olduk.',
+            href: 'haberler.html#ziraat-turkiye-kupasinda-yari-finaldeyiz-22-04-2026',
+            image: 'assets/img/a1bd998a507345a4aede7f6d509d3dff.jpg'
+        },
+    
+        {
             category: 'guncel',
             date: '21.04.2026 | 16:10',
             title: 'Orhan Kaynak İçin Tören Düzenlenecek                    ㅤㅤㅤㅤㅤㅤㅤ',
@@ -3775,15 +3784,6 @@
             desc: 'Profesyonel futbolcumuz Kazeem Olaigbe’nin, Konyaspor Kulübü’ne kesin transferi konusunda anlaşma sağlanmıştır.',
             href: 'haberler.html#kamuoyuna-duyuru-17-04-2026',
             image: 'assets/img/52dd680a03d64ad580a28d9eea52402b.jpg',
-        },
-
-        {
-            category: 'futbol-a-takim',
-            date: '16.04.2026 | 12:00',
-            title: 'Zecorner Kayserispor maçı biletleri satışa çıktı',
-            desc: 'Takımımızın, Trendyol Süper Lig’in 30. haftasında Zecorner Kayserispor ile oynayacağı maçın biletleri satışa sunuldu.',
-            href: 'haberler.html#zecorner-kayserispor-maci-biletleri-satisa-cikti-15-04-2026',
-            image: 'assets/img/trabzonspor_79018231232.jpg',
         },
 
         
